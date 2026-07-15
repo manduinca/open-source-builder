@@ -40,6 +40,9 @@ ruta de los JSON. Su trabajo:
 - Seleccionar los 5–10 mejores repos y los 3–8 mejores issues del dominio,
   con una línea de justificación y una estimación de esfuerzo
   (bajo/medio/alto) por issue.
+- Marcar los `incentivos` del YAML que apliquen a cada repo: bounties
+  (buscar el repo en Algora/Polar.sh o labels tipo `💎 Bounty`), historial
+  de contratar contribuidores, PR directo sin asignación.
 - Devolver salida estructurada (schema JSON): `{repos: [...], issues: [...]}`.
 
 Tras los curadores, un **agente verificador** revisa las URLs de los issues

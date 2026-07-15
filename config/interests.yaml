@@ -34,6 +34,15 @@ dominios:
       - GeoStat-Framework/GSTools
       - simpeg/simpeg              # agregado tras escaneo 2026-07-14
       - GenericMappingTools/pygmt  # agregado tras escaneo 2026-07-14
+      - OSGeo/gdal                 # C++ geoespacial; paga maintenance work units (RFC 83)
+
+  remunerados:
+    descripcion: Repos con bounties activos o escalera contribuidor→empleo (informe 2026-07-14)
+    repos_semilla:
+      - onyx-dot-app/onyx          # Python RAG; bounties ~$250 vía Algora
+      - commaai/openpilot          # Python/C++; bounties $100-$300, bounty→contrato
+      - calcom/cal.com             # TypeScript; bounties Algora $50-$100
+      - supabase/supabase          # contratan de comunidad; precedente peruano (PostgREST)
 
   mineria:
     descripcion: Planeamiento minero, optimización de pit, modelos de bloques
@@ -94,3 +103,7 @@ criterios:
     - CONTRIBUTING.md presente
     - issues respondidos por mantenedores en < 14 días
     - PRs de externos mergeados recientemente
+  incentivos:  # señales que suben la prioridad de un repo (pedido 2026-07-14)
+    - paga bounties por issue (Algora, Polar.sh o propio)
+    - empresa con historial de contratar contribuidores de su comunidad
+    - protocolo de PR directo sin asignación previa (feedback garantizado vía review)
