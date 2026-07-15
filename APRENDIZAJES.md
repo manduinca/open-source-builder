@@ -43,8 +43,12 @@ elegir dónde contribuir. (Iniciado 2026-07-15.)
 
 ## Remuneración (ver reports/opciones-pagadas-*)
 
-- Bounties vivos 2026: **Algora** (onyx ~$250, openpilot $100–300). Verificar
-  soporte de payout a Perú.
+- Bounties vivos 2026: **Algora** (onyx ~$250, openpilot $100–300).
+  **Payout a Perú: CONFIRMADO viable** (2026-07-15). Algora paga vía Stripe
+  Connect / Global Payouts, y Stripe agregó Perú (`pe_bank_account`) como
+  destino de cross-border payouts el 2026-02-25. Falta solo el paso operativo:
+  crear cuenta Algora y verificar que Perú aparezca seleccionable en la
+  pantalla de payout (login requerido, no verificable sin cuenta).
 - Empleo desde comunidad: **Supabase** (precedente peruano: Steve Chávez /
   PostgREST), PostHog (franja horaria contratable).
 - Grants: **NumFOCUS Small Dev Grants** ($10k, conv. sept–oct) los presentan
