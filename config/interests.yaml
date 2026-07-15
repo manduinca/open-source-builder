@@ -1,0 +1,96 @@
+# Perfil de intereses para el escaneo de proyectos open source.
+# Los agentes leen este archivo para saber qué buscar y cómo priorizar.
+# Edita libremente: agrega dominios, repos semilla o ajusta criterios.
+
+perfil:
+  usuario_github: manduinca
+  contexto: >
+    Deep Skill trabaja en ciencias de la tierra (geología, geoestadística,
+    geofísica), optimización en minería y procesamiento de imágenes.
+    Interés en contribuir a librerías del ecosistema Python, Java, Go y Rust.
+    Proyectos internos de la org deep-skill (señal de rubros concretos):
+    seismic-hazard-simulator, mineral-resource-estimator, haul-sight,
+    borehole-drill, stockpiling-simulation-transport.
+
+dominios:
+  geociencias:
+    descripcion: Geología, geoestadística, geofísica, sísmica, geoquímica
+    keywords:
+      - geology
+      - geostatistics
+      - geophysics
+      - seismic hazard
+      - structural geology
+      - geochemistry
+      - kriging
+      - facies classification
+    repos_semilla:
+      - gempy-project/gempy
+      - pyvista/pyvista
+      - fatiando/verde
+      - fatiando/harmonica
+      - obspy/obspy
+      - GeostatsGuy/GeostatsPy
+      - GeoStat-Framework/GSTools
+      - simpeg/simpeg              # agregado tras escaneo 2026-07-14
+      - GenericMappingTools/pygmt  # agregado tras escaneo 2026-07-14
+
+  mineria:
+    descripcion: Planeamiento minero, optimización de pit, modelos de bloques
+    keywords:
+      - mine planning
+      - pit optimization
+      - block model
+      - drillhole
+      - borehole
+      - mining engineering
+      - mineral resource estimation
+      - stockpile simulation
+      - haul cycle
+      - fleet dispatch mining
+    repos_semilla:
+      # MineFlowCSM/MineFlow descartado en escaneo 2026-07-14: sin push desde 2024-01
+      # (también muertos: miningpy, opengeostat/pygslib)
+      - Loop3D/LoopStructural
+      - polatory/polatory
+      - MiraGeoscience/geoh5py
+      - simpeg/simpeg
+
+  procesamiento_imagenes:
+    descripcion: Visión computacional, segmentación, imágenes científicas
+    keywords:
+      - image processing
+      - image segmentation
+      - computer vision
+      - microscopy imaging
+    repos_semilla:
+      - scikit-image/scikit-image
+      - opencv/opencv
+      - napari/napari
+
+  librerias_generales:
+    descripcion: Librerías base a las que interesa contribuir
+    repos_semilla:
+      - python/cpython
+      - django/django
+      - spring-projects/spring-framework
+      - spring-projects/spring-boot
+      - pyvista/pyvista
+
+lenguajes_preferidos: [Python, Java, C++, Go, Rust]
+
+criterios:
+  # Un repo se considera "vivo" si tuvo push en este período
+  actividad_maxima_dias: 90
+  estrellas_minimas: 50          # dominios de nicho (geociencias/minería) pueden bajar de esto
+  etiquetas_contribucion:
+    - good first issue
+    - good-first-issue
+    - help wanted
+    - easy
+    - beginner friendly
+    - first-timers-only
+  senales_buena_comunidad:
+    - CONTRIBUTING.md presente
+    - issues respondidos por mantenedores en < 14 días
+    - PRs de externos mergeados recientemente

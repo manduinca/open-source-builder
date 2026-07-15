@@ -1,0 +1,220 @@
+<title>Radar OSS — Deep Skill</title>
+<style>
+  :root {
+    --ground: #F5F3EF;
+    --card: #FFFFFF;
+    --ink: #23282C;
+    --muted: #6F6A61;
+    --line: #E3DFD6;
+    --accent: #B45A1E;
+    --accent-soft: #B45A1E22;
+    --bajo: #2F7D4E;    --bajo-bg: #2F7D4E1A;
+    --medio: #96690A;   --medio-bg: #96690A1A;
+    --alto: #B23F2D;    --alto-bg: #B23F2D1A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #17191C; --card: #1E2226; --ink: #E9E5DE; --muted: #98928A;
+      --line: #2C3036; --accent: #D9853F; --accent-soft: #D9853F26;
+      --bajo: #63B888; --bajo-bg: #63B8881F;
+      --medio: #D3A945; --medio-bg: #D3A9451F;
+      --alto: #E0765F; --alto-bg: #E0765F1F;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #F5F3EF; --card: #FFFFFF; --ink: #23282C; --muted: #6F6A61;
+    --line: #E3DFD6; --accent: #B45A1E; --accent-soft: #B45A1E22;
+    --bajo: #2F7D4E; --bajo-bg: #2F7D4E1A;
+    --medio: #96690A; --medio-bg: #96690A1A;
+    --alto: #B23F2D; --alto-bg: #B23F2D1A;
+  }
+  :root[data-theme="dark"] {
+    --ground: #17191C; --card: #1E2226; --ink: #E9E5DE; --muted: #98928A;
+    --line: #2C3036; --accent: #D9853F; --accent-soft: #D9853F26;
+    --bajo: #63B888; --bajo-bg: #63B8881F;
+    --medio: #D3A945; --medio-bg: #D3A9451F;
+    --alto: #E0765F; --alto-bg: #E0765F1F;
+  }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; }
+  a { color: inherit; }
+  .eyebrow {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 .4rem;
+  }
+  h1 {
+    font-family: "Avenir Next", "Avenir", system-ui, sans-serif;
+    font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 600;
+    margin: 0 0 .3rem; text-wrap: balance;
+  }
+  .meta { color: var(--muted); margin: 0 0 1.8rem; font-size: .95rem; }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: .75rem; margin-bottom: 3rem;
+  }
+  .stat {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: .5rem; padding: .8rem 1rem;
+  }
+  .stat b {
+    display: block; font-size: 1.55rem; font-weight: 650;
+    font-variant-numeric: tabular-nums; line-height: 1.2;
+  }
+  .stat span { font-size: .8rem; color: var(--muted); }
+  section { margin-bottom: 3.2rem; }
+  h2 {
+    font-family: "Avenir Next", "Avenir", system-ui, sans-serif;
+    font-size: 1.25rem; font-weight: 600; margin: 0 0 .2rem;
+    padding-top: 1.2rem; border-top: 2px solid var(--accent);
+  }
+  .domain-note { color: var(--muted); font-size: .92rem; margin: 0 0 1.2rem; max-width: 46rem; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: .75rem; margin-bottom: 1.4rem;
+  }
+  .repo {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: .5rem; padding: .9rem 1rem;
+    display: flex; flex-direction: column; gap: .35rem;
+  }
+  .repo h3 { margin: 0; font-size: .95rem; font-weight: 600; overflow-wrap: anywhere; }
+  .repo h3 a { text-decoration: none; }
+  .repo h3 a:hover, .issue-title:hover { color: var(--accent); }
+  .repo .facts {
+    display: flex; gap: .8rem; flex-wrap: wrap;
+    font: .78rem ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--muted); font-variant-numeric: tabular-nums;
+  }
+  .repo p { margin: 0; font-size: .86rem; color: var(--muted); }
+  h4 {
+    margin: 0 0 .6rem; font-size: .75rem; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  ul.issues { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+  .issue {
+    background: var(--card); border: 1px solid var(--line); border-radius: .5rem;
+    padding: .7rem .9rem;
+    display: grid; grid-template-columns: 4.2rem 1fr; gap: .35rem .8rem; align-items: baseline;
+  }
+  .chip {
+    font-size: .68rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase;
+    padding: .18rem .5rem; border-radius: 99px; text-align: center; white-space: nowrap;
+  }
+  .chip.bajo  { color: var(--bajo);  background: var(--bajo-bg); }
+  .chip.medio { color: var(--medio); background: var(--medio-bg); }
+  .chip.alto  { color: var(--alto);  background: var(--alto-bg); }
+  .issue-title { font-size: .92rem; font-weight: 550; text-decoration: none; }
+  .issue-title:focus-visible, .repo a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  .issue .src {
+    grid-column: 2; font: .78rem ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted);
+  }
+  .issue .why { grid-column: 2; margin: 0; font-size: .85rem; color: var(--muted); }
+  footer { color: var(--muted); font-size: .82rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+  @media (max-width: 480px) {
+    .issue { grid-template-columns: 1fr; }
+    .issue .src, .issue .why { grid-column: 1; }
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Deep Skill · Radar Open Source</p>
+  <h1>Oportunidades de contribución</h1>
+  <p class="meta">Escaneo del 14 de julio de 2026 · issues verificados uno a uno: abiertos, sin asignar y sin PR enlazado</p>
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>dominios</span></div>
+    <div class="stat"><b>21</b><span>repos curados</span></div>
+    <div class="stat"><b>21</b><span>issues verificados</span></div>
+    <div class="stat"><b>11</b><span>de esfuerzo bajo</span></div>
+  </div>
+
+  <section>
+    <h2>Geociencias</h2>
+    <p class="domain-note">El ecosistema más alineado al perfil: geología estructural, geoestadística, geofísica y sismología en Python. Comunidades acogedoras (Fatiando, PyGMT) con onboarding explícito.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/gempy-project/gempy">gempy-project/gempy</a></h3><div class="facts"><span>★ 1 304</span><span>Python</span><span>push 07-11</span></div><p>Modelado geológico estructural 3D, el núcleo del trabajo en geología y geoestadística.</p></div>
+      <div class="repo"><h3><a href="https://github.com/obspy/obspy">obspy/obspy</a></h3><div class="facts"><span>★ 1 316</span><span>Python</span><span>push 07-14</span></div><p>Toolbox estándar de sismología, alineado con peligro sísmico.</p></div>
+      <div class="repo"><h3><a href="https://github.com/pyvista/pyvista">pyvista/pyvista</a></h3><div class="facts"><span>★ 3 741</span><span>Python</span><span>push 07-14</span></div><p>Visualización 3D de mallas usada por GemPy y todo el stack geocientífico.</p></div>
+      <div class="repo"><h3><a href="https://github.com/GeoStat-Framework/GSTools">GeoStat-Framework/GSTools</a></h3><div class="facts"><span>★ 645</span><span>Python</span><span>push 07-03</span></div><p>Kriging, variogramas y campos aleatorios: geoestadística pura.</p></div>
+      <div class="repo"><h3><a href="https://github.com/fatiando/harmonica">fatiando/harmonica</a></h3><div class="facts"><span>★ 297</span><span>Python</span><span>push 07-13</span></div><p>Gravimetría y magnetometría; comunidad Fatiando, muy acogedora.</p></div>
+      <div class="repo"><h3><a href="https://github.com/fatiando/verde">fatiando/verde</a></h3><div class="facts"><span>★ 664</span><span>Python</span><span>push 06-22</span></div><p>Interpolación y gridding espacial con API estilo scikit-learn.</p></div>
+      <div class="repo"><h3><a href="https://github.com/simpeg/simpeg">simpeg/simpeg</a></h3><div class="facts"><span>★ 659</span><span>Python</span><span>push 07-04</span></div><p>Inversión geofísica usada en exploración minera: une geofísica y minería.</p></div>
+      <div class="repo"><h3><a href="https://github.com/GenericMappingTools/pygmt">GenericMappingTools/pygmt</a></h3><div class="facts"><span>★ 865</span><span>Python</span><span>push 07-14</span></div><p>Cartografía geocientífica con cultura ejemplar de onboarding.</p></div>
+    </div>
+    <h4>Issues verificados</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/fatiando/harmonica/issues/293">Add linearity tests for forward models</a><span class="src">fatiando/harmonica · good first issue</span><p class="why">Tests parametrizados con pytest para modelos directos gravimétricos; spec clara en el issue.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/simpeg/simpeg/issues/627">Frequency units unspecified in documentation</a><span class="src">simpeg/simpeg · documentation</span><p class="why">Aclarar unidades de frecuencia (Hz vs angular); obliga a leer el código de inversión EM.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/GenericMappingTools/pygmt/issues/1352">Gallery example: blockmean/blockmedian + surface</a><span class="src">GenericMappingTools/pygmt · good first issue, help wanted</span><p class="why">Ejemplo de gridding de datos xyz, flujo conocido desde geoestadística; los maintainers ofrecen guiar.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/fatiando/harmonica/issues/37">Pratt isostasy</a><span class="src">fatiando/harmonica · good first issue</span><p class="why">Implementar isostasy_pratt siguiendo el patrón de isostasy_airy; firma ya propuesta.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/obspy/obspy/issues/2730">PPSD: pasar Figure/Axes existentes a plot()</a><span class="src">obspy/obspy · Good First Issue</span><p class="why">Análisis de ruido sísmico, cercano al trabajo en peligro sísmico.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/pyvista/pyvista/issues/3387">array dimensional mismatch is confusing</a><span class="src">pyvista/pyvista · bug</span><p class="why">Bug reproducible en contour/marching cubes; vía para entender el mapeo puntos/celdas de VTK.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Minería</h2>
+    <p class="domain-note">La semilla original MineFlow está muerta desde 2024 (también miningpy y pygslib). El dominio se curó por topics del ecosistema; SimPEG, GSTools, GemPy y Harmonica son repos puente con geociencias.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/Loop3D/LoopStructural">Loop3D/LoopStructural</a></h3><div class="facts"><span>★ 274</span><span>Python</span><span>push 06-04</span></div><p>Modelado geológico estructural implícito del consorcio Loop3D; aplicable a yacimientos.</p></div>
+      <div class="repo"><h3><a href="https://github.com/polatory/polatory">polatory/polatory</a></h3><div class="facts"><span>★ 191</span><span>C++</span><span>push 07-14</span></div><p>Interpolación RBF y kriging rápidos para datos masivos en C++ moderno; sin issues de novato — abrir discusión antes.</p></div>
+      <div class="repo"><h3><a href="https://github.com/MiraGeoscience/geoh5py">MiraGeoscience/geoh5py</a></h3><div class="facts"><span>★ 62</span><span>Python</span><span>push 07-14</span></div><p>API oficial del formato abierto geoh5: modelos de bloques, drillholes, superficies.</p></div>
+    </div>
+    <h4>Issues verificados</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/fatiando/harmonica/issues/353">Terrain correction in spherical coordinates (User Guide)</a><span class="src">fatiando/harmonica · good first issue, documentation</span><p class="why">Ejemplo documentado de corrección topográfica; tarea acotada con base geofísica.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/fatiando/harmonica/issues/352">Example: tesseroid layers (User Guide)</a><span class="src">fatiando/harmonica · good first issue, documentation</span><p class="why">Ejemplo de capas de teseroides para la guía de usuario.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/simpeg/simpeg/issues/629">Utils.download "verbose" switch does not control all output</a><span class="src">simpeg/simpeg · Good First Issue</span><p class="why">Arreglo puntual de un flag verbose; ideal para conocer el flujo de contribución de SimPEG.</p></li>
+      <li class="issue"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/145">Curved / segmented faults from depth observations</a><span class="src">Loop3D/LoopStructural · enhancement</span><p class="why">Feature donde la experiencia en geología estructural aporta valor real.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Procesamiento de imágenes</h2>
+    <p class="domain-note">scikit-image y napari tienen los good first issues mejor curados del escaneo. nionswift es un nicho con 15+ issues de novato libres donde una contribución se nota.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/scikit-image/scikit-image">scikit-image/scikit-image</a></h3><div class="facts"><span>★ 6 553</span><span>Python</span><span>push 07-10</span></div><p>Referencia de imágenes científicas en Python; labels de novato bien curados.</p></div>
+      <div class="repo"><h3><a href="https://github.com/napari/napari">napari/napari</a></h3><div class="facts"><span>★ 2 698</span><span>Python</span><span>push 07-14</span></div><p>Visor n-dimensional de imágenes científicas; ideal para volúmenes geológicos o tomografías.</p></div>
+      <div class="repo"><h3><a href="https://github.com/opencv/opencv">opencv/opencv</a></h3><div class="facts"><span>★ 89 915</span><span>C++</span><span>push 07-14</span></div><p>El mayor proyecto de visión por computador; permite ejercitar C++ y Python.</p></div>
+      <div class="repo"><h3><a href="https://github.com/nion-software/nionswift">nion-software/nionswift</a></h3><div class="facts"><span>★ 56</span><span>Python</span><span>push 07-14</span></div><p>Nicho: imágenes científicas con 15+ good first issues sin asignar.</p></div>
+      <div class="repo"><h3><a href="https://github.com/cryoem/eman2">cryoem/eman2</a></h3><div class="facts"><span>★ 168</span><span>Python</span><span>push 07-11</span></div><p>Reconstrucción volumétrica 3D (CryoEM), técnicas afines a la geofísica.</p></div>
+      <div class="repo"><h3><a href="https://github.com/ZhengPeng7/BiRefNet">ZhengPeng7/BiRefNet</a></h3><div class="facts"><span>★ 3 885</span><span>Python</span><span>push 06-15</span></div><p>Segmentación puntera de alta resolución en PyTorch; repo de investigación, sin issues de novato.</p></div>
+    </div>
+    <h4>Issues verificados</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/napari/napari/issues/9166">Improved error message for qt conda install and Wayland</a><span class="src">napari/napari · contribute:good first issue</span><p class="why">Recién abierto, sin comentarios, y el cuerpo ya incluye el pseudocódigo de la solución.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/scikit-image/scikit-image/issues/7330">Gallery examples use Matplotlib in a hybrid way</a><span class="src">scikit-image · Documentation</span><p class="why">Unificar ejemplos al estilo orientado a objetos de Matplotlib; mecánico y da visibilidad.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/napari/napari/issues/7934">Add 4D sample data</a><span class="src">napari/napari · contribute:sprint</span><p class="why">Aportar un dataset TZYX de ejemplo; acotado para quien trabaja con datos volumétricos.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/opencv/opencv/issues/25904">SimpleBlobDetector lacks documentation</a><span class="src">opencv/opencv · community help requested</span><p class="why">Documentar la API de detección de blobs, técnica usada en análisis de imágenes geológicas.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/scikit-image/scikit-image/issues/7264">Unsharp Mask on RGB results in black image</a><span class="src">scikit-image · Bug</span><p class="why">Bug real de filtrado con reproducción mínima incluida (channel_axis).</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/scikit-image/scikit-image/issues/7206">Sort draw.ellipse coordinates by default</a><span class="src">scikit-image · Feature request</span><p class="why">Geometría computacional pura; la solución ya está esbozada en el issue.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/nion-software/nionswift/issues/1752">If export filepath doesn't exist, Swift freezes</a><span class="src">nion-software/nionswift · good first issue</span><p class="why">Bug de cuelgue bien descrito en un proyecto pequeño donde una contribución se nota.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Librerías generales</h2>
+    <p class="domain-note">CPython mantiene flujo constante de issues «easy», varios de optimización en C. Django gestiona issues en Trac, no en GitHub. Spring: los ideal-for-contribution se agotan rápido — vigilar.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/python/cpython">python/cpython</a></h3><div class="facts"><span>★ 73 818</span><span>Python/C</span><span>push 07-15</span></div><p>Flujo constante de issues easy sin asignar; las habilidades de C++ aplican directamente.</p></div>
+      <div class="repo"><h3><a href="https://github.com/django/django">django/django</a></h3><div class="facts"><span>★ 88 223</span><span>Python</span><span>push 07-14</span></div><p>Proceso de contribución muy documentado; issues en Trac (code.djangoproject.com).</p></div>
+      <div class="repo"><h3><a href="https://github.com/spring-projects/spring-boot">spring-projects/spring-boot</a></h3><div class="facts"><span>★ 81 204</span><span>Java</span><span>push 07-14</span></div><p>Labels ideal-for-contribution y first-timers-only; hoy sin issues libres.</p></div>
+      <div class="repo"><h3><a href="https://github.com/spring-projects/spring-framework">spring-projects/spring-framework</a></h3><div class="facts"><span>★ 60 116</span><span>Java</span><span>push 07-13</span></div><p>Objetivo a mediano plazo más que punto de entrada inmediato.</p></div>
+    </div>
+    <h4>Issues verificados</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/python/cpython/issues/130536">Reorganize os.path documentation</a><span class="src">python/cpython · docs, easy</span><p class="why">Agregar seealso y enlaces cruzados; buena vía para aprender el flujo de PRs de CPython.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/python/cpython/issues/150942">Improve performance using reference stealing methods</a><span class="src">python/cpython · performance, easy</span><p class="why">Optimización en C «abierta para cualquiera», con tabla de sub-tareas independientes.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/python/cpython/issues/130821">Inconsistent error messages in type-conversion magic methods</a><span class="src">python/cpython · interpreter-core, easy</span><p class="why">Unificar mensajes de __int__/__float__/__bool__ en el core en C; alcance acotado.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/python/cpython/issues/136757">Intern string representation of operators</a><span class="src">python/cpython · performance, easy</span><p class="why">Interning de strings de operadores en el intérprete; sin PRs enlazados aún.</p></li>
+    </ul>
+  </section>
+
+  <footer>Generado por /scan-oss · datos de la GitHub API vía gh · escaneo 2026-07-14 · los issues pueden asignarse en cualquier momento: verificar antes de empezar.</footer>
+</div>
