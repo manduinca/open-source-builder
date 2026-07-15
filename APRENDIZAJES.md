@@ -49,6 +49,14 @@ elegir dónde contribuir. (Iniciado 2026-07-15.)
   destino de cross-border payouts el 2026-02-25. Falta solo el paso operativo:
   crear cuenta Algora y verificar que Perú aparezca seleccionable en la
   pantalla de payout (login requerido, no verificable sin cuenta).
+  - **BUG detectado 2026-07-15** (reportado a soporte Algora): la cuenta queda
+    bien como Perú (balance en PEN), pero el KYC de Stripe ("Verify your
+    personal details") pide el **"Código Único de Identificación (CUI)"**, que
+    es el documento de **Guatemala**, no el DNI/RUC de Perú. Hipótesis: Perú y
+    Guatemala se agregaron en el mismo release de Stripe (2026-02-25) y el
+    campo de identidad quedó mal mapeado para recipients peruanos. Payout
+    bloqueado hasta que Stripe/Algora lo corrijan. No forzar el DNI en el campo
+    de CUI (riesgo KYC).
 - Empleo desde comunidad: **Supabase** (precedente peruano: Steve Chávez /
   PostgREST), PostHog (franja horaria contratable).
 - Grants: **NumFOCUS Small Dev Grants** ($10k, conv. sept–oct) los presentan
