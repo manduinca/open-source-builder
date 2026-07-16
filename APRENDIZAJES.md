@@ -22,7 +22,25 @@ elegir dónde contribuir. (Iniciado 2026-07-15.)
   (PRs enlazados), asignados, comments de interés, y si el fix vive en otro
   repo. Labels viejos mienten (issues "abiertos" ya resueltos).
 
-## Políticas de IA por repo (varían — revisar caso a caso)
+## Prestigio vía repos populares: mal target ahora (verificado 2026-07-15)
+
+Barrido de los repos famosos pedidos por el usuario:
+- **Spring Boot/Framework, pandas, Redis, Django, FastAPI, Postgres**: CERO
+  issues abordables sin asignar. Además varios no usan issues de GitHub para
+  contribuir: **Django → Trac**, **Postgres → mailing list + CommitFest** (el
+  repo GitHub es mirror read-only). Descartados como entrada.
+- **OpenClaw** (openclaw/openclaw, 383k★, proyecto de P. Steinberger): SÍ tiene
+  `good first issue` sin asignar y bien escritos (bugs de backend TS: MCP,
+  transport Anthropic, hot-reload) — encajan con el perfil. PERO cada uno ya
+  tiene **7–10 PRs/refs enlazados**: es un enjambre, misma dinámica de carrera
+  que los zombie bounties pero peor por el hype. Además licencia `NOASSERTION`
+  (no OSI clara) = bandera amarilla. Evitar.
+- **OpenCode** (anomalyco/opencode, 186k★): sin issues de novato etiquetados.
+- **DeepSeek** (deepseek-ai/*): repos de modelos/research; issues = dudas de
+  uso, poca oportunidad de PR mergeable.
+
+Lección: **el prestigio no se gana perdiendo carreras en repos de hype.** Se
+gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
 
 - **freeCodeCamp**: código con IA permitido explícitamente ("we use Copilot
   and Claude every day"); **respuestas/prosa generada por IA vetadas** en
