@@ -32,6 +32,9 @@ dominios:
       - obspy/obspy
       - GeostatsGuy/GeostatsPy
       - GeoStat-Framework/GSTools
+      - Unidata/MetPy               # ciencia atmosférica, Unidata/NumFOCUS; GFI limpios (escaneo 2026-07-15)
+      - geopandas/geopandas         # core geoespacial, alto prestigio
+      - rasterio/rasterio           # I/O raster geoespacial
       - simpeg/simpeg              # agregado tras escaneo 2026-07-14
       - GenericMappingTools/pygmt  # agregado tras escaneo 2026-07-14
       - OSGeo/gdal                 # C++ geoespacial; paga maintenance work units (RFC 83)
@@ -76,6 +79,7 @@ dominios:
       - scikit-image/scikit-image
       - opencv/opencv
       - napari/napari
+      - torchgeo/torchgeo           # deep learning geoespacial + remote sensing; issues disputados (2026-07-15)
 
   librerias_generales:
     descripcion: Librerías base a las que interesa contribuir
