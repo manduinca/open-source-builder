@@ -52,6 +52,20 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   → Regla operativa: revisar CONTRIBUTING de cada repo antes de contribuir;
   donde haya política explícita, se respeta (ver [[estilo-comunicacion-github]]).
 
+## Linters por repo (correr los del CI en local, no solo ruff)
+
+- **MetPy**: el CI usa **`flake8` + `flake8-isort`** (config en `pyproject.toml`
+  `[tool.isort]`, distinta de `[tool.ruff.lint.isort]`). `ruff check` puede
+  pasar y aun así `flake8-isort` fallar por envoltura/orden de imports
+  (I001/I005). Observado en MetPy#4096: ruff limpio pero el CI rojo por el
+  orden de imports en un test. **Antes de publicar un PR de código a MetPy:
+  correr `flake8 <archivos>` local, no solo ruff.** Fix: `isort <archivo>`
+  desde la raíz (auto-detecta `pyproject.toml`), luego verificar
+  `flake8 --select=I`.
+- Regla general: identificar qué linter/formatter corre el CI de cada repo y
+  correr ESE en local antes de abrir el PR; ruff no replica flake8-isort ni
+  todos los plugins de flake8.
+
 ## Seguridad
 
 - **Nunca** un PR/issue público para una vulnerabilidad, aunque el advisory
