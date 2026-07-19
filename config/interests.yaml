@@ -106,6 +106,17 @@ dominios:
       - spring-projects/spring-boot
       - pyvista/pyvista
 
+  ecosistema_eddumelendez:
+    descripcion: >
+      Proyectos donde contribuye Eddú Meléndez (eddumelendez, Java Champion,
+      maintainer de Testcontainers Java, amigo del usuario). Señal social:
+      review probable por alguien de confianza. Prioridad alta en Java.
+    repos_semilla:
+      - testcontainers/testcontainers-java   # él es maintainer; 7 GFI + 21 help-wanted (2026-07-17)
+      - spring-io/start.spring.io
+      - spring-projects/spring-ai            # 7 help-wanted; caliente
+      - 1Password/shell-plugins              # Go, plugins por template, merge rápido
+
 lenguajes_preferidos: [Python, Java, C++, Go, Rust]
 
 criterios:
