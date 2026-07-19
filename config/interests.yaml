@@ -81,6 +81,22 @@ dominios:
       - napari/napari
       - torchgeo/torchgeo           # deep learning geoespacial + remote sensing; issues disputados (2026-07-15)
 
+  cloud_native_observabilidad:
+    descripcion: >
+      Observabilidad y cloud-native (CNCF). Segundo carril además de geociencias:
+      el usuario tiene experiencia real en producción (Prometheus, Grafana,
+      nginx, Docker). Ruta de reputación hacia empleo remoto backend/ops.
+    keywords:
+      - opentelemetry instrumentation
+      - prometheus exporter
+      - observability
+    repos_semilla:
+      - open-telemetry/opentelemetry-python-contrib  # 36 GFI Python (2026-07-17); CLA EasyCLA
+      - open-telemetry/opentelemetry-python
+      - dapr/python-sdk
+      - dapr/java-sdk                                # 11 GFI Java; encaja con Spring
+      - backstage/backstage
+
   librerias_generales:
     descripcion: Librerías base a las que interesa contribuir
     repos_semilla:
