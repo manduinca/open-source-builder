@@ -50,3 +50,25 @@ con maintainers en el issue *antes* de implementar. Requiere cuidado especial.
 - "Masivo" realista con el listón de calidad = ~12-15 PRs de calidad
   distribuidos (1-2 por repo), NO 50 baratos. Llegar a más exige validar en
   profundidad los backlogs Tier B, no bajar el estándar.
+
+## Lote 1 — ejecutado (resultados)
+
+3 publicados, 1 descartado con criterio. Tasa real de conversión con el listón
+de calidad: ~75%.
+
+| Issue | Resultado |
+|---|---|
+| [cloudevents/sdk-python#302](https://github.com/cloudevents/sdk-python/pull/302) (Fixes #247) | ✅ Publicado — docstring atributos-vs-data. DCO, sin CLA. |
+| [prometheus/client_java#2316](https://github.com/prometheus/client_java/pull/2316) (Fixes #2292) | ✅ Publicado — fix de CKMS quantiles que colapsaban al mínimo (18 tests OK verificados). DCO. |
+| [opentelemetry.io#10897](https://github.com/open-telemetry/opentelemetry.io/pull/10897) (Part of #7841) | ✅ Publicado — traducción ES de zero-code/js. Reclamado por comment primero; checkbox de IA declarado; EasyCLA ✅. |
+| open-feature/java-sdk#1588 | ❌ Descartado — obsoleto: resuelto por PR #1717 (v1.19.0) del propio autor. Alternativa limpia: #1934. |
+
+Lección de escala confirmada: el cuello de botella no es la calidad ni las
+ideas, es la **cuota de cómputo** (4 agentes en paralelo la agotan). Escalar
+sostenible = lotes de 2-3 espaciados, no 15 de golpe.
+
+## Lote 2 — candidatos (pendiente)
+
+Tier A sin tocar: otel-java-instrumentation #14395 (spring-cloud-gateway),
+apache/skywalking-java #13945. Tier B docs: dapr/docs #3985, dapr/python-sdk
+#853, cloudevents/sdk-java #585. Validar timeline antes de cada uno.
