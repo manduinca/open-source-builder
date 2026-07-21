@@ -116,6 +116,11 @@ dominios:
       - spring-io/start.spring.io
       - spring-projects/spring-ai            # 7 help-wanted; caliente
       - 1Password/shell-plugins              # Go, plugins por template, merge rápido
+      # Repos donde eddu CONTRIBUYE (no maintainer) con buena comunidad — señal
+      # de comunidad sana, no de review garantizado (2026-07-20):
+      - docker-java/docker-java              # Java 3190★; eddu 6 PRs merged; sin GFI pero issues concretos (#2651 bump seguridad)
+      - spring-io/initializr                 # Java 3696★; eddu 1 PR; sin labels de entrada
+      - openrewrite/rewrite-testing-frameworks # Java 99★; muy activo; recetas de migración de tests
 
 lenguajes_preferidos: [Python, Java, C++, Go, Rust]
 
