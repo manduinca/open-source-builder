@@ -10,6 +10,9 @@ elegir dónde contribuir. (Iniciado 2026-07-15.)
   de un mismo externo; en freeCodeCamp #68738 apareció un PR gemelo
   (`hexonal` #68836) 17 min antes que el nuestro, con solución casi idéntica
   porque el maintainer la había dictado en el issue.
+  **Desenlace (2026-07-24): perdimos la carrera** — Sembauke cerró nuestro
+  #68837 y mergeó #68836. Los 17 minutos decidieron; todo el trabajo posterior
+  (CI verde incluido) fue irrelevante.
   → **No apostar una contribución a una carrera.** Preferir nichos sin
   competencia (ecosistema geocientífico: harmonica, SimPEG, PyGMT) donde el
   maintainer incluso ofrece mentoría.
@@ -65,6 +68,20 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
 - Regla general: identificar qué linter/formatter corre el CI de cada repo y
   correr ESE en local antes de abrir el PR; ruff no replica flake8-isort ni
   todos los plugins de flake8.
+
+## Workspace: el scratchpad /tmp NO es durable
+
+- **Trabajo perdido (detectado 2026-07-24):** la rama local de harmonica#353
+  (`docs/spherical-terrain-correction`, commit `70dafc0`, verificada
+  end-to-end) vivía solo en el clon del scratchpad de una sesión anterior y
+  el limpiador de /tmp la destruyó (dejó `.git` vacío). No estaba en el fork.
+  Hubo que rehacerla desde cero.
+- → **Regla: toda rama con trabajo committeado se pushea al fork como
+  respaldo ANTES de pausar**, aunque el PR no se vaya a abrir aún. Push de
+  rama ≠ abrir PR: no publica nada frente al upstream ni satura maintainers.
+- Los venvs y clones del scratchpad también se pierden: asumir que cada
+  sesión nueva puede necesitar reclonar/reinstalar (es barato; el trabajo
+  committeado no respaldado NO lo es).
 
 ## Seguridad
 
