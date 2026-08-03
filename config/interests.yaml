@@ -44,7 +44,7 @@ dominios:
     repos_semilla:
       - onyx-dot-app/onyx          # Python RAG; bounties ~$250 vía Algora
       - commaai/openpilot          # Python/C++; bounties $100-$300, bounty→contrato
-      - calcom/cal.com             # TypeScript; bounties Algora $50-$100
+      - calcom/cal.diy             # TypeScript; bounties Algora $50-$100 (antes calcom/cal.com, renombrado; detectado escaneo 2026-08-03)
       - supabase/supabase          # contratan de comunidad; precedente peruano (PostgREST)
 
   mineria:
