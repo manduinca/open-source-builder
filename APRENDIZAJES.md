@@ -69,6 +69,28 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   correr ESE en local antes de abrir el PR; ruff no replica flake8-isort ni
   todos los plugins de flake8.
 
+## Auditar el issue contra el código ANTES de invertir
+
+- **Los issues envejecen; el código no espera.** Verificado 2026-08-04 con 3
+  vetas analizadas en paralelo: 2 de 3 estaban desactualizadas —
+  dapr#369 pedía tests de una clase que otros ya habían cubierto (el hueco
+  real era otra clase), y LoopStructural#288 tenía la premisa central FALSA
+  (verificable empíricamente en 30 min con los fixtures del propio repo).
+- → Regla: antes de codear, reproducir el problema en master actual y
+  comparar el pedido del issue contra el estado real. El análisis puede
+  convertir una trampa en aportes mejores (de #288 salieron un comment de
+  diagnóstico y el descubrimiento de una regresión real, #296→#297).
+
+## Red y gh: POSTs que "fallan" pueden haber entrado
+
+- Con red inestable, `gh api -X POST` / `gh pr create` pueden devolver
+  timeout o connection-reset DESPUÉS de que el servidor procesó el POST.
+  Verificado 2026-08-05: issue y PR de LoopStructural "fallaron" y ambos
+  quedaron creados. → **Ante fallo de un POST, verificar existencia antes de
+  reintentar** (buscar por título/head-branch); evita duplicados vergonzosos.
+- El classifier de permisos bloquea `gh api -X POST` para comments; usar los
+  subcomandos naturales (`gh issue comment`, `gh pr comment`).
+
 ## Workspace: el scratchpad /tmp NO es durable
 
 - **Trabajo perdido (detectado 2026-07-24):** la rama local de harmonica#353
