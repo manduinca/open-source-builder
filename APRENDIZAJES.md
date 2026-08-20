@@ -69,6 +69,31 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   correr ESE en local antes de abrir el PR; ruff no replica flake8-isort ni
   todos los plugins de flake8.
 
+## Verificar si un fallo del CI es tuyo o del repo
+
+- **Un CI rojo no significa PR roto.** En xdem#993 el CI marcó 15 tests
+  fallando; todos eran de `main` (verificado: 14 fallos idénticos corriendo el
+  mismo archivo sobre la rama base sin nada aplicado). Comunicárselo al
+  maintainer con la evidencia aporta valor: tenían `main` roto sin saberlo.
+- **Cómo comparar bien**: `git checkout <rama-base>` y correr ahí. NO usar
+  `git stash` si tu cambio ya está committeado — el stash no revierte commits,
+  así que el test corre CON tu código y la comparación es inválida (error
+  cometido 2026-08-20, costó una verificación extra).
+- Ojo con las coincidencias que parecen incriminatorias: uno de los tests rojos
+  se llamaba `..._with_multiprocessing` y el PR iba de multiprocessing. Era
+  casualidad, pero merecía comprobación en vez de suposición en cualquier
+  dirección.
+
+## Templates de PR: pegarlos completos desde el inicio
+
+- opentelemetry.io tiene checklist obligatorio en el template. Al abrir
+  otel.io#11344 se omitió, el bot del dashboard marcó "waiting on the author" y
+  la maintainer tuvo que pedirlo (2026-08-17). Contenido perfecto, PR parado.
+- → Antes de abrir un PR: `cat .github/PULL_REQUEST_TEMPLATE.md` y pegarlo
+  entero en el body, con las casillas marcadas honestamente. En repos con
+  política GenAI (opentelemetry.io, PyLops) eso incluye declarar el uso de IA:
+  es la excepción explícita a la regla de estilo del usuario.
+
 ## Auditar el issue contra el código ANTES de invertir
 
 - **Los issues envejecen; el código no espera.** Verificado 2026-08-04 con 3
