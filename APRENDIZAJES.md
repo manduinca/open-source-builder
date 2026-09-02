@@ -106,6 +106,45 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   convertir una trampa en aportes mejores (de #288 salieron un comment de
   diagnóstico y el descubrimiento de una regresión real, #296→#297).
 
+## PRs que envejecen: antes de rebasar, mirar qué hizo upstream
+
+- **El bug puede haberse arreglado por otro lado.** LoopStructural#297 llevaba
+  un mes en `dirty`; al rebasar (2026-09-02) el conflicto era que master YA
+  tenía el fix (entró por #300 sin referenciar el issue). El PR se redujo al
+  test de regresión, que sí era único: nada en la suite ejercitaba
+  `from_processor`. Tipo de commit cambiado a `test:` — con release-please un
+  `fix:` que no arregla nada mete una entrada falsa en el changelog.
+- → Al retomar un PR viejo: `git log -S "<cadena del bug>" upstream/main`
+  antes de resolver nada. Y si el issue sigue abierto aunque ya esté
+  arreglado, decirlo ahí para que lo cierren.
+- **Dev puede haber empezado a DEPENDER del comportamiento que tu PR cambia.**
+  dascore#927 reemplazaba el `OverflowError` de numpy por `TimeError`; en las
+  dos semanas de espera, `dev` añadió código (con test) que hacía
+  `except OverflowError` alrededor de esas conversiones. El merge de `dev`
+  pasaba limpio y la suite lo destapó. Salida: `TimeOverflowError(OverflowError,
+  TimeError)`, que satisface a ambos. → Tras mergear la base, `grep` del
+  comportamiento que el PR quita, no solo correr la suite.
+- **Push por SSH cuando el rebase/merge arrastra `.github/workflows`**: el
+  token de gh sin scope `workflow` rechaza el push aunque tú no hayas tocado
+  esos archivos. `--force-with-lease` contra un remoto distinto del tracking
+  da "stale info": pasar el SHA esperado explícito
+  (`--force-with-lease=<rama>:<sha>`).
+
+## Reviews de bots (CodeRabbit): verificar, y seguir tirando del hilo
+
+- Los 3 hallazgos de CodeRabbit en dascore#927 eran ciertos (verificados
+  empíricamente en 10 min, uno con detalle equivocado: decía "wrap or
+  OverflowError" y era siempre OverflowError). Sin review humana durante dos
+  semanas: en un repo con el bot activado, comments Major sin atender son la
+  razón obvia de que ningún humano lo mire.
+- **Lo que el bot marca es una muestra, no la lista.** Sondear los paths
+  hermanos con la misma pregunta destapó 6 huecos más (escalares
+  `np.datetime64`/`np.timedelta64`, `datetime`/`timedelta` de Python,
+  `pd.Timestamp`). Un maintainer que pruebe cualquiera de ellos rechaza el PR.
+- → No responder argumentando: arreglar, responder en cada hilo con una línea
+  (confirmado + qué se hizo) y un comment general para el humano con la
+  decisión de diseño que necesite su OK.
+
 ## Red y gh: POSTs que "fallan" pueden haber entrado
 
 - Con red inestable, `gh api -X POST` / `gh pr create` pueden devolver
