@@ -130,6 +130,40 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   da "stale info": pasar el SHA esperado explícito
   (`--force-with-lease=<rama>:<sha>`).
 
+## Reviews de docs: responder con un experimento, no con prosa
+
+- harmonica#700 (2026-09-04): santisoler dudaba de que la curvatura se viera
+  en pocos grados y de que el caso del borde fuera problemático. Las dos dudas
+  se cerraron con números: un control con topografía constante (5 tamaños de
+  malla × 2 proyecciones) que reproduce el Bullard B de LaFehr al centésimo, y
+  la estación concreta (31.575, −24.41167) que falla por 4e-15°. Cada duda del
+  reviewer es una hipótesis: diseñar el experimento mínimo que la decide y
+  llevarle la tabla. Y cuando el reviewer propone otra solución (bajar techos
+  en vez de mover estaciones), medir la suya contra la nuestra antes de
+  defender nada: la suya era mejor (0 estaciones movidas vs 2586).
+- Los datasets reales tienen coordenadas redondas que caen EXACTAMENTE sobre
+  bordes de malla; las fronteras de celdas vecinas calculadas como centro ±
+  spacing/2 difieren en ~1e-14°. Cualquier asignación punto→celda con
+  `nearest` es inconsistente con un chequeo geométrico estricto. Verificarlo
+  siempre con el dataset del tutorial, no con uno sintético.
+
+## Repos que se cierran: detectarlo antes de invertir
+
+- openrewrite (2026-09-04): el build de rewrite-testing-frameworks dejó de
+  compilar para externos dos días antes de nuestro PR (#1116: plugins desde un
+  repo privado con credenciales; `latest.release` del plugin depende de una
+  versión de rewrite que ya no se publica en Maven Central). Señales juntas:
+  licencia Moderne Source Available (no OSI) + artefactos nuevos solo en repo
+  privado + CI con secrets propios. Se pudo compilar fijando el plugin a la
+  última versión pública (2.23.1) y con JDK 25, y se dijo en el PR.
+- → Antes de invertir en un repo: `curl` al maven-metadata de Central de su
+  artefacto principal y comparar `<latest>` con lo que pide el build. Si el
+  build exige algo que no está en público, el proyecto se está cerrando y el
+  PR vale solo si el maintainer sigue mergeando externos.
+- El subagente reportó "exige firma de commits" y no era cierto (el
+  CONTRIBUTING org-wide actual no pide firma, CLA ni DCO). Verificar SIEMPRE
+  los requisitos de contribución leyendo el archivo, no el resumen del agente.
+
 ## Reviews de bots (CodeRabbit): verificar, y seguir tirando del hilo
 
 - Los 3 hallazgos de CodeRabbit en dascore#927 eran ciertos (verificados
