@@ -147,6 +147,42 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   `nearest` es inconsistente con un chequeo geométrico estricto. Verificarlo
   siempre con el dataset del tutorial, no con uno sintético.
 
+## Verificar el estado del issue JUSTO ANTES de publicar
+
+- otel#15897 (2026-09-07): entre que el usuario aprobó el comentario y el momento
+  de publicarlo, otro contribuidor comentó `/assign`. El texto aprobado decía
+  "would like to work on it": publicarlo tal cual habría sido pisar a quien llegó
+  primero. → Antes de publicar cualquier reclamo, re-consultar comentarios y
+  assignee. Y si alguien se adelantó, el análisis todavía vale publicado como
+  aporte: se regala el trabajo pero queda la visibilidad ante los code owners.
+- Un `/assign` de alguien sin permisos NO pone el campo assignee, pero
+  socialmente reclama el issue igual. Mirar los comentarios, no solo el campo.
+
+## Las tablas de un issue son hipótesis, no datos
+
+- keycloak#52324 (2026-09-07): el issue listaba diez desviaciones del regex
+  frente a RFC 8141, obtenidas por el reportero con "an AI-based comparison".
+  Al ejecutarlas contra el patrón real, **cuatro no reproducían**: el análisis
+  no tuvo en cuenta el flag `Pattern.CASE_INSENSITIVE`. El PR corrigió solo las
+  cinco reales y la tabla verificada fue el mejor contenido del body.
+- → Cuando un issue trae una tabla de comportamientos, ejecutarla antes de
+  codear. Cuesta 10 minutos y cambia el alcance del PR.
+- Cuando la clase a tocar no tiene dependencias del framework (aquí solo
+  java.net y java.util.regex), se puede compilar y correr su test real con
+  javac + junit suelto, sin construir el monorepo entero.
+
+## El fix suele estar una capa por debajo de donde duele
+
+- lucene#16625 (2026-09-07): el committer que abrió el issue documentó que la
+  corrección obvia (mover `readerPool.close()`) no bastaba, porque el logging
+  del checkpoint volvía al pool y saltaba `AlreadyClosedException`. La causa real
+  era que `ReaderPool.get(info, false)` respondía con excepción donde podía
+  responder `null` — y todos sus llamadores ya trataban el `null`. El fix quedó
+  en 10 líneas.
+- → Cuando el obstáculo es "al arreglarlo, algo lejano revienta", mirar el
+  contrato de lo que revienta antes de complicar el arreglo original. Un método
+  de consulta que lanza en vez de devolver vacío suele ser el error real.
+
 ## Repos que se cierran: detectarlo antes de invertir
 
 - openrewrite (2026-09-04): el build de rewrite-testing-frameworks dejó de
