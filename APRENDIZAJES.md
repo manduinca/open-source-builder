@@ -171,6 +171,26 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   java.net y java.util.regex), se puede compilar y correr su test real con
   javac + junit suelto, sin construir el monorepo entero.
 
+## Review propio antes de que lo haga el reviewer
+
+- 2026-09-07, al revisar los 5 PRs de la sesión: (a) el body de lucene#16643
+  decía "the two other call sites" y había OCHO llamadores con create=false —
+  y al corregirlo cité dos nombres de método de memoria que eran falsos;
+  verificado con awk antes de publicar. (b) keycloak exige DCO aunque su
+  CONTRIBUTING no lo diga: el check lo delata al abrir el PR. (c) En
+  testcontainers-go#3882 los bots (CodeRabbit + Copilot) señalaron un bug
+  preexistente que mi PR heredaba y agravaba (la caché recargaba el config
+  por defecto ignorando DOCKER_AUTH_CONFIG) — yo lo había anotado como
+  "preexistente, no mío" y era la respuesta equivocada: si tu PR depende de
+  ese camino, arréglalo.
+- → Tras abrir un PR: contar TODOS los llamadores de lo que cambias (grep, no
+  memoria), nunca citar nombres de métodos sin verificarlos, y revisar los
+  checks del PR a los 30 min (DCO, lint, title) — son fallos baratos de
+  arreglar y caros de dejar visibles.
+- Un helper de tests que mete config "de más" (setAuthConfig con
+  credsStore:desktop) puede estar ocultando que un camino nunca se ejercitaba;
+  cuando tu fix lo activa, los tests viejos empiezan a tocar el mundo real.
+
 ## El fix suele estar una capa por debajo de donde duele
 
 - lucene#16625 (2026-09-07): el committer que abrió el issue documentó que la
