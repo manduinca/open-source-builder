@@ -1,0 +1,26 @@
+// Workaround de validación de rewrite-testing-frameworks#1119 (11-sep-2026).
+// Usar explícitamente con ./gradlew -I; no instalar como configuración global.
+// Contexto, limitaciones y comandos: reports/2026-09-11.md.
+
+settingsEvaluated { settings ->
+    settings.pluginManagement.repositories.removeAll { it.name == 'codegenome' }
+    settings.pluginManagement.resolutionStrategy.eachPlugin {
+        if (requested.id.id.startsWith('org.openrewrite.build.')) {
+            useVersion('2.23.1')
+        }
+    }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+    configurations.configureEach {
+        resolutionStrategy.eachDependency {
+            if (requested.group == 'org.openrewrite') {
+                if (requested.name != 'rewrite-templating') useVersion('8.90.4')
+            }
+            if (requested.group == 'org.openrewrite.recipe' && requested.name == 'rewrite-java-dependencies') useVersion('1.60.2')
+            if (requested.group == 'org.openrewrite.recipe' && requested.name == 'rewrite-static-analysis') useVersion('2.41.1')
+        }
+    }
+}
