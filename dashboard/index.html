@@ -11,22 +11,19 @@
     --bajo: #2F7D4E;    --bajo-bg: #2F7D4E1A;
     --medio: #96690A;   --medio-bg: #96690A1A;
     --alto: #B23F2D;    --alto-bg: #B23F2D1A;
+    --libre: #2F7D4E;   --libre-bg: #2F7D4E14;
+    --duda: #6F6A61;    --duda-bg: #6F6A6114;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --ground: #17191C; --card: #1E2226; --ink: #E9E5DE; --muted: #98928A;
       --line: #2C3036; --accent: #D9853F; --accent-soft: #D9853F26;
       --bajo: #63B888; --bajo-bg: #63B8881F;
       --medio: #D3A945; --medio-bg: #D3A9451F;
       --alto: #E0765F; --alto-bg: #E0765F1F;
+      --libre: #63B888; --libre-bg: #63B88818;
+      --duda: #98928A; --duda-bg: #98928A18;
     }
-  }
-  :root[data-theme="light"] {
-    --ground: #F5F3EF; --card: #FFFFFF; --ink: #23282C; --muted: #6F6A61;
-    --line: #E3DFD6; --accent: #B45A1E; --accent-soft: #B45A1E22;
-    --bajo: #2F7D4E; --bajo-bg: #2F7D4E1A;
-    --medio: #96690A; --medio-bg: #96690A1A;
-    --alto: #B23F2D; --alto-bg: #B23F2D1A;
   }
   :root[data-theme="dark"] {
     --ground: #17191C; --card: #1E2226; --ink: #E9E5DE; --muted: #98928A;
@@ -34,13 +31,16 @@
     --bajo: #63B888; --bajo-bg: #63B8881F;
     --medio: #D3A945; --medio-bg: #D3A9451F;
     --alto: #E0765F; --alto-bg: #E0765F1F;
+    --libre: #63B888; --libre-bg: #63B88818;
+    --duda: #98928A; --duda-bg: #98928A18;
   }
   body {
     background: var(--ground);
     color: var(--ink);
     font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
     margin: 0;
-    padding: 2.5rem 1.25rem 4rem;
+    padding-block: 2.5rem 4rem;
+    padding-inline: 1.25rem;
   }
   .wrap { max-width: 62rem; margin: 0 auto; }
   a { color: inherit; }
@@ -108,6 +108,7 @@
     padding: .7rem .9rem;
     display: grid; grid-template-columns: 4.2rem 1fr; gap: .35rem .8rem; align-items: baseline;
   }
+  .issue.dudoso { background: transparent; border-style: dashed; }
   .chip {
     font-size: .68rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase;
     padding: .18rem .5rem; border-radius: 99px; text-align: center; white-space: nowrap;
@@ -121,6 +122,12 @@
     grid-column: 2; font: .78rem ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted);
   }
   .issue .why { grid-column: 2; margin: 0; font-size: .85rem; color: var(--muted); }
+  .state {
+    display: inline-block; font-size: .7rem; font-weight: 650; letter-spacing: .05em;
+    padding: .1rem .42rem; border-radius: .3rem; margin-right: .4rem;
+  }
+  .state.libre { color: var(--libre); background: var(--libre-bg); }
+  .state.duda  { color: var(--duda);  background: var(--duda-bg); }
   footer { color: var(--muted); font-size: .82rem; border-top: 1px solid var(--line); padding-top: 1rem; }
   @media (max-width: 480px) {
     .issue { grid-template-columns: 1fr; }
@@ -131,120 +138,83 @@
 <div class="wrap">
   <p class="eyebrow">Deep Skill · Radar Open Source</p>
   <h1>Oportunidades de contribución</h1>
-  <p class="meta">Escaneo del 3 de agosto de 2026 · issues verificados uno a uno: abiertos, sin asignar y sin PR enlazado</p>
+  <p class="meta">Escaneo del 12 de septiembre de 2026 · 218 issues candidatos recolectados, curados por dominio y verificados uno a uno con sesgo a descartar</p>
 
   <div class="stats">
-    <div class="stat"><b>7</b><span>dominios</span></div>
-    <div class="stat"><b>19</b><span>issues verificados</span></div>
-    <div class="stat"><b>9</b><span>de esfuerzo bajo</span></div>
-    <div class="stat"><b>11</b><span>falsos positivos eliminados</span></div>
+    <div class="stat"><b>7</b><span>verificados libres</span></div>
+    <div class="stat"><b>5</b><span>dudosos, con matiz</span></div>
+    <div class="stat"><b>218</b><span>candidatos revisados</span></div>
+    <div class="stat"><b>11</b><span>PRs ya mergeados</span></div>
   </div>
 
-  <p class="pick"><b>Pick del escaneo:</b> Loop3D/LoopStructural#289 — bug matemático fresco (regla de la cadena), verificado vigente en master, fix quirúrgico con test, cero competencia, en el nicho exacto del perfil. Encadenable con #288 y #224.</p>
+  <p class="pick"><b>Pick del escaneo:</b> torchgeo#1963 — un <code>WMSDataset</code> que el repo lleva dos años queriendo y nadie ha entregado. Ráster + geoespacial + Python, revisado por Microsoft y TU München, con la review del intento previo disponible como pliego de condiciones.</p>
 
   <section>
     <h2>Geociencias</h2>
-    <p class="domain-note">El ciclo ganador: LoopStructural con bugs frescos post-refactor 1.7, simpeg como puente con santisoler (fatiando), y pyinterpolate como geoestadística pura sin competencia. Muertos este ciclo: GeostatsPy, PyKrige, lasio, scikit-gstat.</p>
+    <p class="domain-note">El carril propio vuelve a tener material de geofísica, no solo documentación: compensación isostática en harmonica, PPSD en obspy y proyección de sismicidad en pygmt. fatiando sigue siendo la casa (santisoler mergeó #695 el 9-sep), con la cautela de que ya hay dos PRs nuestros esperando ahí.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/Loop3D/LoopStructural">Loop3D/LoopStructural</a></h3><div class="facts"><span>★ 280</span><span>Python</span><span>push hoy</span></div><p>Modelado geológico implícito 3D. Bugs frescos sin competencia; maintainer único que mergea sin burocracia e invita PRs.</p></div>
-      <div class="repo"><h3><a href="https://github.com/simpeg/simpeg">simpeg/simpeg</a></h3><div class="facts"><span>★ 664</span><span>Python</span><span>push 07-04</span></div><p>Inversión geofísica. santisoler (fatiando) es maintainer activo: puente directo con la red ya construida.</p></div>
-      <div class="repo"><h3><a href="https://github.com/DataverseLabs/pyinterpolate">DataverseLabs/pyinterpolate</a></h3><div class="facts"><span>★ 174</span><span>Python</span><span>push 05-23</span></div><p>Kriging, Poisson kriging y variogramas: el nicho más cercano al trabajo diario. GFI libre, cero competencia externa.</p></div>
-      <div class="repo"><h3><a href="https://github.com/GenericMappingTools/pygmt">GenericMappingTools/pygmt</a></h3><div class="facts"><span>★ 870</span><span>Python</span><span>push hoy</span></div><p>Cultura de contribución ejemplar; help wanted sin asignar tras comentar en el issue.</p></div>
-      <div class="repo"><h3><a href="https://github.com/obspy/obspy">obspy/obspy</a></h3><div class="facts"><span>★ 1 321</span><span>Python</span><span>push 07-27</span></div><p>Sismología de referencia; GFI de plotting con contexto claro y poca competencia.</p></div>
-      <div class="repo"><h3><a href="https://github.com/gimli-org/pyGIMLi">gimli-org/pyGIMLi</a></h3><div class="facts"><span>★ 504</span><span>Python</span><span>push 07-31</span></div><p>Vigilar: inversión geofísica (ERT, sísmica), alternativa a simpeg, sin labels de entrada ahora.</p></div>
-      <div class="repo"><h3><a href="https://github.com/MiraGeoscience/geoh5py">MiraGeoscience/geoh5py</a></h3><div class="facts"><span>★ 62</span><span>Python</span><span>push hoy</span></div><p>Empresa del sector minero (visibilidad laboral) pero desarrollo 100% interno vía Jira: watch, no invertir.</p></div>
+      <div class="repo"><h3><a href="https://github.com/fatiando/harmonica">fatiando/harmonica</a></h3><div class="facts"><span>★ 305</span><span>Python</span><span>push 11-sep</span></div><p>Geofísica de potencial. Mejor relación del perfil, pero con #698 y #700 nuestros en cola: un tercer PR simultáneo satura a santisoler.</p></div>
+      <div class="repo"><h3><a href="https://github.com/GenericMappingTools/pygmt">GenericMappingTools/pygmt</a></h3><div class="facts"><span>★ 873</span><span>Python</span><span>push 11-sep</span></div><p>Cartografía científica. seisman mergea a diario y marca issues con help wanted; mergea ejemplos de galería escritos por externos.</p></div>
+      <div class="repo"><h3><a href="https://github.com/obspy/obspy">obspy/obspy</a></h3><div class="facts"><span>★ 1 332</span><span>Python</span><span>push 3-sep</span></div><p>Sismología de referencia. Repo nuevo para el perfil; megies mergea a ráfagas y compila extensiones en C.</p></div>
+      <div class="repo"><h3><a href="https://github.com/fatiando/boule">fatiando/boule</a></h3><div class="facts"><span>★ 42</span><span>Python</span><span>push 9-sep</span></div><p>Elipsoides y geodesia. Pequeño y atendido por leouieda, pero mueve poco PR externo: latencia de semanas.</p></div>
+      <div class="repo"><h3><a href="https://github.com/pyTMD/pyTMD">pyTMD/pyTMD</a></h3><div class="facts"><span>★ 211</span><span>Python</span><span>push hoy</span></div><p>Hallazgo del escaneo: predicción de mareas, MIT, tsutterley mergea a diario y aceptó dos PRs externos el 31-ago.</p></div>
     </div>
-    <h4>Issues verificados</h4>
+    <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/289">StructuredGrid2D gradient omits chain-rule division by step_vector</a><span class="src">Loop3D/LoopStructural · bug</span><p class="why">Pick del escaneo: bug verificado vigente en master, fix ~3 líneas + test, 0 comments, 4 días de antigüedad.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/288">LoopProjectfileProcessor hardcodes fault_stratigraphy=None</a><span class="src">Loop3D/LoopStructural · bug</span><p class="why">Anula el offset de fallas; la causa raíz ya viene diagnosticada en el issue.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/224">Add a listing of interpolator types to the API documentation</a><span class="src">Loop3D/LoopStructural · docs</span><p class="why">El maintainer explicó los interpoladores en el hilo y dijo "feel free to open a PR": solo hay que redactarlo.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/DataverseLabs/pyinterpolate/issues/510">Invalid escape sequence \g in theoretical variogram models</a><span class="src">DataverseLabs/pyinterpolate · Good First Issue</span><p class="why">Raw strings en docstrings: fix trivial, entrada de bajo costo a geoestadística pura.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/simpeg/simpeg/issues/627">Frequency units unspecified in documentation</a><span class="src">simpeg/simpeg · Good First Issue, EM</span><p class="why">Aclarar Hz vs rad/s en docs EM; abre relación con maintainers que ya conocen el trabajo en fatiando.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/simpeg/simpeg/issues/629">Utils.download "verbose" switch does not control all output</a><span class="src">simpeg/simpeg · Good First Issue</span><p class="why">Fix puntual de comportamiento; verificar vigencia (issue de 2017) antes de empezar.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/obspy/obspy/issues/2730">PPSD: pasar Figure/Axes existentes a plot()</a><span class="src">obspy/obspy · Good First Issue, .imaging</span><p class="why">Enhancement de API acotado en la librería sísmica de referencia.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/fatiando/harmonica/issues/37">Pratt isostasy</a><span class="src">fatiando/harmonica · good first issue</span><p class="why"><span class="state libre">libre</span>Solo existe <code>isostatic_moho_airy</code>. La especificación la escribió leouieda; dos personas dijeron que lo harían (2019, 2020) y nunca hubo PR. Pactar nombre y API en el issue antes de escribir: la firma es de 2018 y la convención cambió.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/GenericMappingTools/pygmt/issues/3676">Ejemplo de galería: sismicidad en vista de perfil</a><span class="src">GenericMappingTools/pygmt · help wanted</span><p class="why"><span class="state libre">libre</span>Lo pidió maxrjones tras un taller de AGU y seisman le puso help wanted el 21-jul. Acotarlo a símbolos simples: los beachballs en el corte dependen de envolver <code>coupe</code>, parado desde 2025.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/obspy/obspy/issues/2730">PPSD.plot(): aceptar Figure y Axes existentes</a><span class="src">obspy/obspy · Good First Issue, .imaging</span><p class="why"><span class="state libre">libre</span>Lo escribió el maintainer con la firma exacta que quiere. Verificado en el fuente que sigue sin implementarse; nadie lo ha tomado desde 2020.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/fatiando/boule/issues/257">Sección y figura de sistemas de coordenadas</a><span class="src">fatiando/boule · documentation</span><p class="why"><span class="state libre">libre</span>Cero comentarios desde marzo. Conecta con lo que ya se escribió en harmonica; la figura debe generarse por código, como pide leouieda.</p></li>
+      <li class="issue dudoso"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/GenericMappingTools/pygmt/issues/1466">Figure.meca: partir -S en parámetros propios</a><span class="src">GenericMappingTools/pygmt · help wanted</span><p class="why"><span class="state duda">dudoso</span>Mecánicamente libre, pero weiji14 dijo en 2021 que resucitaría su código y seisman está migrando aliases él mismo este mes. Si se toma, abrirlo ya.</p></li>
     </ul>
   </section>
 
   <section>
-    <h2>Minería</h2>
-    <p class="domain-note">Las búsquedas por topics no aportaron nada usable (proyectos estudiantiles, listas). El valor está en las semillas: LoopStructural (recién migrado a monorepo) comparte podio con geociencias, gempy da entrada acotada, y polatory (C++/RBF para leyes) queda para PR espontáneo.</p>
+    <h2>Imágenes y geoespacial</h2>
+    <p class="domain-note">Todo el dominio es torchgeo. La advertencia de julio sigue vigente y ha empeorado: de 22 candidatos, 16 ya estaban tomados o con PR abierto. Los dos que quedan libres lo están porque nadie los ha querido en años, no por descuido.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/gempy-project/gempy">gempy-project/gempy</a></h3><div class="facts"><span>★ 1 315</span><span>Python</span><span>push hoy</span></div><p>Modelado geológico implícito (bloques, fallas, estratigrafía). Core team dominante pero mergean PRs externos con contexto claro.</p></div>
-      <div class="repo"><h3><a href="https://github.com/polatory/polatory">polatory/polatory</a></h3><div class="facts"><span>★ 192</span><span>C++</span><span>push 07-16</span></div><p>Interpolación RBF rápida para estimación de leyes. Cero issues abiertos: solo entrada por PR espontáneo, sin competencia alguna.</p></div>
-      <div class="repo"><h3><a href="https://github.com/Loop3D/LoopStructural">Loop3D/LoopStructural</a></h3><div class="facts"><span>★ 280</span><span>Python</span><span>push hoy</span></div><p>Ver geociencias: los mismos #289/#288/#224 aplican al carril minero (ecosistema Loop3D).</p></div>
+      <div class="repo"><h3><a href="https://github.com/torchgeo/torchgeo">torchgeo/torchgeo</a></h3><div class="facts"><span>★ 4 178</span><span>Python</span><span>push 9-sep</span></div><p>Deep learning geoespacial. Revisan adamjstewart (TU München), calebrob6 (Microsoft) e isaaccorley (Taylor Geospatial). Su AI-POLICY prohíbe código copiado bajo otra licencia.</p></div>
     </div>
-    <h4>Issues verificados</h4>
+    <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/gempy-project/gempy/issues/904">Improve error handling when formation names are not identical</a><span class="src">gempy-project/gempy · enhancement</span><p class="why">Mensajes de error acotados y con contexto; buen primer PR sin pelear asignación.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/gempy-project/gempy/issues/1063">Add formation column to surface points and orientations</a><span class="src">gempy-project/gempy · enhancement</span><p class="why">Mejora concreta de la API de datos; requiere familiarizarse con el data model de gempy 3.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/1963">Add a WMS Dataset</a><span class="src">torchgeo/torchgeo · datasets, good first issue</span><p class="why"><span class="state libre">libre</span>Pick del escaneo. El PR previo #1965 se cerró sin mergear en mayo con una review de adamjstewart que dice qué faltaba: se lee, no se copia. El patrón moderno está en <code>openstreetmap.py</code>.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/99">Migrar datasets al convenio _verify()</a><span class="src">torchgeo/torchgeo · datasets, good first issue</span><p class="why"><span class="state libre">libre</span><code>advance.py</code>, <code>cowc.py</code>, <code>etci2021.py</code> y <code>gid15.py</code> siguen con el patrón viejo; <code>ucmerced.py</code> es la plantilla. La checklist del issue está desfasada: auditar antes de prometer.</p></li>
+      <li class="issue dudoso"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/1043">Foundation Models (tracker de 29 modelos)</a><span class="src">torchgeo/torchgeo · models</span><p class="why"><span class="state duda">dudoso</span>Paraguas que nunca se cierra. OmniSat lo reclamó Samuel-Vangu el 19-ago sin entregar nada; solo sería tomable modelo por modelo.</p></li>
     </ul>
   </section>
 
   <section>
-    <h2>Procesamiento de imágenes</h2>
-    <p class="domain-note">Partido en dos: los grandes (opencv, scikit-image en pleno refactor "megamove") están saturados o en obras. Las jugadas: torchgeo (cruce exacto imágenes+geo) y napari, donde los core devs pidieron ejemplos con datos geocientíficos.</p>
+    <h2>Cloud-native y observabilidad</h2>
+    <p class="domain-note">El grueso del dominio era ruido: 40 de los 80 candidatos son bumps de dependencia que abre un bot en backstage. Queda un issue con síntoma de producción real y criterio de aceptación escrito, en una org que ya nos mergeó una vez.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/torchgeo/torchgeo">torchgeo/torchgeo</a></h3><div class="facts"><span>★ 4 128</span><span>Python</span><span>push hoy</span></div><p>Deep learning geoespacial; mergea externos, PR directo sin asignación. Caveat: review lenta para PRs chicos.</p></div>
-      <div class="repo"><h3><a href="https://github.com/napari/napari">napari/napari</a></h3><div class="facts"><span>★ 2 720</span><span>Python</span><span>push hoy</span></div><p>Visor científico n-dimensional hiperactivo (89 de los últimos 100 PRs cerrados fueron merges). Piden ejemplos geo.</p></div>
-      <div class="repo"><h3><a href="https://github.com/Probe-Particle/ppafm">Probe-Particle/ppafm</a></h3><div class="facts"><span>★ 67</span><span>Python/C++</span><span>push hoy</span></div><p>Simulación de microscopía AFM: nicho real sin competencia que mergea a externos.</p></div>
-      <div class="repo"><h3><a href="https://github.com/tbepler/topaz">tbepler/topaz</a></h3><div class="facts"><span>★ 216</span><span>Python</span><span>push 07-25</span></div><p>Crio-EM con CNNs; GFIs intactos desde 2020 (cero carrera, review lenta).</p></div>
-      <div class="repo"><h3><a href="https://github.com/scikit-image/scikit-image">scikit-image/scikit-image</a></h3><div class="facts"><span>★ 6 567</span><span>Python</span><span>push 08-01</span></div><p>Evitar ahora: refactor "megamove" en curso y GFIs todos con PR o gente ofreciéndose. Vigilar.</p></div>
+      <div class="repo"><h3><a href="https://github.com/dapr/python-sdk">dapr/python-sdk</a></h3><div class="facts"><span>★ 272</span><span>Python</span><span>push 9-sep</span></div><p>Lo lleva Diagrid (JoshVanL, yaron2, cicoyle, sicoyle). Reputación transferible desde java-sdk#1790.</p></div>
+      <div class="repo"><h3><a href="https://github.com/backstage/backstage">backstage/backstage</a></h3><div class="facts"><span>★ 34 402</span><span>TypeScript</span><span>push hoy</span></div><p>Spotify. Vivo pero su cola de good first issue se consume en días: seis PRs mergeados contra un solo issue en tres semanas.</p></div>
     </div>
-    <h4>Issues verificados</h4>
+    <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/3931">Clarify Sentinel-1 wavelength convention for DOFA checkpoints</a><span class="src">torchgeo/torchgeo · documentation</span><p class="why">µm vs GHz de banda C: exactamente la confusión física que el perfil resuelve rápido. Fresco (31-jul).</p></li>
-      <li class="issue"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/3776">TreeSatAI-time-series dataset</a><span class="src">torchgeo/torchgeo · datasets</span><p class="why">Extensión temporal de un dataset ya existente en el repo, con fuente pública en HuggingFace y guía documentada.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/napari/napari/issues/7991">Meta: más ejemplos (jni pidió datos geocientíficos)</a><span class="src">napari/napari · contribute:good first issue</span><p class="why">Meta-issue: se ataca con PR propio sin chocar con nadie. Entrada con voz propia y datos andinos.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/napari/napari/issues/4585">Cache data instead of monkeypatch in tests</a><span class="src">napari/napari · contribute:good first issue</span><p class="why">Infra de tests bien delimitada con la propuesta técnica ya escrita por jni.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/tbepler/topaz/issues/61">topaz convert: crear subdirectorios automáticamente</a><span class="src">tbepler/topaz · good first issue</span><p class="why">Cambio de CLI autocontenido; el riesgo no es la carrera sino la velocidad de review.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/dapr/python-sdk/issues/980">Limitar el spam de warnings de timers</a><span class="src">dapr/python-sdk · good first issue</span><p class="why"><span class="state libre">libre</span>+1000 líneas de <code>Ignoring unexpected timerFired event</code> por una petición. El reclamo previo se revocó: seherv quedó desasignado el 16-jun por stale. Preguntar en el PR si el fix va aguas arriba, a durabletask-python.</p></li>
+      <li class="issue dudoso"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/backstage/backstage/issues/34134">Huecos de la guía de migración</a><span class="src">backstage/backstage · good first issue</span><p class="why"><span class="state duda">dudoso</span>Quedan dos ítems menores: seis PRs ya se repartieron el issue entre el 21-ago y el 11-sep.</p></li>
+      <li class="issue dudoso"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/open-telemetry/opentelemetry-python-contrib/issues/962">Auditar instrumentación de tornado con NoOpTracerProvider</a><span class="src">opentelemetry-python-contrib · good first issue</span><p class="why"><span class="state duda">dudoso</span>Reclamo de 2024 nunca cumplido (cero PRs de esa persona, 27 meses de silencio). Está muerto, pero es literalmente la frase que descalifica un issue.</p></li>
     </ul>
   </section>
 
   <section>
-    <h2>Cloud-native / observabilidad</h2>
-    <p class="domain-note">La veta activa es dapr/java-sdk#369 (asignado al usuario, 2 clases pendientes tras el merge de #1790 🏆). Descubrimiento: XSAM/otelsql (Go, maintainer core de otel-go) — sus issues de hoy ya tienen PR, pero queda en radar como carril Go.</p>
+    <h2>Java y visibilidad</h2>
+    <p class="domain-note">De 57 candidatos sobrevivió uno, y con reservas. testcontainers-java se descartó entero por saturación —216 PRs abiertos y cada good first issue con su propia pila de competidores—, y openrewrite queda fuera por tope propio: ya hay dos PRs nuestros ahí.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/dapr/java-sdk">dapr/java-sdk</a></h3><div class="facts"><span>★ 298</span><span>Java</span><span>push 07-30</span></div><p>Racha propia: #1790 mergeado (30-jul) y el issue #369 sigue asignado con ActorProxyImpl y ActorRuntime pendientes.</p></div>
-      <div class="repo"><h3><a href="https://github.com/XSAM/otelsql">XSAM/otelsql</a></h3><div class="facts"><span>★ 419</span><span>Go</span><span>push 07-22</span></div><p>Instrumentación otel para database/sql. Visibilidad directa con maintainer core de otel-go; PR directo.</p></div>
-      <div class="repo"><h3><a href="https://github.com/dapr/python-sdk">dapr/python-sdk</a></h3><div class="facts"><span>★ 271</span><span>Python</span><span>push hoy</span></div><p>Reputación transferible desde java-sdk. Ojo: stale-bot de 60 días — reclamar issue por comment antes de trabajar.</p></div>
-      <div class="repo"><h3><a href="https://github.com/riandyrn/otelchi">riandyrn/otelchi</a></h3><div class="facts"><span>★ 172</span><span>Go</span><span>push 05-03</span></div><p>Instrumentación otel para go-chi; nicho pequeño y vivo, segundo objetivo Go.</p></div>
-      <div class="repo"><h3><a href="https://github.com/cloudflare/ebpf_exporter">cloudflare/ebpf_exporter</a></h3><div class="facts"><span>★ 2 621</span><span>Go</span><span>push hoy</span></div><p>Exporter Prometheus de métricas eBPF; marca fuerte para CV. Candidato a deep-dive, no a PR inmediato.</p></div>
+      <div class="repo"><h3><a href="https://github.com/keycloak/keycloak">keycloak/keycloak</a></h3><div class="facts"><span>★ 36 744</span><span>Java</span><span>push hoy</span></div><p>Red Hat / IBM. Tope de 2 PRs abiertos por contribuidor nuevo, y #52478 ya ocupa uno.</p></div>
     </div>
-  </section>
-
-  <section>
-    <h2>Remunerados</h2>
-    <p class="domain-note">Saturado este ciclo: los 7 bounties de openpilot tienen PRs o exigen hardware; onyx#518 cayó en verificación; cal.com está en 0 bounties (y se renombró a calcom/cal.diy). La ventaja aquí es velocidad de reacción ante bounties NUEVOS, no elegir entre los viejos.</p>
-    <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/onyx-dot-app/onyx">onyx-dot-app/onyx</a></h3><div class="facts"><span>★ 31 400</span><span>Python</span><span>push hoy</span></div><p>Bounties Algora activos (💎/💰); conectores autocontenidos. Su único issue libre de hoy ya tiene PR.</p></div>
-      <div class="repo"><h3><a href="https://github.com/commaai/openpilot">commaai/openpilot</a></h3><div class="facts"><span>★ 63 308</span><span>Python/C++</span><span>push hoy</span></div><p>Bounties oficiales + contratan de comunidad. Hoy: todo contestado o requiere hardware. Monitorear nuevos.</p></div>
-      <div class="repo"><h3><a href="https://github.com/supabase/supabase">supabase/supabase</a></h3><div class="facts"><span>★ 107 525</span><span>TS</span><span>push hoy</span></div><p>Contratan de comunidad; docs external-issue ya con PRs de terceros. Sin entrada limpia hoy.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Librerías generales</h2>
-    <p class="domain-note">Confirma el diagnóstico: django→Trac, spring sin ideal-for-contribution abiertos, cpython saturado (su umbrella de performance ya tiene 2 PRs), pyvista#1629 con PR. Listas cortas a propósito — el prestigio se construye en el nicho.</p>
-  </section>
-
-  <section>
-    <h2>Ecosistema eddumelendez</h2>
-    <p class="domain-note">La joya del carril Java: openrewrite/rewrite-testing-frameworks (~20 issues libres, merges externos en días, Moderne contrata de comunidad). testcontainers-java saturado en GFIs históricos; spring-ai#3926 quedó obsoleto.</p>
-    <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/openrewrite/rewrite-testing-frameworks">openrewrite/rewrite-testing-frameworks</a></h3><div class="facts"><span>★ 99</span><span>Java</span><span>push hoy</span></div><p>Recetas de migración de tests bien delimitadas; PR externo mergeado el 30-jul. Ecosistema OpenRewrite/Moderne, muy visible.</p></div>
-      <div class="repo"><h3><a href="https://github.com/docker-java/docker-java">docker-java/docker-java</a></h3><div class="facts"><span>★ 3 198</span><span>Java</span><span>push hoy</span></div><p>Issue con "PR is welcome" del maintainer. Riesgo: cadencia de review lenta.</p></div>
-      <div class="repo"><h3><a href="https://github.com/testcontainers/testcontainers-java">testcontainers/testcontainers-java</a></h3><div class="facts"><span>★ 8 698</span><span>Java</span><span>push 07-23</span></div><p>Comunidad sana pero GFIs históricos saturados; entrar por PRs pequeños directos (docs, módulos).</p></div>
-    </div>
-    <h4>Issues verificados</h4>
+    <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/openrewrite/rewrite-testing-frameworks/issues/221">Replace usage of graphql.Assert with test assertions</a><span class="src">openrewrite/rewrite-testing-frameworks · good first issue, recipe</span><p class="why">Receta mecánica de reemplazo de API, 0 comments, alcance cerrado. Primer PR ideal en OpenRewrite.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/openrewrite/rewrite-testing-frameworks/issues/738">EasyMock to Mockito: missing expectLastCall conversion</a><span class="src">openrewrite/rewrite-testing-frameworks · bug, recipe</span><p class="why">Bug con caso reproducible en el issue; arreglar una conversión faltante es más acotado que una receta nueva.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/openrewrite/rewrite-testing-frameworks/issues/318">Align JUnit dependencies using the BOM</a><span class="src">openrewrite/rewrite-testing-frameworks · enhancement</span><p class="why">0 comments, alcance pequeño; buen segundo PR de bajo riesgo en el mismo repo.</p></li>
-      <li class="issue"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/openrewrite/rewrite-testing-frameworks/issues/438">Testcontainers best practices recipes</a><span class="src">openrewrite/rewrite-testing-frameworks · recipe, testcontainers</span><p class="why">Cruza OpenRewrite con Testcontainers: visibilidad natural ante sus maintainers.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/docker-java/docker-java/issues/2373">DockerClient missing inspectSwarmNodeCmd()</a><span class="src">docker-java/docker-java · help wanted</span><p class="why">"PR is welcome" del maintainer; seguir el patrón de listSwarmNodesCmd. Review lenta como único riesgo.</p></li>
+      <li class="issue dudoso"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/keycloak/keycloak/issues/50529">SSRF: bypass de allowlist vía sector_identifier_uri</a><span class="src">keycloak/keycloak · help wanted, kind/weakness</span><p class="why"><span class="state duda">dudoso</span>El bug existe y está verificado en el fuente (cero ocurrencias de "sector" en el executor), pero es subtask de #41521 y consumiría el segundo hueco de PR.</p></li>
     </ul>
   </section>
 
-  <footer>Generado por /scan-oss · datos de la GitHub API vía gh · escaneo 2026-08-03 · los issues pueden asignarse en cualquier momento: verificar antes de empezar.</footer>
+  <section>
+    <h2>Sin resultado este ciclo</h2>
+    <p class="domain-note">Dos dominios quedaron vacíos y conviene decirlo en lugar de rellenar. <b>Librerías generales</b> (cpython, django, spring): cero issues con etiqueta de entrada sin asignar — esos repos no usan esas etiquetas como cola de trabajo. <b>Remunerados</b>: los cuatro candidatos cayeron en verificación; el de supabase ya tiene un PR abierto desde marzo y no se encontró ningún bounty activo que encaje con el perfil.</p>
+    <p class="domain-note">Del descubrimiento por topics (geostatistics, mining-engineering, mineral-exploration, geophysics) salieron 11 repos vivos, casi todos ya conocidos. Descartados: PyQuake3D (sin licencia), BlenderGeoModeller (cero issues), GeoStats.jl (Julia), GMT (C, mismo terreno que pygmt).</p>
+  </section>
+
+  <footer>Generado por /scan-oss · datos de la GitHub API vía gh · escaneo 2026-09-12 · cada issue se verificó abierto, sin assignee, sin PR que lo cubra y con push reciente; aun así, conviene comprobarlo otra vez justo antes de empezar.</footer>
 </div>
