@@ -34,10 +34,10 @@ Edítalo y vuelve a correr `/scan-oss`.
 
 ```
 config/interests.yaml    # qué buscar y cómo priorizar
-CLAUDE.md                # instrucciones del repo para Claude Code
+CLAUDE.md                # instrucciones del repo
 .claude/skills/          # las skills agénticas (/scan-oss, /deep-dive)
-AGENTS.md                # espejo de CLAUDE.md para Codex
-.agents/skills/          # espejo de .claude/skills/ para Codex
+AGENTS.md -> CLAUDE.md   # lo mismo, donde Codex lo busca
+.agents/skills/ -> ...   # symlink a .claude/skills/
 APRENDIZAJES.md          # lecciones operativas acumuladas
 reports/                 # reportes Markdown por fecha
 dashboard/index.html     # último dashboard generado
@@ -47,10 +47,9 @@ dashboard/index.html     # último dashboard generado
 
 El proyecto se trabaja indistintamente desde Claude Code y desde Codex, que
 lee `AGENTS.md` y `.agents/skills/` en vez de `CLAUDE.md` y `.claude/skills/`.
-Son **copias**, no enlaces: `.agents/skills/*/SKILL.md` es byte a byte igual a
-su gemelo, y `AGENTS.md` sólo cambia la línea que nombra al agente. Al tocar
-una skill o las instrucciones del repo, copiar el cambio al espejo en el mismo
-commit; si divergen, manda la versión de `.claude/`.
+Ambos son symlinks versionados a su gemelo, así que no hay nada que
+sincronizar: una skill nueva en `.claude/skills/` aparece sola del otro lado.
+Por eso `CLAUDE.md` no nombra al agente que lo lee.
 
 ## Reportes
 

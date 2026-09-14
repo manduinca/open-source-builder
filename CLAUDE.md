@@ -1,8 +1,8 @@
 # open-source-builder
 
 Sistema agéntico de descubrimiento y monitoreo de proyectos open source para
-contribuir. No es una aplicación: es un repo de configuración + skills de
-Claude Code + reportes generados.
+contribuir. No es una aplicación: es un repo de configuración + skills
+agénticas + reportes generados.
 
 ## Principios
 
