@@ -234,6 +234,13 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
 - → No responder argumentando: arreglar, responder en cada hilo con una línea
   (confirmado + qué se hizo) y un comment general para el humano con la
   decisión de diseño que necesite su OK.
+- **Los hallazgos inline no salen en el cuerpo de la review.** El 13-sep
+  CodeRabbit dejó dos en dascore#927 y `gh pr view --json reviews` solo mostró
+  el que iba como "outside diff range". El otro se vio pidiendo los hilos por
+  GraphQL: `reviewThreads(last:N){nodes{id isResolved path line comments}}`,
+  y el `id` del hilo sirve para responder dentro de él
+  (`POST /pulls/N/comments/<databaseId>/replies`). → Leer siempre los hilos,
+  no solo el cuerpo de la review.
 
 ## Red y gh: POSTs que "fallan" pueden haber entrado
 
@@ -244,6 +251,12 @@ gana siendo contribuidor reconocido en un nicho. Reafirma el foco geociencias.
   reintentar** (buscar por título/head-branch); evita duplicados vergonzosos.
 - El classifier de permisos bloquea `gh api -X POST` para comments; usar los
   subcomandos naturales (`gh issue comment`, `gh pr comment`).
+- El fallo también puede ser un `git push` que **se cuelga sin transferir**
+  (14-sep: ~8 min contra el fork de dascore, con SSH autenticando bien y solo
+  8 objetos que enviar). → Matarlo y reintentar con
+  `-c core.sshCommand="ssh -o ConnectTimeout=15 -o ServerAliveInterval=5"`;
+  confirmar contra el remoto (`gh pr view --json headRefOid`), no contra el
+  `git status` local.
 
 ## Workspace: el scratchpad /tmp NO es durable
 
