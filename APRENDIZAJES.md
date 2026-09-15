@@ -25,6 +25,39 @@ elegir dónde contribuir. (Iniciado 2026-07-15.)
   (PRs enlazados), asignados, comments de interés, y si el fix vive en otro
   repo. Labels viejos mienten (issues "abiertos" ya resueltos).
 
+## Medir la salud de un repo: dos trampas verificadas (escaneo 2026-09-15)
+
+Escaneo de 53 repos de alto perfil (ollama, vllm, langchain, k8s, meilisearch,
+qdrant…). Dos formas de medir que parecen obvias y mienten:
+
+- **`author_association` no distingue al equipo del externo.** Muchos
+  maintainers figuran como `CONTRIBUTOR` por no ser miembros públicos de su
+  org. Milvus pasa de 197 "merges externos" en 33 días a un goteo marginal
+  (los 12 primeros autores son el núcleo de Zilliz); dynamo, de 74 autores a
+  casi todo NVIDIA (`*-nv`); ollama, de 28 a 5; cognee, de 208 a 21; databend,
+  de 226 a 9. **Hay que filtrar por handle y contar cuántos tienen UN solo
+  merge**: eso es la cola larga real, y es la métrica que importa.
+
+- **`good first issue` en repos de 25k+ estrellas es la señal de que ya
+  llegaste tarde**, no una invitación. De 90 issues etiquetadas del dominio
+  cloud-native, 61 ya tenían al menos un PR ABIERTO encima y solo 16 no tenían
+  ninguna referencia. `trivy#11118`: 6 PRs abiertos en 28 días.
+  `meilisearch#5116`: 13 PRs, ninguno mergeado. → Las `help wanted` duras están
+  mucho más libres porque no parecen fáciles: ahí es donde hay que buscar.
+
+Corolario: un repo que mergea rápido y otro que tiene cola libre rara vez son
+el mismo. devenv tiene mediana de merge de 1,3 días y ningún issue aprovechable;
+litgpt tiene la cola más limpia y 38 PRs sin una sola review.
+
+## Antes de trabajar un issue, mirar si el repo tiene política de IA
+
+Ya van tres: torchgeo (`AI-POLICY`, checkbox obligatorio), otel (pide
+`Assisted-by` como cortesía) y ahora **Automattic/harper (`AGENT_POLICY.md`)**,
+que obliga a un disclaimer arriba de la descripción del PR si se usó un LLM en
+cualquier parte del trabajo. En harper el precedente es caro: el intento previo
+del issue #1070 se cerró por esa política. El `/deep-dive` ya lo revisa; el
+escaneo también debe hacerlo antes de recomendar un repo, no después.
+
 ## Prestigio vía repos populares: mal target ahora (verificado 2026-07-15)
 
 Barrido de los repos famosos pedidos por el usuario:

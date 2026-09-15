@@ -134,87 +134,151 @@
     .issue .src, .issue .why { grid-column: 1; }
   }
 </style>
+<style>
+  .satbar { margin: 0 0 1.4rem; }
+  .satbar .track {
+    display: flex; height: 2.1rem; border-radius: .4rem; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .satbar .seg {
+    display: grid; place-items: center;
+    font: 650 .78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .satbar .seg.tomado { background: var(--alto-bg); color: var(--alto); }
+  .satbar .seg.muerto { background: var(--duda-bg); color: var(--duda); }
+  .satbar .seg.libre  { background: var(--libre-bg); color: var(--libre); }
+  .satbar .key {
+    display: flex; flex-wrap: wrap; gap: .3rem 1.1rem;
+    margin-top: .5rem; font-size: .8rem; color: var(--muted);
+  }
+  .satbar .key i { font-style: normal; font-weight: 650; }
+  .satbar .key .tomado i { color: var(--alto); }
+  .satbar .key .muerto i { color: var(--duda); }
+  .satbar .key .libre i  { color: var(--libre); }
+  .policy {
+    border-left: 3px solid var(--medio); background: var(--medio-bg);
+    padding: .7rem .9rem; border-radius: 0 .4rem .4rem 0;
+    font-size: .88rem; margin: 0 0 1.2rem;
+  }
+  .policy b { color: var(--medio); }
+  table.money {
+    width: 100%; border-collapse: collapse; font-size: .86rem;
+    font-variant-numeric: tabular-nums;
+  }
+  table.money th, table.money td {
+    text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line);
+  }
+  table.money th { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+  .tablewrap { overflow-x: auto; }
+</style>
 
 <div class="wrap">
   <p class="eyebrow">Deep Skill · Radar Open Source</p>
   <h1>Oportunidades de contribución</h1>
-  <p class="meta">Escaneo del 12 de septiembre de 2026 · 218 issues candidatos recolectados, curados por dominio y verificados uno a uno con sesgo a descartar</p>
+  <p class="meta">Escaneo del 15 de septiembre de 2026 · foco en repos de muchas estrellas y alto hype · 149 repos descubiertos, 53 auditados a fondo, 496 issues sin asignar recolectados y verificados uno a uno con sesgo a descartar</p>
 
   <div class="stats">
-    <div class="stat"><b>7</b><span>verificados libres</span></div>
-    <div class="stat"><b>5</b><span>dudosos, con matiz</span></div>
-    <div class="stat"><b>218</b><span>candidatos revisados</span></div>
-    <div class="stat"><b>11</b><span>PRs ya mergeados</span></div>
+    <div class="stat"><b>5</b><span>verificados libres</span></div>
+    <div class="stat"><b>496</b><span>issues revisados</span></div>
+    <div class="stat"><b>61/90</b><span>ya tenían PR encima</span></div>
+    <div class="stat"><b>12</b><span>PRs ya mergeados</span></div>
   </div>
 
-  <p class="pick"><b>Pick del escaneo:</b> torchgeo#1963 — un <code>WMSDataset</code> que el repo lleva dos años queriendo y nadie ha entregado. Ráster + geoespacial + Python, revisado por Microsoft y TU München, con la review del intento previo disponible como pliego de condiciones.</p>
+  <p class="pick"><b>Pick del escaneo:</b> minikube#22298 — devolver falco a la ISO. La escribió medyagh, el lead del proyecto, con la ruta de partida localizada y una invitación explícita. Cero PRs compitiendo, CNCF, y encadena con el merge que ya hay en falcosidekick. Empieza por un comentario preguntando alcance, no por código.</p>
 
   <section>
-    <h2>Geociencias</h2>
-    <p class="domain-note">El carril propio vuelve a tener material de geofísica, no solo documentación: compensación isostática en harmonica, PPSD en obspy y proyección de sismicidad en pygmt. fatiando sigue siendo la casa (santisoler mergeó #695 el 9-sep), con la cautela de que ya hay dos PRs nuestros esperando ahí.</p>
+    <h2>El dato que ordena todo lo demás</h2>
+    <p class="domain-note">De las 90 issues etiquetadas del dominio cloud-native se comprobaron los PRs enlazados una por una. En repos de 25 000 estrellas o más, <code>good first issue</code> no es una invitación: es la señal de que ya llegaste tarde. Las <code>help wanted</code> duras están mucho más libres porque no parecen fáciles.</p>
+    <div class="satbar">
+      <div class="track" role="img" aria-label="De 90 issues: 61 con PR abierto encima, 13 solo con PRs cerrados sin mergear, 16 sin ninguna referencia">
+        <div class="seg tomado" style="flex: 61">61</div>
+        <div class="seg muerto" style="flex: 13">13</div>
+        <div class="seg libre" style="flex: 16">16</div>
+      </div>
+      <div class="key">
+        <span class="tomado"><i>61</i> con un PR abierto encima (18 con dos o más)</span>
+        <span class="muerto"><i>13</i> solo con PRs cerrados sin mergear</span>
+        <span class="libre"><i>16</i> sin ninguna referencia — 6 de ellas en Harbor</span>
+      </div>
+    </div>
+    <p class="domain-note"><code>trivy#11118</code> juntó 6 PRs abiertos en 28 días de vida. <code>vllm#31414</code>, ocho. <code>langgraph#5225</code>, once. <code>meilisearch#5116</code> acumula trece PRs y ninguno mergeado. La segunda trampa es estadística: contar PRs por <code>author_association</code> engaña en la mitad de estos repos, porque muchos maintainers figuran como <code>CONTRIBUTOR</code> al no ser miembros públicos de su organización. Milvus pasa de 197 merges «externos» a un goteo marginal; dynamo, de 74 autores a casi todo NVIDIA; ollama, de 28 a 5.</p>
+  </section>
+
+  <section>
+    <h2>Rust · Automattic/harper</h2>
+    <p class="domain-note">El carril más limpio del escaneo y el único de los nueve repos Rust donde la evidencia sostiene que un desconocido mergea: 28 PRs de fuera en 60 días repartidos entre 20 cuentas, 17 de ellas con exactamente un merge. Es el único sin ningún PR abierto de más de un año.</p>
+    <p class="policy"><b>Decisión previa:</b> harper tiene <code>AGENT_POLICY.md</code> con política explícita — obliga a declarar en la descripción del PR si se usó un LLM en cualquier parte del trabajo. El precedente pesa: el intento anterior de #1070 se cerró por esa política. Hay que resolverlo antes de escribir nada.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/fatiando/harmonica">fatiando/harmonica</a></h3><div class="facts"><span>★ 305</span><span>Python</span><span>push 11-sep</span></div><p>Geofísica de potencial. Mejor relación del perfil, pero con #698 y #700 nuestros en cola: un tercer PR simultáneo satura a santisoler.</p></div>
-      <div class="repo"><h3><a href="https://github.com/GenericMappingTools/pygmt">GenericMappingTools/pygmt</a></h3><div class="facts"><span>★ 873</span><span>Python</span><span>push 11-sep</span></div><p>Cartografía científica. seisman mergea a diario y marca issues con help wanted; mergea ejemplos de galería escritos por externos.</p></div>
-      <div class="repo"><h3><a href="https://github.com/obspy/obspy">obspy/obspy</a></h3><div class="facts"><span>★ 1 332</span><span>Python</span><span>push 3-sep</span></div><p>Sismología de referencia. Repo nuevo para el perfil; megies mergea a ráfagas y compila extensiones en C.</p></div>
-      <div class="repo"><h3><a href="https://github.com/fatiando/boule">fatiando/boule</a></h3><div class="facts"><span>★ 42</span><span>Python</span><span>push 9-sep</span></div><p>Elipsoides y geodesia. Pequeño y atendido por leouieda, pero mueve poco PR externo: latencia de semanas.</p></div>
-      <div class="repo"><h3><a href="https://github.com/pyTMD/pyTMD">pyTMD/pyTMD</a></h3><div class="facts"><span>★ 211</span><span>Python</span><span>push hoy</span></div><p>Hallazgo del escaneo: predicción de mareas, MIT, tsutterley mergea a diario y aceptó dos PRs externos el 31-ago.</p></div>
+      <div class="repo"><h3><a href="https://github.com/Automattic/harper">Automattic/harper</a></h3><div class="facts"><span>★ 15 392</span><span>Rust</span><span>push hoy</span></div><p>Corrector gramatical de Automattic. Mediana de merge de externos: 10 días. La reserva no es el repo, es su política de IA.</p></div>
+      <div class="repo"><h3><a href="https://github.com/cachix/devenv">cachix/devenv</a></h3><div class="facts"><span>★ 7 649</span><span>Rust</span><span>push hoy</span></div><p>Las mejores métricas del dominio —mediana de merge 1,3 días, 54 PRs abiertos— y ni un solo issue aprovechable de los tres que dio.</p></div>
+      <div class="repo"><h3><a href="https://github.com/qdrant/qdrant">qdrant/qdrant</a></h3><div class="facts"><span>★ 34 578</span><span>Rust</span><span>push hoy</span></div><p>Paga bounties de verdad, pero 218 PRs abiertos y los 100 más viejos todos por encima de 90 días. El riesgo no es la carrera: es quedarse colgado.</p></div>
     </div>
     <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/fatiando/harmonica/issues/37">Pratt isostasy</a><span class="src">fatiando/harmonica · good first issue</span><p class="why"><span class="state libre">libre</span>Solo existe <code>isostatic_moho_airy</code>. La especificación la escribió leouieda; dos personas dijeron que lo harían (2019, 2020) y nunca hubo PR. Pactar nombre y API en el issue antes de escribir: la firma es de 2018 y la convención cambió.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/GenericMappingTools/pygmt/issues/3676">Ejemplo de galería: sismicidad en vista de perfil</a><span class="src">GenericMappingTools/pygmt · help wanted</span><p class="why"><span class="state libre">libre</span>Lo pidió maxrjones tras un taller de AGU y seisman le puso help wanted el 21-jul. Acotarlo a símbolos simples: los beachballs en el corte dependen de envolver <code>coupe</code>, parado desde 2025.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/obspy/obspy/issues/2730">PPSD.plot(): aceptar Figure y Axes existentes</a><span class="src">obspy/obspy · Good First Issue, .imaging</span><p class="why"><span class="state libre">libre</span>Lo escribió el maintainer con la firma exacta que quiere. Verificado en el fuente que sigue sin implementarse; nadie lo ha tomado desde 2020.</p></li>
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/fatiando/boule/issues/257">Sección y figura de sistemas de coordenadas</a><span class="src">fatiando/boule · documentation</span><p class="why"><span class="state libre">libre</span>Cero comentarios desde marzo. Conecta con lo que ya se escribió en harmonica; la figura debe generarse por código, como pide leouieda.</p></li>
-      <li class="issue dudoso"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/GenericMappingTools/pygmt/issues/1466">Figure.meca: partir -S en parámetros propios</a><span class="src">GenericMappingTools/pygmt · help wanted</span><p class="why"><span class="state duda">dudoso</span>Mecánicamente libre, pero weiji14 dijo en 2021 que resucitaría su código y seisman está migrando aliases él mismo este mes. Si se toma, abrirlo ya.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/Automattic/harper/issues/1261">Un <code>RepeatingPattern</code> no-greedy</a><span class="src">Automattic/harper · help wanted</span><p class="why"><span class="state libre">libre</span>Sin una sola referencia cruzada en toda su historia y con un collaborator que declaró querer la funcionalidad para su propio uso. Rust puro de motor de expresiones, sin diccionario ni gramática. La API no está fijada: proponerla antes de escribir. El bot de stale lo marcó en marzo y puede cerrarse solo; comentar lo reactiva.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Automattic/harper/issues/1070">Marcar «tenant» usado como «tenet»</a><span class="src">Automattic/harper · good first issue</span><p class="why"><span class="state libre">libre</span>El hilo del PR cerrado documenta gratis dónde está la trampa: la regla ingenua se dispara sobre uso legítimo en textos técnicos —<i>The core tenant isolation logic lives here</i>— porque en multi-tenancy «tenant» es modificador nominal. Hace falta una guarda de contexto, y ahí es donde se va el tiempo.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/Automattic/harper/issues/1198">No corregir dentro de un bloque <code>typst</code></a><span class="src">Automattic/harper · good first issue</span><p class="why"><span class="state libre">libre</span>Un collaborator dejó por escrito el diseño completo y los dos ficheros de los que copiar, y el maintainer principal lo rescató a mano de un cierre automático. El alcance sigue abierto: hay una vía por la que se declara resuelto con la opción ya existente <code>harper-ls.isolateEnglish</code>. Comentar antes de escribir código.</p></li>
     </ul>
   </section>
 
   <section>
-    <h2>Imágenes y geoespacial</h2>
-    <p class="domain-note">Todo el dominio es torchgeo. La advertencia de julio sigue vigente y ha empeorado: de 22 candidatos, 16 ya estaban tomados o con PR abierto. Los dos que quedan libres lo están porque nadie los ha querido en años, no por descuido.</p>
+    <h2>Cloud native y Go</h2>
+    <p class="domain-note">El dominio con más ruido y el de más valor reputacional. Casi todas las colas etiquetadas están agotadas; lo que queda libre está libre porque exige trabajo de verdad. Harbor es el único repo del dominio con cola libre auténtica: 6 de sus 9 issues sin ningún PR encima.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/torchgeo/torchgeo">torchgeo/torchgeo</a></h3><div class="facts"><span>★ 4 178</span><span>Python</span><span>push 9-sep</span></div><p>Deep learning geoespacial. Revisan adamjstewart (TU München), calebrob6 (Microsoft) e isaaccorley (Taylor Geospatial). Su AI-POLICY prohíbe código copiado bajo otra licencia.</p></div>
+      <div class="repo"><h3><a href="https://github.com/goharbor/harbor">goharbor/harbor</a></h3><div class="facts"><span>★ 29 370</span><span>Go</span><span>push hoy</span></div><p>47 merges de ~21 personas de fuera en 60 días y solo 194 PRs abiertos. La banda de merge está repartida entre cinco maintainers, no depende de uno.</p></div>
+      <div class="repo"><h3><a href="https://github.com/kubernetes/minikube">kubernetes/minikube</a></h3><div class="facts"><span>★ 32 131</span><span>Go</span><span>push 14-sep</span></div><p>34 merges externos de 20 personas, máximo cinco por persona: cola larga real. medyagh abre él mismo las <code>help wanted</code> con contexto y responde.</p></div>
+      <div class="repo"><h3><a href="https://github.com/derailed/k9s">derailed/k9s</a></h3><div class="facts"><span>★ 34 596</span><span>Go</span><span>push hoy</span></div><p>El backlog más pequeño de los trece: 43 PRs abiertos. Mergea PRs pero no debate issues, así que el riesgo es mandar un diseño que nadie validó.</p></div>
+      <div class="repo"><h3><a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a></h3><div class="facts"><span>★ 37 927</span><span>Go</span><span>push hoy</span></div><p>Los maintainers responden rápido y de verdad, pero sus <code>good first issue</code> se devoran en días. La trampa más clara del dominio.</p></div>
     </div>
     <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/1963">Add a WMS Dataset</a><span class="src">torchgeo/torchgeo · datasets, good first issue</span><p class="why"><span class="state libre">libre</span>Pick del escaneo. El PR previo #1965 se cerró sin mergear en mayo con una review de adamjstewart que dice qué faltaba: se lee, no se copia. El patrón moderno está en <code>openstreetmap.py</code>.</p></li>
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/99">Migrar datasets al convenio _verify()</a><span class="src">torchgeo/torchgeo · datasets, good first issue</span><p class="why"><span class="state libre">libre</span><code>advance.py</code>, <code>cowc.py</code>, <code>etci2021.py</code> y <code>gid15.py</code> siguen con el patrón viejo; <code>ucmerced.py</code> es la plantilla. La checklist del issue está desfasada: auditar antes de prometer.</p></li>
-      <li class="issue dudoso"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/torchgeo/torchgeo/issues/1043">Foundation Models (tracker de 29 modelos)</a><span class="src">torchgeo/torchgeo · models</span><p class="why"><span class="state duda">dudoso</span>Paraguas que nunca se cierra. OmniSat lo reclamó Samuel-Vangu el 19-ago sin entregar nada; solo sería tomable modelo por modelo.</p></li>
+      <li class="issue"><span class="chip alto">medio-alto</span><a class="issue-title" href="https://github.com/kubernetes/minikube/issues/22298">Devolver falco a la nueva ISO</a><span class="src">kubernetes/minikube · help wanted, kind/feature</span><p class="why"><span class="state libre">libre</span>Pick del escaneo. La escribió el lead con la ruta localizada —el PR 20720 quitó falco; el 22290, sysdig— y la invitación textual: <i>if any developer search for falco on minikube, this task is available to work on</i>. El único intento previo iba por la ruta del addon y murió por stale. Pedir a medyagh y afbjorklund que confirmen el alcance antes de escribir: queda sin contestar si hace falta el módulo de kernel con eBPF.</p></li>
     </ul>
   </section>
 
   <section>
-    <h2>Cloud-native y observabilidad</h2>
-    <p class="domain-note">El grueso del dominio era ruido: 40 de los 80 candidatos son bumps de dependencia que abre un bot en backstage. Queda un issue con síntoma de producción real y criterio de aceptación escrito, en una org que ya nos mergeó una vez.</p>
+    <h2>IA y LLM · Python</h2>
+    <p class="domain-note">El dominio más caliente y el que menos dio: un solo issue en pie. Los repos que mergean de verdad tienen las colas etiquetadas agotadas, y los que tienen colas libres no mergean. langchain y langgraph cierran sin mergear el 83% y el 89% de sus PRs, y de treinta issues recientes de gente de fuera, ninguno recibió respuesta de un maintainer.</p>
     <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/dapr/python-sdk">dapr/python-sdk</a></h3><div class="facts"><span>★ 272</span><span>Python</span><span>push 9-sep</span></div><p>Lo lleva Diagrid (JoshVanL, yaron2, cicoyle, sicoyle). Reputación transferible desde java-sdk#1790.</p></div>
-      <div class="repo"><h3><a href="https://github.com/backstage/backstage">backstage/backstage</a></h3><div class="facts"><span>★ 34 402</span><span>TypeScript</span><span>push hoy</span></div><p>Spotify. Vivo pero su cola de good first issue se consume en días: seis PRs mergeados contra un solo issue en tres semanas.</p></div>
+      <div class="repo"><h3><a href="https://github.com/Lightning-AI/litgpt">Lightning-AI/litgpt</a></h3><div class="facts"><span>★ 13 663</span><span>Python</span><span>push 14-sep</span></div><p>El único sitio del dominio con cola sin reclamar. La reserva es latencia, no rechazo: 8 PRs externos mergeados en 90 días, pero 38 de sus 50 PRs abiertos no tienen ni una review.</p></div>
+      <div class="repo"><h3><a href="https://github.com/unslothai/unsloth">unslothai/unsloth</a></h3><div class="facts"><span>★ 76 195</span><span>Python</span><span>push hoy</span></div><p>La tasa de cierre sin merge más baja de los repos de alto volumen (24%). Casi todas sus issues son soporte atado a hardware concreto.</p></div>
+      <div class="repo"><h3><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></h3><div class="facts"><span>★ 91 828</span><span>Python</span><span>push hoy</span></div><p>103 merges externos en 60 días, mediana de 5,1 días: mergea de verdad. Pero no por esta cola — sus 15 issues etiquetadas ya tienen PRs compitiendo.</p></div>
     </div>
     <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/dapr/python-sdk/issues/980">Limitar el spam de warnings de timers</a><span class="src">dapr/python-sdk · good first issue</span><p class="why"><span class="state libre">libre</span>+1000 líneas de <code>Ignoring unexpected timerFired event</code> por una petición. El reclamo previo se revocó: seherv quedó desasignado el 16-jun por stale. Preguntar en el PR si el fix va aguas arriba, a durabletask-python.</p></li>
-      <li class="issue dudoso"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/backstage/backstage/issues/34134">Huecos de la guía de migración</a><span class="src">backstage/backstage · good first issue</span><p class="why"><span class="state duda">dudoso</span>Quedan dos ítems menores: seis PRs ya se repartieron el issue entre el 21-ago y el 11-sep.</p></li>
-      <li class="issue dudoso"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/open-telemetry/opentelemetry-python-contrib/issues/962">Auditar instrumentación de tornado con NoOpTracerProvider</a><span class="src">opentelemetry-python-contrib · good first issue</span><p class="why"><span class="state duda">dudoso</span>Reclamo de 2024 nunca cumplido (cero PRs de esa persona, 27 meses de silencio). Está muerto, pero es literalmente la frase que descalifica un issue.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Lightning-AI/litgpt/issues/1584">El chat no funciona con <code>--compile</code></a><span class="src">Lightning-AI/litgpt · bug, help wanted</span><p class="why"><span class="state libre">libre</span><code>NameError: name 'next_token' is not defined</code>, con la traza pegada por un collaborator y verificado hoy línea a línea que sigue en main. 26 meses sin que nadie lo reclame. Se reproduce en CPU sin modelo real: la excepción salta antes de que <code>torch.compile</code> compile nada. Replicar el patrón que ya usa <code>generate/base.py</code> en vez de inventar uno.</p></li>
     </ul>
   </section>
 
   <section>
-    <h2>Java y visibilidad</h2>
-    <p class="domain-note">De 57 candidatos sobrevivió uno, y con reservas. testcontainers-java se descartó entero por saturación —216 PRs abiertos y cada good first issue con su propia pila de competidores—, y openrewrite queda fuera por tope propio: ya hay dos PRs nuestros ahí.</p>
-    <div class="grid">
-      <div class="repo"><h3><a href="https://github.com/keycloak/keycloak">keycloak/keycloak</a></h3><div class="facts"><span>★ 36 744</span><span>Java</span><span>push hoy</span></div><p>Red Hat / IBM. Tope de 2 PRs abiertos por contribuidor nuevo, y #52478 ya ocupa uno.</p></div>
+    <h2>Bounties</h2>
+    <p class="domain-note">Comprobadas las etiquetas de bounty de los 53 repos auditados: solo dos tienen el circuito montado, y solo uno está vivo. Ahora mismo no hay ningún issue con bounty abierto en ninguno de los dos, así que esto es una veta que se vigila, no una que se toma hoy.</p>
+    <div class="tablewrap">
+      <table class="money">
+        <thead><tr><th>Repo</th><th>Pagados</th><th>Último</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/qdrant/qdrant">qdrant/qdrant</a></td><td>29</td><td>ago 2026</td><td>Vivo — 5 pagados en 2026, con trabajo de infraestructura real: gestor de snapshots en S3, manejo de disco lleno, arrancar sobre sistema de ficheros de solo lectura</td></tr>
+          <tr><td><a href="https://github.com/browser-use/browser-use">browser-use/browser-use</a></td><td>2</td><td>feb 2026</td><td>Frío — el circuito existe pero lleva siete meses sin usarse</td></tr>
+        </tbody>
+      </table>
     </div>
-    <h4>Issues</h4>
-    <ul class="issues">
-      <li class="issue dudoso"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/keycloak/keycloak/issues/50529">SSRF: bypass de allowlist vía sector_identifier_uri</a><span class="src">keycloak/keycloak · help wanted, kind/weakness</span><p class="why"><span class="state duda">dudoso</span>El bug existe y está verificado en el fuente (cero ocurrencias de "sector" en el executor), pero es subtask de #41521 y consumiría el segundo hueco de PR.</p></li>
-    </ul>
   </section>
 
   <section>
-    <h2>Sin resultado este ciclo</h2>
-    <p class="domain-note">Dos dominios quedaron vacíos y conviene decirlo en lugar de rellenar. <b>Librerías generales</b> (cpython, django, spring): cero issues con etiqueta de entrada sin asignar — esos repos no usan esas etiquetas como cola de trabajo. <b>Remunerados</b>: los cuatro candidatos cayeron en verificación; el de supabase ya tiene un PR abierto desde marzo y no se encontró ningún bounty activo que encaje con el perfil.</p>
-    <p class="domain-note">Del descubrimiento por topics (geostatistics, mining-engineering, mineral-exploration, geophysics) salieron 11 repos vivos, casi todos ya conocidos. Descartados: PyQuake3D (sin licencia), BlenderGeoModeller (cero issues), GeoStats.jl (Julia), GMT (C, mismo terreno que pygmt).</p>
+    <h2>Descartes que conviene recordar</h2>
+    <p class="domain-note">Lo que no hay que volver a mirar, con el número que lo sostiene. Sirve tanto como la lista de arriba.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/ollama/ollama">ollama/ollama</a></h3><div class="facts"><span>★ 181 039</span><span>Go</span></div><p>1 518 PRs abiertos, 2 488 issues y cinco merges realmente externos en 47 días. El caso de libro de repo famoso que acumula en vez de mergear.</p></div>
+      <div class="repo"><h3><a href="https://github.com/surrealdb/surrealdb">surrealdb/surrealdb</a></h3><div class="facts"><span>★ 33 030</span><span>Rust</span></div><p>Tres PRs mergeados en 60 días, verificado por dos vías. Hace push a diario; el PR abierto más viejo lleva 1 276 días.</p></div>
+      <div class="repo"><h3><a href="https://github.com/meilisearch/meilisearch">meilisearch/meilisearch</a></h3><div class="facts"><span>★ 59 298</span><span>Rust</span></div><p>Cinco PRs externos reales en 60 días y sus propios <code>good first issue</code> convertidos en cementerios.</p></div>
+      <div class="repo"><h3><a href="https://github.com/topoteretes/cognee">topoteretes/cognee</a></h3><div class="facts"><span>★ 30 701</span><span>Python</span></div><p>Parecía el hallazgo del día: 174 issues de hackathon especificados como nadie. El 6-sep el fundador cerró 17 PRs de connectors en once segundos.</p></div>
+      <div class="repo"><h3><a href="https://github.com/langchain-ai/langchain">langchain-ai/langchain</a></h3><div class="facts"><span>★ 146 374</span><span>Python</span></div><p>83% de los PRs cerrados nunca se mergearon. Sus tres issues etiquetadas acumulan entre ocho y catorce PRs enlazados cada una.</p></div>
+      <div class="repo"><h3><a href="https://github.com/oceanbase/oceanbase">oceanbase/oceanbase</a></h3><div class="facts"><span>★ 10 275</span><span>C++</span></div><p>Cero merges desde noviembre de 2023. Espejo público de un repo interno: abrir un PR ahí es tirarlo.</p></div>
+    </div>
   </section>
 
-  <footer>Generado por /scan-oss · datos de la GitHub API vía gh · escaneo 2026-09-12 · cada issue se verificó abierto, sin assignee, sin PR que lo cubra y con push reciente; aun así, conviene comprobarlo otra vez justo antes de empezar.</footer>
+  <footer>
+    Generado por <code>/scan-oss</code> el 15 de septiembre de 2026 · datos recolectados con <code>gh</code> y verificados issue por issue · el detalle completo está en <code>reports/2026-09-15-scan.md</code>
+  </footer>
 </div>
