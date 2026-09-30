@@ -128,6 +128,7 @@
   }
   .state.libre { color: var(--libre); background: var(--libre-bg); }
   .state.duda  { color: var(--duda);  background: var(--duda-bg); }
+  .state.nuestro { color: var(--accent); background: var(--accent-soft); }
   footer { color: var(--muted); font-size: .82rem; border-top: 1px solid var(--line); padding-top: 1rem; }
   @media (max-width: 480px) {
     .issue { grid-template-columns: 1fr; }
@@ -179,13 +180,13 @@
   <p class="meta">Escaneos del 15 y 21 de septiembre de 2026 · foco en repos de muchas estrellas y alto hype, más geociencias y computer vision · 312 repos descubiertos entre ambas pasadas, 83 auditados a fondo, 631 issues sin asignar recolectados y verificados uno a uno con sesgo a descartar</p>
 
   <div class="stats">
-    <div class="stat"><b>36</b><span>verificados libres</span></div>
+    <div class="stat"><b>36</b><span>libres al escanear</span></div>
     <div class="stat"><b>631</b><span>issues revisados</span></div>
     <div class="stat"><b>97/164</b><span>ya tenían PR encima</span></div>
     <div class="stat"><b>12</b><span>PRs ya mergeados</span></div>
   </div>
 
-  <p class="pick"><b>Pick del escaneo del 21-sep:</b> D4Vinci/Scrapling#447 — el propio reportante documenta el bug con evidencia concreta (el demo oficial de TinyMCE pierde ~1750 caracteres editables) y cierra con «fix ready, PR welcome?». Cero comentarios, cero PRs enlazados. <b>Pick del 15-sep:</b> minikube#22298 — devolver falco a la ISO, escrito por el lead del proyecto con invitación explícita. Ambos siguen libres.</p>
+  <p class="pick"><b>Estado al 30-sep:</b> del top 5 del 21-sep, gempy#904 ya tiene PR abierto (<a href="https://github.com/gempy-project/gempy/pull/1110">gempy#1110</a>). El primer pick, Scrapling#447, lo cerró el maintainer el mismo 21-sep como fuera de alcance. Siguen libres synthoseis#21, code-review-graph#1060 y opentelemetry-collector#15985. <b>Pick del 15-sep:</b> minikube#22298 — alcance preguntado al lead el 16-sep, sin respuesta todavía.</p>
 
   <section>
     <h2>El dato que ordena todo lo demás</h2>
@@ -288,14 +289,14 @@
 
   <section>
     <h2>Frameworks de alto hype</h2>
-    <p class="domain-note">El hallazgo del dominio: Scrapling, framework de scraping adaptativo con 82 675★, donde el propio reportante del bug ya diagnosticó la causa y ofrece colaborar.</p>
+    <p class="domain-note">Scrapling parecía el hallazgo del dominio: el reportante del bug ya tenía el diagnóstico y ofrecía el parche. El maintainer lo cerró como fuera de alcance el mismo día del escaneo. Queda jetcache.</p>
     <div class="grid">
       <div class="repo"><h3><a href="https://github.com/D4Vinci/Scrapling">D4Vinci/Scrapling</a></h3><div class="facts"><span>★ 82 675</span><span>Python</span></div><p>Scraping adaptativo con manejo de shadow DOM y JavaScript. Comunidad creciente.</p></div>
       <div class="repo"><h3><a href="https://github.com/alibaba/jetcache">alibaba/jetcache</a></h3><div class="facts"><span>★ 5 613</span><span>Java</span></div><p>Framework de caching enterprise (Redis, LocalCache). Usado en producción por Alibaba.</p></div>
     </div>
     <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/D4Vinci/Scrapling/issues/447">Iframes same-origin se pierden en snapshots de shadow DOM</a><span class="src">D4Vinci/Scrapling · pick del 21-sep</span><p class="why"><span class="state libre">libre</span>El propio autor documenta el bug con evidencia (TinyMCE pierde ~1750 caracteres editables) y cierra con «fix ready, PR welcome?». Riesgo: puede que ya tenga el parche — comentar rápido ofreciendo colaborar.</p></li>
+      <li class="issue dudoso"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/D4Vinci/Scrapling/issues/447">Iframes same-origin se pierden en snapshots de shadow DOM</a><span class="src">D4Vinci/Scrapling · pick del 21-sep</span><p class="why"><span class="state duda">cerrado</span>El maintainer lo cerró el 21-sep: los iframes quedan fuera de <code>pierce_shadow</code> por diseño, porque tienen URL y contexto de documento propios. El reportante ya tenía el parche hecho.</p></li>
       <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/alibaba/jetcache/issues/1009">@CacheInvalidate no funciona sin parámetros</a><span class="src">alibaba/jetcache</span><p class="why"><span class="state libre">libre</span>Bug en anotaciones cuando el método no tiene parámetros. Scope claro, código existente como referencia.</p></li>
       <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/alibaba/jetcache/issues/1000">DiscardPolicy descarta refresh tasks silenciosamente</a><span class="src">alibaba/jetcache</span><p class="why"><span class="state libre">libre</span>Bug crítico de confiabilidad: el ThreadPool descarta tareas de refresh de caché sin avisar.</p></li>
     </ul>
@@ -357,7 +358,7 @@
     </div>
     <h4>Issues</h4>
     <ul class="issues">
-      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/gempy-project/gempy/issues/904">Mejorar manejo de error cuando nombres de formación no coinciden</a><span class="src">gempy-project/gempy · pick del 21-sep</span><p class="why"><span class="state libre">libre</span><code>KeyError</code> críptico cuando un nombre no coincide entre archivos. Tarea: función helper con mensaje útil. Scope acotado, sin ambigüedad de diseño.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/gempy-project/gempy/issues/904">Mejorar manejo de error cuando nombres de formación no coinciden</a><span class="src">gempy-project/gempy · pick del 21-sep</span><p class="why"><span class="state nuestro">PR abierto</span><a href="https://github.com/gempy-project/gempy/pull/1110">gempy#1110</a>, abierto el 30-sep. El <code>KeyError</code> pelado ahora es un <code>ValueError</code> que nombra las formaciones desconocidas y las disponibles, sin costo en el camino normal. Suite local: 122 passed.</p></li>
       <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/sede-open/synthoseis/issues/21">cube_shape Z axis con parámetros hardcodeados inconsistentes</a><span class="src">sede-open/synthoseis · pick del 21-sep</span><p class="why"><span class="state libre">libre</span>Dos bloques hardcodeados en <code>Horizons.py</code> (líneas 349 y 370) con rangos inconsistentes entre sí. El reportante ya hizo el diagnóstico completo.</p></li>
       <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/288">LoopProjectfileProcessor fija fault_stratigraphy=None</a><span class="src">Loop3D/LoopStructural</span><p class="why"><span class="state libre">libre</span>Se pierde el offset de falla al importar el proyecto. Fix de una línea con impacto alto en modelado de fallas.</p></li>
       <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/224">Falta listar los tipos de interpolador en la documentación</a><span class="src">Loop3D/LoopStructural</span><p class="why"><span class="state libre">libre</span>Claridad solicitada por la comunidad sobre los algoritmos disponibles.</p></li>
@@ -411,6 +412,6 @@
   </section>
 
   <footer>
-    Generado por <code>/scan-oss</code> el 15 y 21 de septiembre de 2026 · datos recolectados con <code>gh</code> y verificados issue por issue · detalle completo en <code>reports/2026-09-15-scan.md</code> y <code>reports/2026-09-21-scan.md</code>
+    Generado por <code>/scan-oss</code> el 15 y 21 de septiembre de 2026 · datos recolectados con <code>gh</code> y verificados issue por issue · detalle completo en <code>reports/2026-09-15-scan.md</code> y <code>reports/2026-09-21-scan.md</code> · estado de los picks actualizado el 30 de septiembre (<code>reports/2026-09-30.md</code>)
   </footer>
 </div>
