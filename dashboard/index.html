@@ -176,16 +176,16 @@
 <div class="wrap">
   <p class="eyebrow">Deep Skill · Radar Open Source</p>
   <h1>Oportunidades de contribución</h1>
-  <p class="meta">Escaneo del 15 de septiembre de 2026 · foco en repos de muchas estrellas y alto hype · 149 repos descubiertos, 53 auditados a fondo, 496 issues sin asignar recolectados y verificados uno a uno con sesgo a descartar</p>
+  <p class="meta">Escaneos del 15 y 21 de septiembre de 2026 · foco en repos de muchas estrellas y alto hype, más geociencias y computer vision · 312 repos descubiertos entre ambas pasadas, 83 auditados a fondo, 631 issues sin asignar recolectados y verificados uno a uno con sesgo a descartar</p>
 
   <div class="stats">
-    <div class="stat"><b>5</b><span>verificados libres</span></div>
-    <div class="stat"><b>496</b><span>issues revisados</span></div>
-    <div class="stat"><b>61/90</b><span>ya tenían PR encima</span></div>
+    <div class="stat"><b>36</b><span>verificados libres</span></div>
+    <div class="stat"><b>631</b><span>issues revisados</span></div>
+    <div class="stat"><b>97/164</b><span>ya tenían PR encima</span></div>
     <div class="stat"><b>12</b><span>PRs ya mergeados</span></div>
   </div>
 
-  <p class="pick"><b>Pick del escaneo:</b> minikube#22298 — devolver falco a la ISO. La escribió medyagh, el lead del proyecto, con la ruta de partida localizada y una invitación explícita. Cero PRs compitiendo, CNCF, y encadena con el merge que ya hay en falcosidekick. Empieza por un comentario preguntando alcance, no por código.</p>
+  <p class="pick"><b>Pick del escaneo del 21-sep:</b> D4Vinci/Scrapling#447 — el propio reportante documenta el bug con evidencia concreta (el demo oficial de TinyMCE pierde ~1750 caracteres editables) y cierra con «fix ready, PR welcome?». Cero comentarios, cero PRs enlazados. <b>Pick del 15-sep:</b> minikube#22298 — devolver falco a la ISO, escrito por el lead del proyecto con invitación explícita. Ambos siguen libres.</p>
 
   <section>
     <h2>El dato que ordena todo lo demás</h2>
@@ -252,6 +252,138 @@
   </section>
 
   <section>
+    <h2>Escaneo del 21-sep — el embudo</h2>
+    <p class="domain-note">Segunda pasada de alto hype: 163 repos únicos por keyword, 6 curadores en paralelo seleccionaron 30 repos y 135 issues, la verificación por GraphQL dejó 122 issues realmente abiertos y sin asignar. El chequeo de saturación (PRs — abiertos o cerrados — que ya referencian cada issue) sobre los 74 mejor puntuados por esfuerzo confirmó el mismo patrón del 15-sep.</p>
+    <div class="satbar">
+      <div class="track" role="img" aria-label="De 74 issues priorizados: 29 con PR abierto encima, 7 solo con PRs cerrados, 38 sin ninguna referencia">
+        <div class="seg tomado" style="flex: 29">29</div>
+        <div class="seg muerto" style="flex: 7">7</div>
+        <div class="seg libre" style="flex: 38">38</div>
+      </div>
+      <div class="key">
+        <span class="tomado"><i>29</i> con un PR abierto encima</span>
+        <span class="muerto"><i>7</i> solo con PRs cerrados sin mergear</span>
+        <span class="libre"><i>38</i> sin ninguna referencia — 31 tras filtro de calidad</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Observabilidad y CNCF</h2>
+    <p class="domain-note">Jaeger, el colector oficial de OpenTelemetry, Fluent Bit y dos plataformas emergentes (HyperDX, SigNoz). Todos vivos, todos con push reciente. Cuatro issues limpios, ninguno trivial.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/jaegertracing/jaeger">jaegertracing/jaeger</a></h3><div class="facts"><span>★ 23 227</span><span>Go</span></div><p>Implementación de referencia CNCF para distributed tracing. Mantenido por Uber/CNCF Observability.</p></div>
+      <div class="repo"><h3><a href="https://github.com/open-telemetry/opentelemetry-collector">open-telemetry/opentelemetry-collector</a></h3><div class="facts"><span>★ 7 578</span><span>Go</span></div><p>Capa de ingestion estándar de OpenTelemetry, arquitectura pluggable. Corazón del ecosistema OTel.</p></div>
+      <div class="repo"><h3><a href="https://github.com/fluent/fluent-bit">fluent/fluent-bit</a></h3><div class="facts"><span>★ 8 116</span><span>C</span></div><p>Procesador de logs/métricas/traces ligero, usado por Datadog/AWS/Google en edge y embedded.</p></div>
+      <div class="repo"><h3><a href="https://github.com/hyperdxio/hyperdx">hyperdxio/hyperdx</a></h3><div class="facts"><span>★ 9 904</span><span>TypeScript</span></div><p>Observabilidad con session-replay, OpenTelemetry-native sobre ClickHouse. Startup activo.</p></div>
+    </div>
+    <h4>Issues</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/jaegertracing/jaeger/issues/9583">Jaeger Query no recupera spans del índice</a><span class="src">jaegertracing/jaeger · bug</span><p class="why"><span class="state duda">verificar repro</span>Reportado 19-sep, sin datos concretos de reproducción — puede ser configuración del reportante. Confirmar antes de comprometerse.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/open-telemetry/opentelemetry-collector/issues/15985">Campos de struct ignorados con <code>mapstructure:",squash"</code></a><span class="src">open-telemetry/opentelemetry-collector · confmap</span><p class="why"><span class="state libre">libre</span>Bug de config parsing: struct embedding se ignora silenciosamente. Afecta usuarios de extensiones custom.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/fluent/fluent-bit/issues/12434">Timestamp de Node Exporter mal mapeado en push OTLP</a><span class="src">fluent/fluent-bit</span><p class="why"><span class="state libre">libre</span>Bug en OTLP metrics que impacta a usuarios haciendo push de métricas Prometheus.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/hyperdxio/hyperdx/issues/3097">Límites de filtro de logs sin orden ni configuración</a><span class="src">hyperdxio/hyperdx</span><p class="why"><span class="state libre">libre</span>Los valores desaparecen silenciosamente por un problema de cardinalidad no configurable. Toca query builder.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Frameworks de alto hype</h2>
+    <p class="domain-note">El hallazgo del dominio: Scrapling, framework de scraping adaptativo con 82 675★, donde el propio reportante del bug ya diagnosticó la causa y ofrece colaborar.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/D4Vinci/Scrapling">D4Vinci/Scrapling</a></h3><div class="facts"><span>★ 82 675</span><span>Python</span></div><p>Scraping adaptativo con manejo de shadow DOM y JavaScript. Comunidad creciente.</p></div>
+      <div class="repo"><h3><a href="https://github.com/alibaba/jetcache">alibaba/jetcache</a></h3><div class="facts"><span>★ 5 613</span><span>Java</span></div><p>Framework de caching enterprise (Redis, LocalCache). Usado en producción por Alibaba.</p></div>
+    </div>
+    <h4>Issues</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/D4Vinci/Scrapling/issues/447">Iframes same-origin se pierden en snapshots de shadow DOM</a><span class="src">D4Vinci/Scrapling · pick del 21-sep</span><p class="why"><span class="state libre">libre</span>El propio autor documenta el bug con evidencia (TinyMCE pierde ~1750 caracteres editables) y cierra con «fix ready, PR welcome?». Riesgo: puede que ya tenga el parche — comentar rápido ofreciendo colaborar.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/alibaba/jetcache/issues/1009">@CacheInvalidate no funciona sin parámetros</a><span class="src">alibaba/jetcache</span><p class="why"><span class="state libre">libre</span>Bug en anotaciones cuando el método no tiene parámetros. Scope claro, código existente como referencia.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/alibaba/jetcache/issues/1000">DiscardPolicy descarta refresh tasks silenciosamente</a><span class="src">alibaba/jetcache</span><p class="why"><span class="state libre">libre</span>Bug crítico de confiabilidad: el ThreadPool descarta tareas de refresh de caché sin avisar.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kubernetes e infra moderna</h2>
+    <p class="domain-note">El dominio con más volumen de esta pasada (10 issues limpios) y el de más riesgo de gobernanza: kubernetes/kubernetes repite la lección del 15-sep, esta vez con la propia label <code>needs-triage</code> confirmándolo.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/etcd-io/etcd">etcd-io/etcd</a></h3><div class="facts"><span>★ 52 281</span><span>Go</span></div><p>Datastore distribuido crítico para Kubernetes. Bugs aquí tienen impacto de producción real.</p></div>
+      <div class="repo"><h3><a href="https://github.com/istio/istio">istio/istio</a></h3><div class="facts"><span>★ 38 400</span><span>Go</span></div><p>Service mesh estándar en Kubernetes: mTLS, control plane, observability.</p></div>
+      <div class="repo"><h3><a href="https://github.com/portainer/portainer">portainer/portainer</a></h3><div class="facts"><span>★ 38 526</span><span>Go</span></div><p>UI estándar para gestionar clusters K8s y Docker Swarm en producción.</p></div>
+      <div class="repo"><h3><a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a></h3><div class="facts"><span>★ 37 992</span><span>Go</span></div><p>Scanner de vulnerabilidades usado en CI/CD y admission controllers.</p></div>
+      <div class="repo"><h3><a href="https://github.com/containerd/containerd">containerd/containerd</a></h3><div class="facts"><span>★ 21 319</span><span>Go</span></div><p>Container runtime default de Kubernetes. Bajo nivel: snapshots, mounts, cgroups.</p></div>
+      <div class="repo"><h3><a href="https://github.com/abiosoft/colima">abiosoft/colima</a></h3><div class="facts"><span>★ 30 898</span><span>Go</span></div><p>Container runtime en macOS. Issues más accesibles, experiencia Docker/ops transferible.</p></div>
+    </div>
+    <h4>Issues</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/kubernetes/kubernetes/issues/142220">kubelet omite stats de volumen tras remover cgroups</a><span class="src">kubernetes/kubernetes · needs-triage</span><p class="why"><span class="state duda">requiere triage</span>⚠️ Sin aprobación de sig-node todavía — mismo patrón de gobernanza que descartó K8s el 15-sep. Comentar pidiendo triage antes de codear.</p></li>
+      <li class="issue"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/etcd-io/etcd/issues/22450">El leader no recupera el backlog de apply tras un stall</a><span class="src">etcd-io/etcd</span><p class="why"><span class="state libre">libre</span>Raft interno, alta dificultad técnica pero aislado. El tipo de problema que resuelve setups de producción reales.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/istio/istio/issues/60641">Falta soporte del campo <code>from</code> en AuthorizationPolicy</a><span class="src">istio/istio</span><p class="why"><span class="state libre">libre</span>Feature en security policy, buen scope para contribución incremental.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/istio/istio/issues/60541">ReplaceFullPath con regex no funciona en Gateway API</a><span class="src">istio/istio</span><p class="why"><span class="state libre">libre</span>Bug en path matching de HTTPRoute, aislado y reproducible.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/portainer/portainer/issues/13296">Disk usage no disponible en agents — proxy no reenvía auth</a><span class="src">portainer/portainer</span><p class="why"><span class="state libre">libre</span>Bug de autenticación distribuida entre agent y controller. Scope claro.</p></li>
+      <li class="issue"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/portainer/portainer/issues/13298">Redeploy manual de git degrada el GitOps workflow permanentemente</a><span class="src">portainer/portainer</span><p class="why"><span class="state libre">libre</span>Bug en la state machine de GitOps, reproducible. Degrada funcionalidad crítica.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/aquasecurity/trivy/issues/11264">Grafo de dependencias dpkg mal construido</a><span class="src">aquasecurity/trivy</span><p class="why"><span class="state libre">libre</span>Bug aislado en resolución de paquetes Debian, contexto transversal a runtimes.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/containerd/containerd/issues/14196">Backport de dependencia gRPC pendiente en LTS 2.3</a><span class="src">containerd/containerd</span><p class="why"><span class="state libre">libre</span>Actualización de dependencia en rama LTS, bajo riesgo, buen contexto de versionado.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/abiosoft/colima/issues/1631">--network-host-addresses no acepta IPs custom</a><span class="src">abiosoft/colima</span><p class="why"><span class="state libre">libre</span>Bug de parsing de flag de red, buen punto de entrada a la config de interfaces.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/abiosoft/colima/issues/1637">Docker no arranca tras provisión de disco en boot headless</a><span class="src">abiosoft/colima</span><p class="why"><span class="state libre">libre</span>Bug de VM lifecycle (QEMU/Lima), reproducible en macOS, impacta developer experience diaria.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Dev tools y CLI</h2>
+    <p class="domain-note">El hallazgo más alineado con el perfil de AI/coding tools: code-review-graph, un repo de crecimiento muy reciente (septiembre 2026) donde entrar ahora es entrar antes de la saturación.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/tirth8205/code-review-graph">tirth8205/code-review-graph</a></h3><div class="facts"><span>★ 31 665</span><span>Python</span><span>muy reciente</span></div><p>Grafo de code intelligence, alineado con tooling de AI coding y MCP. Crecimiento explosivo en septiembre 2026.</p></div>
+      <div class="repo"><h3><a href="https://github.com/cli/cli">cli/cli</a></h3><div class="facts"><span>★ 46 349</span><span>Go</span></div><p>GitHub CLI oficial. Mantenido activamente, comunidad sana con CONTRIBUTING.md.</p></div>
+      <div class="repo"><h3><a href="https://github.com/sharkdp/bat">sharkdp/bat</a></h3><div class="facts"><span>★ 60 514</span><span>Rust</span></div><p><code>cat</code> clone de alto impacto, herramienta cotidiana, idiomático en Rust.</p></div>
+      <div class="repo"><h3><a href="https://github.com/sharkdp/fd">sharkdp/fd</a></h3><div class="facts"><span>★ 44 496</span><span>Rust</span></div><p><code>find</code> alternativo, buen engagement de comunidad, issues bien contextualizados.</p></div>
+    </div>
+    <h4>Issues</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/tirth8205/code-review-graph/issues/1060">@property no genera aristas en el grafo de análisis</a><span class="src">tirth8205/code-review-graph · pick del 21-sep</span><p class="why"><span class="state libre">libre</span><code>callers_of</code> y <code>find_dead_code</code> no ven ningún consumidor real de una property. Requiere entender el AST de tree-sitter. Ventana de entrada temprana en repo muy joven.</p></li>
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/cli/cli/issues/14477">workflow run -f descarta inputs boolean silenciosamente</a><span class="src">cli/cli</span><p class="why"><span class="state libre">libre</span>Afecta workflows de GitHub Actions. Requiere trazar el parser de boolean inputs del CLI.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/sharkdp/bat/issues/4005">Color de fuente ilegible en light mode</a><span class="src">sharkdp/bat</span><p class="why"><span class="state libre">libre</span>Issue de UX en syntax highlighting. Buen punto de entrada a theming en Rust.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/sharkdp/fd/issues/2131">Faltan placeholders para --format</a><span class="src">sharkdp/fd</span><p class="why"><span class="state libre">libre</span>Expande opciones de formateo de salida, bajo acoplamiento con el resto del código.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Geociencias</h2>
+    <p class="domain-note">El dominio de nicho del perfil, y donde la competencia estructural es menor: cero PRs enlazados en los siete issues de esta lista, algunos abiertos desde 2024 sin que nadie los reclame.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/gempy-project/gempy">gempy-project/gempy</a></h3><div class="facts"><span>★ 1 342</span><span>Python</span></div><p>Modelado geológico implícito 3D con cuantificación de incertidumbre. El framework más completo del ecosistema.</p></div>
+      <div class="repo"><h3><a href="https://github.com/Loop3D/LoopStructural">Loop3D/LoopStructural</a></h3><div class="facts"><span>★ 289</span><span>Python</span></div><p>Modelado estructural 3D implícito desde datos dispersos. Clave en geología minera.</p></div>
+      <div class="repo"><h3><a href="https://github.com/GlacioHack/xdem">GlacioHack/xdem</a></h3><div class="facts"><span>★ 218</span><span>Python</span></div><p>Análisis y coregistro de modelos de elevación digital. Central para topografía minera y estabilidad de taludes.</p></div>
+      <div class="repo"><h3><a href="https://github.com/sede-open/synthoseis">sede-open/synthoseis</a></h3><div class="facts"><span>★ 131</span><span>Python</span></div><p>Síntesis de datos sísmicos para entrenar modelos de ML. Aplicación directa en inversión sísmica.</p></div>
+      <div class="repo"><h3><a href="https://github.com/ondrolexa/apsg">ondrolexa/apsg</a></h3><div class="facts"><span>★ 130</span><span>Python</span></div><p>Toolkit de geología estructural: estereonetas, estadística de orientación, tensores de momento.</p></div>
+    </div>
+    <h4>Issues</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/gempy-project/gempy/issues/904">Mejorar manejo de error cuando nombres de formación no coinciden</a><span class="src">gempy-project/gempy · pick del 21-sep</span><p class="why"><span class="state libre">libre</span><code>KeyError</code> críptico cuando un nombre no coincide entre archivos. Tarea: función helper con mensaje útil. Scope acotado, sin ambigüedad de diseño.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/sede-open/synthoseis/issues/21">cube_shape Z axis con parámetros hardcodeados inconsistentes</a><span class="src">sede-open/synthoseis · pick del 21-sep</span><p class="why"><span class="state libre">libre</span>Dos bloques hardcodeados en <code>Horizons.py</code> (líneas 349 y 370) con rangos inconsistentes entre sí. El reportante ya hizo el diagnóstico completo.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/288">LoopProjectfileProcessor fija fault_stratigraphy=None</a><span class="src">Loop3D/LoopStructural</span><p class="why"><span class="state libre">libre</span>Se pierde el offset de falla al importar el proyecto. Fix de una línea con impacto alto en modelado de fallas.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/Loop3D/LoopStructural/issues/224">Falta listar los tipos de interpolador en la documentación</a><span class="src">Loop3D/LoopStructural</span><p class="why"><span class="state libre">libre</span>Claridad solicitada por la comunidad sobre los algoritmos disponibles.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/GlacioHack/xdem/issues/991">Aclarar en docs que el registro afín puede verse afectado por bias</a><span class="src">GlacioHack/xdem</span><p class="why"><span class="state libre">libre</span>Documentación + ejemplo. Reduce confusión en workflows de corrección iterativa.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/GlacioHack/xdem/issues/957">Errores poco claros cuando faltan dependencias opcionales</a><span class="src">GlacioHack/xdem</span><p class="why"><span class="state libre">libre</span>Mejora de UX del CLI para instalaciones incompletas.</p></li>
+      <li class="issue"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/ondrolexa/apsg/issues/39">Graficar mecanismos focales (strike/dip/rake)</a><span class="src">ondrolexa/apsg</span><p class="why"><span class="state libre">libre</span>Feature nueva de visualización de eventos sísmicos. Requiere matplotlib + conocimiento de geología estructural. Alto impacto para aplicaciones sísmicas.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Computer vision</h2>
+    <p class="domain-note">Dominio más pequeño de esta pasada: tres issues limpios, uno de ellos con título vago que conviene verificar antes de comprometerse.</p>
+    <div class="grid">
+      <div class="repo"><h3><a href="https://github.com/pytorch/vision">pytorch/vision</a></h3><div class="facts"><span>★ 17 920</span><span>Python</span></div><p>Estándar de PyTorch para datasets, transforms y modelos. 1200+ issues abiertos.</p></div>
+      <div class="repo"><h3><a href="https://github.com/roflcoopter/viseron">roflcoopter/viseron</a></h3><div class="facts"><span>★ 3 540</span><span>Python</span></div><p>NVR con CV: recording, HLS, soporte Jetson. Pequeño pero vivo.</p></div>
+      <div class="repo"><h3><a href="https://github.com/jacobgil/pytorch-grad-cam">jacobgil/pytorch-grad-cam</a></h3><div class="facts"><span>★ 12 979</span><span>Python</span></div><p>Explainability para CV: Grad-CAM, SAM, ShapleyCAM.</p></div>
+    </div>
+    <h4>Issues</h4>
+    <ul class="issues">
+      <li class="issue"><span class="chip medio">medio</span><a class="issue-title" href="https://github.com/pytorch/vision/issues/9657">Faltan utilidades de inspección del pipeline de transforms</a><span class="src">pytorch/vision</span><p class="why"><span class="state libre">libre</span>Herramienta de diagnóstico para debugging de transforms.</p></li>
+      <li class="issue dudoso"><span class="chip alto">alto</span><a class="issue-title" href="https://github.com/roflcoopter/viseron/issues/1541">Grabación parcialmente rota</a><span class="src">roflcoopter/viseron</span><p class="why"><span class="state duda">verificar repro</span>Título vago — confirmar los pasos de reproducción antes de comprometerse.</p></li>
+      <li class="issue"><span class="chip bajo">bajo</span><a class="issue-title" href="https://github.com/jacobgil/pytorch-grad-cam/issues/593">Usar opencv-python-headless para entornos containerizados</a><span class="src">jacobgil/pytorch-grad-cam</span><p class="why"><span class="state libre">libre</span>Optimización de dependencias para despliegues en contenedor.</p></li>
+    </ul>
+  </section>
+
+  <section>
     <h2>Bounties</h2>
     <p class="domain-note">Comprobadas las etiquetas de bounty de los 53 repos auditados: solo dos tienen el circuito montado, y solo uno está vivo. Ahora mismo no hay ningún issue con bounty abierto en ninguno de los dos, así que esto es una veta que se vigila, no una que se toma hoy.</p>
     <div class="tablewrap">
@@ -279,6 +411,6 @@
   </section>
 
   <footer>
-    Generado por <code>/scan-oss</code> el 15 de septiembre de 2026 · datos recolectados con <code>gh</code> y verificados issue por issue · el detalle completo está en <code>reports/2026-09-15-scan.md</code>
+    Generado por <code>/scan-oss</code> el 15 y 21 de septiembre de 2026 · datos recolectados con <code>gh</code> y verificados issue por issue · detalle completo en <code>reports/2026-09-15-scan.md</code> y <code>reports/2026-09-21-scan.md</code>
   </footer>
 </div>
