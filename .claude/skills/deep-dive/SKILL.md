@@ -17,6 +17,14 @@ Si no se pasó un repo como argumento, pregunta cuál antes de continuar.
   descartando asignados o con PR enlazado.
 - Clona shallow si hace falta inspeccionar el código:
   `git clone --depth=1` en el scratchpad (nunca en este repo).
+- **Política de IA** (obligatorio): buscar `AI.md`, `AI_POLICY.md`,
+  `AGENT_POLICY.md`, `AGENTS.md`, la sección de IA del CONTRIBUTING y el PR
+  template (también los del repo `<org>/community` o `<org>/.github`).
+  Clasificarla en: **prohíbe** contribuciones hechas por agentes o comunicación
+  escrita con IA (descartar el repo o que el usuario lo haga a mano) /
+  **exige disclosure** (va en la descripción del PR) / **exige comunicación
+  humana** (Claude puede preparar código, pero comments y replies los escribe
+  el usuario) / **sin política**.
 
 ## Análisis (agentes en paralelo si el repo es grande)
 
@@ -35,4 +43,17 @@ Informe en `reports/deep-dive-<repo>-YYYY-MM-DD.md`:
   reservas / no, y por qué).
 - Cómo empezar: pasos concretos de setup + 3–5 issues recomendados ordenados
   por esfuerzo, cada uno con una nota de qué tocar en el código.
-- Riesgos: señales de comunidad hostil, backlog de PRs ignorados, CLA, etc.
+- Riesgos: señales de comunidad hostil, backlog de PRs ignorados, CLA,
+  política de IA (con su clasificación), etc.
+
+## Antes de cada publicación (PR, comment, reply)
+
+Las políticas de IA aparecen a mitad de un PR: fatiando adoptó la suya con
+tres PRs nuestros abiertos y lucene la suya dos días antes de que abriéramos.
+Revisarlo en el deep-dive no basta:
+
+1. Volver a buscar la política de IA del repo y de su organización.
+2. Leer **todos** los comments nuevos del hilo, no solo los últimos.
+3. Si la política exige disclosure, incluirlo; si prohíbe la comunicación
+   escrita con IA, no redactar en la voz del usuario: preparar los hechos y
+   que él escriba.
