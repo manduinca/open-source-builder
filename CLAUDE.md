@@ -18,6 +18,31 @@ agénticas + reportes generados.
 - Idioma de reportes y dashboard: español. Términos técnicos y nombres de
   labels de GitHub (`good first issue`, etc.) quedan en inglés.
 
+## Regla dura: las contribuciones externas no llevan firma de IA
+
+Los commits que van a repos de terceros (todo PR que sale de este sistema)
+**nunca** llevan un trailer `Co-Authored-By` de un agente o modelo de IA. Esto
+prevalece sobre la atribución por defecto de cualquier agente (Claude Code,
+Codex, opencode, Muse Code…). Cuando la política del repo exige declarar el uso
+de IA, se declara donde ella indica (descripción del PR, checkbox,
+`Assisted-by:`), decidido con el usuario.
+
+- Los clones van al scratchpad, nunca a `~/Projects`, con el fork como `origin`
+  y el proyecto como `upstream` (`gh repo fork <owner/repo> --clone`). Apenas
+  clonado: `git config ledger.attribution false`.
+- [agent-ledger](https://github.com/manduinca/agent-ledger) lo hace cumplir: no
+  firma repos de terceros (los reconoce por `upstream` o preguntando a GitHub si
+  el `origin` es fork) y su guardia rechaza en `commit-msg` y en `pre-push`
+  cualquier co-autor de IA. Si rechaza un commit, se quita el trailer; nunca se
+  desactiva la guardia ni se usa `--no-verify` para esquivarla.
+- Antes de cada push, `git log upstream/<rama>..HEAD --format=%B | grep -i co-authored-by`
+  tiene que salir vacío.
+- Única excepción: que la política escrita del proyecto pida ese trailer. Se
+  decide con el usuario y se habilita solo en ese clon con
+  `git config ledger.allowAiTrailers true`.
+
+Los commits de **este** repo sí llevan el trailer: open-source-builder es propio.
+
 ## Comandos útiles
 
 - `gh search repos "<keyword>" --language=python --sort=stars --json fullName,stargazersCount,pushedAt,description --limit 20`

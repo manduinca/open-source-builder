@@ -16,7 +16,9 @@ Si no se pasó un repo como argumento, pregunta cuál antes de continuar.
 - Issues abiertos con labels de contribución (ver `config/interests.yaml`),
   descartando asignados o con PR enlazado.
 - Clona shallow si hace falta inspeccionar el código:
-  `git clone --depth=1` en el scratchpad (nunca en este repo).
+  `git clone --depth=1` en el scratchpad (nunca en este repo). Todo clon de un
+  repo de terceros se marca al crearlo: `git config ledger.attribution false`
+  (regla dura en CLAUDE.md: sin firma de IA en contribuciones externas).
 - **Política de IA** (obligatorio): buscar `AI.md`, `AI_POLICY.md`,
   `AGENT_POLICY.md`, `AGENTS.md`, la sección de IA del CONTRIBUTING y el PR
   template (también los del repo `<org>/community` o `<org>/.github`).
@@ -57,3 +59,5 @@ Revisarlo en el deep-dive no basta:
 3. Si la política exige disclosure, incluirlo; si prohíbe la comunicación
    escrita con IA, no redactar en la voz del usuario: preparar los hechos y
    que él escriba.
+4. Verificar que ningún commit lleve co-autor de IA:
+   `git log upstream/<rama>..HEAD --format=%B | grep -i co-authored-by` vacío.
