@@ -33,7 +33,8 @@ de IA, se declara donde ella indica (descripción del PR, checkbox,
 - [agent-ledger](https://github.com/manduinca/agent-ledger) lo hace cumplir: no
   firma repos de terceros (los reconoce por `upstream` o preguntando a GitHub si
   el `origin` es fork) y su guardia rechaza en `commit-msg` y en `pre-push`
-  cualquier co-autor de IA. Si rechaza un commit, se quita el trailer; nunca se
+  cualquier co-autor de IA; el `pre-push` mira además el destino, así que también
+  cubre un clon del proyecto original que empuja al fork. Si rechaza un commit, se quita el trailer; nunca se
   desactiva la guardia ni se usa `--no-verify` para esquivarla.
 - Antes de cada push, `git log upstream/<rama>..HEAD --format=%B | grep -i co-authored-by`
   tiene que salir vacío.
