@@ -1,0 +1,893 @@
+diff --git a/diesel/src/lib.rs b/diesel/src/lib.rs
+index 2a49939..ea967de 100644
+--- a/diesel/src/lib.rs
++++ b/diesel/src/lib.rs
+@@ -414,8 +414,8 @@ pub mod helper_types {
+     //! DslName<OtherTypes>>::Output`. So the return type of
+     //! `users.filter(first_name.eq("John")).order(last_name.asc()).limit(10)` would
+     //! be `Limit<Order<FindBy<users, first_name, &str>, Asc<last_name>>>`
+-    use super::query_builder::combination_clause::{self, CombinationClause};
+-    use super::query_builder::{AsQuery, locking_clause as lock};
++    use super::query_builder::combination_clause::{self, AsCombinationQuery, CombinationClause};
++    use super::query_builder::locking_clause as lock;
+     use super::query_dsl::methods::*;
+     use super::query_dsl::*;
+     use super::query_source::{aliasing, joins};
+@@ -550,7 +550,7 @@ pub mod helper_types {
+         combination_clause::Union,
+         combination_clause::Distinct,
+         <Source as CombineDsl>::Query,
+-        <Rhs as AsQuery>::Query,
++        <Rhs as AsCombinationQuery>::Query,
+     >;
+ 
+     /// Represents the return type of [`.union_all(rhs)`](crate::prelude::CombineDsl::union_all)
+@@ -558,7 +558,7 @@ pub mod helper_types {
+         combination_clause::Union,
+         combination_clause::All,
+         <Source as CombineDsl>::Query,
+-        <Rhs as AsQuery>::Query,
++        <Rhs as AsCombinationQuery>::Query,
+     >;
+ 
+     /// Represents the return type of [`.intersect(rhs)`](crate::prelude::CombineDsl::intersect)
+@@ -566,7 +566,7 @@ pub mod helper_types {
+         combination_clause::Intersect,
+         combination_clause::Distinct,
+         <Source as CombineDsl>::Query,
+-        <Rhs as AsQuery>::Query,
++        <Rhs as AsCombinationQuery>::Query,
+     >;
+ 
+     /// Represents the return type of [`.intersect_all(rhs)`](crate::prelude::CombineDsl::intersect_all)
+@@ -574,7 +574,7 @@ pub mod helper_types {
+         combination_clause::Intersect,
+         combination_clause::All,
+         <Source as CombineDsl>::Query,
+-        <Rhs as AsQuery>::Query,
++        <Rhs as AsCombinationQuery>::Query,
+     >;
+ 
+     /// Represents the return type of [`.except(rhs)`](crate::prelude::CombineDsl::except)
+@@ -582,7 +582,7 @@ pub mod helper_types {
+         combination_clause::Except,
+         combination_clause::Distinct,
+         <Source as CombineDsl>::Query,
+-        <Rhs as AsQuery>::Query,
++        <Rhs as AsCombinationQuery>::Query,
+     >;
+ 
+     /// Represents the return type of [`.except_all(rhs)`](crate::prelude::CombineDsl::except_all)
+@@ -590,7 +590,7 @@ pub mod helper_types {
+         combination_clause::Except,
+         combination_clause::All,
+         <Source as CombineDsl>::Query,
+-        <Rhs as AsQuery>::Query,
++        <Rhs as AsCombinationQuery>::Query,
+     >;
+ 
+     type JoinQuerySource<Left, Right, Kind, On> = joins::JoinOn<joins::Join<Left, Right, Kind>, On>;
+diff --git a/diesel/src/query_builder/combination_clause.rs b/diesel/src/query_builder/combination_clause.rs
+index 3851bca..74fac12 100644
+--- a/diesel/src/query_builder/combination_clause.rs
++++ b/diesel/src/query_builder/combination_clause.rs
+@@ -18,10 +18,11 @@ use crate::query_builder::limit_clause::{LimitClause, NoLimitClause};
+ use crate::query_builder::limit_offset_clause::LimitOffsetClause;
+ use crate::query_builder::offset_clause::{NoOffsetClause, OffsetClause};
+ use crate::query_builder::order_clause::{NoOrderClause, OrderClause};
+-use crate::query_builder::{AsQuery, AstPass, Query, QueryFragment, QueryId, SelectQuery};
++use crate::query_builder::{AstPass, Query, QueryFragment, QueryId, SelectQuery};
+ use crate::query_dsl::RunQueryDslSupport;
+ use crate::query_dsl::methods::*;
+ use crate::query_dsl::positional_order_dsl::{IntoPositionalOrderExpr, PositionalOrderDsl};
++use crate::query_source::QueryRelation;
+ use crate::sql_types::BigInt;
+ use crate::{CombineDsl, Insertable, QueryDsl, QueryResult, Table};
+ 
+@@ -69,6 +70,50 @@ impl<Combinator, Rule, Source, Rhs> CombinationClause<Combinator, Rule, Source,
+     }
+ }
+ 
++/// A query that can be the right hand side of a `UNION`, `INTERSECT` or `EXCEPT`
++///
++/// Unlike [`AsQuery`](crate::query_builder::AsQuery), this does not require the query to be valid on its own:
++/// when the combination is used as a subselect, as with [`exists`](crate::dsl::exists),
++/// its `WHERE` clause may reference the outer query. Loading a combination still
++/// requires both sides to be complete queries.
++pub trait AsCombinationQuery {
++    /// The SQL type of the rows returned by this query
++    type SqlType;
++
++    /// The query that ends up in the combination clause
++    type Query: SelectQuery<SqlType = Self::SqlType>;
++
++    /// Converts `self` into the query that ends up in the combination clause
++    #[allow(clippy::wrong_self_convention)]
++    fn as_combination_query(self) -> Self::Query;
++}
++
++impl<T> AsCombinationQuery for T
++where
++    T: QueryRelation,
++    T::Query: SelectQuery,
++{
++    type SqlType = <T::Query as SelectQuery>::SqlType;
++    type Query = T::Query;
++
++    fn as_combination_query(self) -> Self::Query {
++        self.as_query()
++    }
++}
++
++impl<Combinator, Rule, Source, Rhs, O, LOf> AsCombinationQuery
++    for CombinationClause<Combinator, Rule, Source, Rhs, O, LOf>
++where
++    Self: SelectQuery,
++{
++    type SqlType = <Self as SelectQuery>::SqlType;
++    type Query = Self;
++
++    fn as_combination_query(self) -> Self::Query {
++        self
++    }
++}
++
+ impl<Combinator, Rule, Source, Rhs, O, LOf> QueryDsl
+     for CombinationClause<Combinator, Rule, Source, Rhs, O, LOf>
+ {
+@@ -132,50 +177,50 @@ where
+ impl<Combinator, Rule, Source, OriginRhs, O, LOf> CombineDsl
+     for CombinationClause<Combinator, Rule, Source, OriginRhs, O, LOf>
+ where
+-    Self: Query,
++    Self: SelectQuery,
+ {
+     type Query = Self;
+ 
+     fn union<Rhs>(self, rhs: Rhs) -> crate::dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, Distinct, self, rhs.as_query())
++        CombinationClause::new(Union, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn union_all<Rhs>(self, rhs: Rhs) -> crate::dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, All, self, rhs.as_query())
++        CombinationClause::new(Union, All, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect<Rhs>(self, rhs: Rhs) -> crate::dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, Distinct, self, rhs.as_query())
++        CombinationClause::new(Intersect, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> crate::dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, All, self, rhs.as_query())
++        CombinationClause::new(Intersect, All, self, rhs.as_combination_query())
+     }
+ 
+     fn except<Rhs>(self, rhs: Rhs) -> crate::dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, Distinct, self, rhs.as_query())
++        CombinationClause::new(Except, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn except_all<Rhs>(self, rhs: Rhs) -> crate::dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, All, self, rhs.as_query())
++        CombinationClause::new(Except, All, self, rhs.as_combination_query())
+     }
+ }
+ 
+diff --git a/diesel/src/query_builder/mod.rs b/diesel/src/query_builder/mod.rs
+index cc3f634..3ee97e8 100644
+--- a/diesel/src/query_builder/mod.rs
++++ b/diesel/src/query_builder/mod.rs
+@@ -74,6 +74,8 @@ pub use self::update_statement::{
+     BoxedCloneUpdateStatement, BoxedUpdateStatement, UpdateStatement,
+ };
+ 
++#[doc(inline)]
++pub use self::combination_clause::AsCombinationQuery;
+ #[cfg(feature = "i-implement-a-third-party-backend-and-opt-into-breaking-changes")]
+ pub use self::combination_clause::{
+     All, Distinct, Except, Intersect, ParenthesisWrapper, SupportsCombinationClause, Union,
+diff --git a/diesel/src/query_builder/select_statement/boxed.rs b/diesel/src/query_builder/select_statement/boxed.rs
+index 40e6a74..fabb458 100644
+--- a/diesel/src/query_builder/select_statement/boxed.rs
++++ b/diesel/src/query_builder/select_statement/boxed.rs
+@@ -196,6 +196,18 @@ where
+     type SqlType = ST;
+ }
+ 
++impl<ST, QS, DB, GB> AsCombinationQuery for BoxedSelectStatement<'_, ST, QS, DB, GB>
++where
++    Self: SelectQuery,
++{
++    type SqlType = <Self as SelectQuery>::SqlType;
++    type Query = Self;
++
++    fn as_combination_query(self) -> Self::Query {
++        self
++    }
++}
++
+ impl<ST, QS, QS2, DB, GB> ValidSubselect<QS2> for BoxedSelectStatement<'_, ST, QS, DB, GB> where
+     Self: Query<SqlType = ST>
+ {
+@@ -533,50 +545,50 @@ where
+ 
+ impl<ST, QS, DB, GB> CombineDsl for BoxedSelectStatement<'_, ST, QS, DB, GB>
+ where
+-    Self: Query,
++    Self: SelectQuery,
+ {
+     type Query = Self;
+ 
+     fn union<Rhs>(self, rhs: Rhs) -> crate::dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, Distinct, self, rhs.as_query())
++        CombinationClause::new(Union, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn union_all<Rhs>(self, rhs: Rhs) -> crate::dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, All, self, rhs.as_query())
++        CombinationClause::new(Union, All, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect<Rhs>(self, rhs: Rhs) -> crate::dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, Distinct, self, rhs.as_query())
++        CombinationClause::new(Intersect, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> crate::dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, All, self, rhs.as_query())
++        CombinationClause::new(Intersect, All, self, rhs.as_combination_query())
+     }
+ 
+     fn except<Rhs>(self, rhs: Rhs) -> crate::dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, Distinct, self, rhs.as_query())
++        CombinationClause::new(Except, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn except_all<Rhs>(self, rhs: Rhs) -> crate::dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, All, self, rhs.as_query())
++        CombinationClause::new(Except, All, self, rhs.as_combination_query())
+     }
+ }
+ 
+diff --git a/diesel/src/query_builder/select_statement/boxed_clone.rs b/diesel/src/query_builder/select_statement/boxed_clone.rs
+index ff9ff6a..310364b 100644
+--- a/diesel/src/query_builder/select_statement/boxed_clone.rs
++++ b/diesel/src/query_builder/select_statement/boxed_clone.rs
+@@ -217,6 +217,18 @@ where
+     type SqlType = ST;
+ }
+ 
++impl<ST, QS, DB, GB> AsCombinationQuery for BoxedCloneSelectStatement<'_, ST, QS, DB, GB>
++where
++    Self: SelectQuery,
++{
++    type SqlType = <Self as SelectQuery>::SqlType;
++    type Query = Self;
++
++    fn as_combination_query(self) -> Self::Query {
++        self
++    }
++}
++
+ impl<ST, QS, QS2, DB, GB> ValidSubselect<QS2> for BoxedCloneSelectStatement<'_, ST, QS, DB, GB> where
+     Self: Query<SqlType = ST>
+ {
+@@ -559,50 +571,50 @@ where
+ 
+ impl<ST, QS, DB, GB> CombineDsl for BoxedCloneSelectStatement<'_, ST, QS, DB, GB>
+ where
+-    Self: Query,
++    Self: SelectQuery,
+ {
+     type Query = Self;
+ 
+     fn union<Rhs>(self, rhs: Rhs) -> crate::dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, Distinct, self, rhs.as_query())
++        CombinationClause::new(Union, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn union_all<Rhs>(self, rhs: Rhs) -> crate::dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, All, self, rhs.as_query())
++        CombinationClause::new(Union, All, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect<Rhs>(self, rhs: Rhs) -> crate::dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, Distinct, self, rhs.as_query())
++        CombinationClause::new(Intersect, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> crate::dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, All, self, rhs.as_query())
++        CombinationClause::new(Intersect, All, self, rhs.as_combination_query())
+     }
+ 
+     fn except<Rhs>(self, rhs: Rhs) -> crate::dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, Distinct, self, rhs.as_query())
++        CombinationClause::new(Except, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn except_all<Rhs>(self, rhs: Rhs) -> crate::dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, All, self, rhs.as_query())
++        CombinationClause::new(Except, All, self, rhs.as_combination_query())
+     }
+ }
+ 
+diff --git a/diesel/src/query_builder/select_statement/dsl_impls.rs b/diesel/src/query_builder/select_statement/dsl_impls.rs
+index d77a276..798d439 100644
+--- a/diesel/src/query_builder/select_statement/dsl_impls.rs
++++ b/diesel/src/query_builder/select_statement/dsl_impls.rs
+@@ -862,49 +862,49 @@ where
+ 
+ impl<F, S, D, W, O, LOf, G, H, LC> CombineDsl for SelectStatement<F, S, D, W, O, LOf, G, H, LC>
+ where
+-    Self: Query,
++    Self: SelectQuery,
+ {
+     type Query = Self;
+ 
+     fn union<Rhs>(self, rhs: Rhs) -> crate::dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, Distinct, self, rhs.as_query())
++        CombinationClause::new(Union, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn union_all<Rhs>(self, rhs: Rhs) -> crate::dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, All, self, rhs.as_query())
++        CombinationClause::new(Union, All, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect<Rhs>(self, rhs: Rhs) -> crate::dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, Distinct, self, rhs.as_query())
++        CombinationClause::new(Intersect, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> crate::dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, All, self, rhs.as_query())
++        CombinationClause::new(Intersect, All, self, rhs.as_combination_query())
+     }
+ 
+     fn except<Rhs>(self, rhs: Rhs) -> crate::dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, Distinct, self, rhs.as_query())
++        CombinationClause::new(Except, Distinct, self, rhs.as_combination_query())
+     }
+ 
+     fn except_all<Rhs>(self, rhs: Rhs) -> crate::dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, All, self, rhs.as_query())
++        CombinationClause::new(Except, All, self, rhs.as_combination_query())
+     }
+ }
+diff --git a/diesel/src/query_builder/select_statement/mod.rs b/diesel/src/query_builder/select_statement/mod.rs
+index 6695db6..56e5c75 100644
+--- a/diesel/src/query_builder/select_statement/mod.rs
++++ b/diesel/src/query_builder/select_statement/mod.rs
+@@ -24,6 +24,7 @@ pub(crate) use self::boxed::BoxedSelectStatement;
+ pub(crate) use self::boxed_clone::BoxedCloneSelectStatement;
+ 
+ use super::NoFromClause;
++use super::combination_clause::AsCombinationQuery;
+ use super::distinct_clause::NoDistinctClause;
+ use super::from_clause::AsQuerySource;
+ use super::from_clause::FromClause;
+@@ -258,6 +259,19 @@ where
+     type SqlType = S::SelectClauseSqlType;
+ }
+ 
++impl<F, S, D, W, O, LOf, G, H, LC> AsCombinationQuery
++    for SelectStatement<F, S, D, W, O, LOf, G, H, LC>
++where
++    Self: SelectQuery,
++{
++    type SqlType = <Self as SelectQuery>::SqlType;
++    type Query = Self;
++
++    fn as_combination_query(self) -> Self::Query {
++        self
++    }
++}
++
+ impl<F, S, D, W, O, LOf, G, H, LC, DB> QueryFragment<DB>
+     for SelectStatement<F, S, D, W, O, LOf, G, H, LC>
+ where
+diff --git a/diesel/src/query_dsl/combine_dsl.rs b/diesel/src/query_dsl/combine_dsl.rs
+index e68ec60..034820a 100644
+--- a/diesel/src/query_dsl/combine_dsl.rs
++++ b/diesel/src/query_dsl/combine_dsl.rs
+@@ -1,15 +1,15 @@
+ use crate::Table;
+ use crate::dsl;
++use crate::query_builder::SelectQuery;
+ use crate::query_builder::combination_clause::{
+-    All, CombinationClause, Distinct, Except, Intersect, Union,
++    All, AsCombinationQuery, CombinationClause, Distinct, Except, Intersect, Union,
+ };
+-use crate::query_builder::{AsQuery, Query};
+ 
+ /// Extension trait to combine queries using a combinator like `UNION`, `INTERSECT` or `EXCEPT`
+ /// with or without `ALL` rule for duplicates
+ pub trait CombineDsl {
+     /// What kind of query does this type represent?
+-    type Query: Query;
++    type Query: SelectQuery;
+ 
+     /// Combine two queries using a SQL `UNION`
+     ///
+@@ -44,76 +44,89 @@ pub trait CombineDsl {
+     /// ```
+     fn union<Rhs>(self, rhs: Rhs) -> dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>;
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>;
+ 
+     /// Combine two queries using a SQL `UNION ALL`
+     fn union_all<Rhs>(self, rhs: Rhs) -> dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>;
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>;
+ 
+     /// Combine two queries using a SQL `INTERSECT`
+     fn intersect<Rhs>(self, rhs: Rhs) -> dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>;
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>;
+ 
+     /// Combine two queries using a SQL `INTERSECT ALL`
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>;
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>;
+ 
+     /// Combine two queries using a SQL `EXCEPT`
+     fn except<Rhs>(self, rhs: Rhs) -> dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>;
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>;
+ 
+     /// Combine two queries using a SQL `EXCEPT ALL`
+     fn except_all<Rhs>(self, rhs: Rhs) -> dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>;
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>;
+ }
+ 
+-impl<T: Table> CombineDsl for T {
++impl<T: Table> CombineDsl for T
++where
++    T::Query: SelectQuery,
++{
+     type Query = T::Query;
+ 
+     fn union<Rhs>(self, rhs: Rhs) -> dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, Distinct, self.as_query(), rhs.as_query())
++        CombinationClause::new(Union, Distinct, self.as_query(), rhs.as_combination_query())
+     }
+ 
+     fn union_all<Rhs>(self, rhs: Rhs) -> dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Union, All, self.as_query(), rhs.as_query())
++        CombinationClause::new(Union, All, self.as_query(), rhs.as_combination_query())
+     }
+ 
+     fn intersect<Rhs>(self, rhs: Rhs) -> dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, Distinct, self.as_query(), rhs.as_query())
++        CombinationClause::new(
++            Intersect,
++            Distinct,
++            self.as_query(),
++            rhs.as_combination_query(),
++        )
+     }
+ 
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Intersect, All, self.as_query(), rhs.as_query())
++        CombinationClause::new(Intersect, All, self.as_query(), rhs.as_combination_query())
+     }
+ 
+     fn except<Rhs>(self, rhs: Rhs) -> dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, Distinct, self.as_query(), rhs.as_query())
++        CombinationClause::new(
++            Except,
++            Distinct,
++            self.as_query(),
++            rhs.as_combination_query(),
++        )
+     }
+ 
+     fn except_all<Rhs>(self, rhs: Rhs) -> dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <Self::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <Self::Query as SelectQuery>::SqlType>,
+     {
+-        CombinationClause::new(Except, All, self.as_query(), rhs.as_query())
++        CombinationClause::new(Except, All, self.as_query(), rhs.as_combination_query())
+     }
+ }
+diff --git a/diesel/src/query_source/aliasing/alias.rs b/diesel/src/query_source/aliasing/alias.rs
+index cc8d8b9..fbb3e92 100644
+--- a/diesel/src/query_source/aliasing/alias.rs
++++ b/diesel/src/query_source/aliasing/alias.rs
+@@ -4,7 +4,10 @@ use super::{AliasSource, AliasedField};
+ use crate::backend::{Backend, sql_dialect};
+ use crate::expression::{Expression, SelectableExpression, ValidGrouping};
+ use crate::helper_types::AliasedFields;
+-use crate::query_builder::{AsQuery, AstPass, FromClause, QueryFragment, QueryId, SelectStatement};
++use crate::query_builder::{
++    AsCombinationQuery, AsQuery, AstPass, FromClause, QueryFragment, QueryId, SelectQuery,
++    SelectStatement,
++};
+ use crate::query_source::{
+     AppearsInFromClause, Never, QueryRelation, QueryRelationField, QuerySource, TableNotEqual,
+ };
+@@ -126,6 +129,19 @@ where
+     }
+ }
+ 
++impl<S> AsCombinationQuery for Alias<S>
++where
++    Self: AsQuery,
++    <Self as AsQuery>::Query: SelectQuery,
++{
++    type SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType;
++    type Query = <Self as AsQuery>::Query;
++
++    fn as_combination_query(self) -> Self::Query {
++        self.as_query()
++    }
++}
++
+ /// This trait is used to allow external crates to implement
+ /// `AppearsInFromClause<QS> for Alias<S>`
+ ///
+diff --git a/diesel/src/query_source/aliasing/dsl_impls.rs b/diesel/src/query_source/aliasing/dsl_impls.rs
+index 101afe1..75755ab 100644
+--- a/diesel/src/query_source/aliasing/dsl_impls.rs
++++ b/diesel/src/query_source/aliasing/dsl_impls.rs
+@@ -6,7 +6,9 @@ use crate::dsl;
+ use crate::expression::SelectableExpression;
+ use crate::expression::{Expression, TypedExpressionType, ValidGrouping};
+ use crate::expression_methods::EqAll;
+-use crate::query_builder::{AsQuery, FromClause, Query, SelectStatement, combination_clause};
++use crate::query_builder::{
++    AsCombinationQuery, AsQuery, FromClause, SelectQuery, SelectStatement, combination_clause,
++};
+ use crate::query_dsl::methods::*;
+ use crate::query_dsl::{CombineDsl, QueryDsl, RunQueryDslSupport};
+ use crate::query_source::{QuerySource, Table};
+@@ -95,78 +97,79 @@ where
+     S: AliasSource,
+     S::Target: Table,
+     Self: AsQuery,
++    <Self as AsQuery>::Query: SelectQuery,
+ {
+     type Query = <Self as AsQuery>::Query;
+ 
+     fn union<Rhs>(self, rhs: Rhs) -> dsl::Union<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <<Self as AsQuery>::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType>,
+     {
+         combination_clause::CombinationClause::new(
+             combination_clause::Union,
+             combination_clause::Distinct,
+             self.as_query(),
+-            rhs.as_query(),
++            rhs.as_combination_query(),
+         )
+     }
+ 
+     fn union_all<Rhs>(self, rhs: Rhs) -> dsl::UnionAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <<Self as AsQuery>::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType>,
+     {
+         combination_clause::CombinationClause::new(
+             combination_clause::Union,
+             combination_clause::All,
+             self.as_query(),
+-            rhs.as_query(),
++            rhs.as_combination_query(),
+         )
+     }
+ 
+     fn intersect<Rhs>(self, rhs: Rhs) -> dsl::Intersect<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <<Self as AsQuery>::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType>,
+     {
+         combination_clause::CombinationClause::new(
+             combination_clause::Intersect,
+             combination_clause::Distinct,
+             self.as_query(),
+-            rhs.as_query(),
++            rhs.as_combination_query(),
+         )
+     }
+ 
+     fn intersect_all<Rhs>(self, rhs: Rhs) -> dsl::IntersectAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <<Self as AsQuery>::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType>,
+     {
+         combination_clause::CombinationClause::new(
+             combination_clause::Intersect,
+             combination_clause::All,
+             self.as_query(),
+-            rhs.as_query(),
++            rhs.as_combination_query(),
+         )
+     }
+ 
+     fn except<Rhs>(self, rhs: Rhs) -> dsl::Except<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <<Self as AsQuery>::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType>,
+     {
+         combination_clause::CombinationClause::new(
+             combination_clause::Except,
+             combination_clause::Distinct,
+             self.as_query(),
+-            rhs.as_query(),
++            rhs.as_combination_query(),
+         )
+     }
+ 
+     fn except_all<Rhs>(self, rhs: Rhs) -> dsl::ExceptAll<Self, Rhs>
+     where
+-        Rhs: AsQuery<SqlType = <<Self as AsQuery>::Query as Query>::SqlType>,
++        Rhs: AsCombinationQuery<SqlType = <<Self as AsQuery>::Query as SelectQuery>::SqlType>,
+     {
+         combination_clause::CombinationClause::new(
+             combination_clause::Except,
+             combination_clause::All,
+             self.as_query(),
+-            rhs.as_query(),
++            rhs.as_combination_query(),
+         )
+     }
+ }
+diff --git a/diesel_tests/tests/combination.rs b/diesel_tests/tests/combination.rs
+index aca752e..0a3c0d7 100644
+--- a/diesel_tests/tests/combination.rs
++++ b/diesel_tests/tests/combination.rs
+@@ -235,6 +235,126 @@ fn as_subquery_for_eq_in() {
+     assert_eq!(out, vec!["First post", "Second post"]);
+ }
+ 
++#[diesel_test_helper::test]
++#[cfg(any(feature = "postgres", feature = "sqlite"))]
++fn except_in_subselect_referencing_outer_query() {
++    let conn = &mut connection_with_sean_and_tess_in_users_table();
++
++    insert_into(posts::table)
++        .values(&[
++            (
++                posts::id.eq(1),
++                posts::user_id.eq(1),
++                posts::title.eq("Hello"),
++            ),
++            (
++                posts::id.eq(2),
++                posts::user_id.eq(1),
++                posts::title.eq("World"),
++            ),
++            (
++                posts::id.eq(3),
++                posts::user_id.eq(2),
++                posts::title.eq("Other"),
++            ),
++        ])
++        .execute(conn)
++        .unwrap();
++    insert_into(followings::table)
++        .values(&[
++            (
++                followings::user_id.eq(1),
++                followings::post_id.eq(1),
++                followings::email_notifications.eq(false),
++            ),
++            (
++                followings::user_id.eq(1),
++                followings::post_id.eq(2),
++                followings::email_notifications.eq(false),
++            ),
++            (
++                followings::user_id.eq(2),
++                followings::post_id.eq(1),
++                followings::email_notifications.eq(false),
++            ),
++        ])
++        .execute(conn)
++        .unwrap();
++
++    // Users following every post titled "Hello" or "World"
++    let out = users::table
++        .filter(dsl::not(dsl::exists(
++            posts::table
++                .select(posts::id)
++                .filter(posts::title.eq_any(["Hello", "World"]))
++                .except(
++                    followings::table
++                        .select(followings::post_id)
++                        .filter(followings::user_id.eq(users::id)),
++                ),
++        )))
++        .select(users::name)
++        .load::<String>(conn)
++        .unwrap();
++
++    assert_eq!(out, vec!["Sean"]);
++}
++
++#[diesel_test_helper::test]
++#[cfg(any(feature = "postgres", feature = "sqlite"))]
++fn except_with_outer_query_reference_on_the_left() {
++    let conn = &mut connection_with_sean_and_tess_in_users_table();
++
++    insert_into(posts::table)
++        .values(&[
++            (
++                posts::id.eq(1),
++                posts::user_id.eq(1),
++                posts::title.eq("Hello"),
++            ),
++            (
++                posts::id.eq(2),
++                posts::user_id.eq(2),
++                posts::title.eq("World"),
++            ),
++        ])
++        .execute(conn)
++        .unwrap();
++    insert_into(followings::table)
++        .values(&[
++            (
++                followings::user_id.eq(1),
++                followings::post_id.eq(1),
++                followings::email_notifications.eq(false),
++            ),
++            (
++                followings::user_id.eq(2),
++                followings::post_id.eq(2),
++                followings::email_notifications.eq(false),
++            ),
++        ])
++        .execute(conn)
++        .unwrap();
++
++    // Users following a post that is not titled "Hello"
++    let out = users::table
++        .filter(dsl::exists(
++            followings::table
++                .select(followings::post_id)
++                .filter(followings::user_id.eq(users::id))
++                .except(
++                    posts::table
++                        .select(posts::id)
++                        .filter(posts::title.eq("Hello")),
++                ),
++        ))
++        .select(users::name)
++        .load::<String>(conn)
++        .unwrap();
++
++    assert_eq!(out, vec!["Tess"]);
++}
++
+ #[diesel_test_helper::test]
+ fn positional_order_by() {
+     use crate::schema::users::dsl::*;
