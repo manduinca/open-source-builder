@@ -2,6 +2,8 @@
 
 Fecha de consulta: 2026-10-12 (America/Lima). Repositorio: [omegaup/omegaup](https://github.com/omegaup/omegaup).
 
+**Actualización posterior del mismo día:** pabo99 asignó [#10322](https://github.com/omegaup/omegaup/issues/10322) a su autor `pratham15541` a las 13:32 de Lima. La propuesta de caché descrita abajo ya no es una oportunidad libre; no duplicar su implementación. omegaUp quedó incorporado a la cartera habitual para buscar otros casos.
+
 **Veredicto: sí, con reservas.** Hay integración real de aportes externos y revisión constructiva; el impacto educativo latinoamericano es atractivo. La reserva principal es operativa: los arreglos pequeños revisados ya tienen gente trabajando, incluso cuando GitHub los muestra sin asignar. No conviene entrar duplicando esos esfuerzos.
 
 ## Encaje con el perfil

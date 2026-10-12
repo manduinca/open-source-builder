@@ -1,5 +1,7 @@
 # Deep dive: lichess-org/lila — 2026-10-12
 
+**Actualización posterior del mismo día:** se publicó el [draft #22064](https://github.com/lichess-org/lila/pull/22064) para #21960. El cambio de atributos de enlaces compila y pasa Scalafmt; revisión, reproducción y pruebas humanas siguen pendientes. El análisis que sigue conserva el estado anterior a la implementación; evidencia y seguimiento actuales en [2026-10-12.md](2026-10-12.md#lichess-21960-draft-publicado).
+
 **Veredicto: sí, con reservas.** Lichess tiene actividad y respuestas constructivas, pero su backend Scala y el coste de levantar y probar la aplicación elevan la barrera frente a nuestros proyectos Python/Java. La primera entrada recomendada es [#21960: descubrimiento de feeds Atom](https://github.com/lichess-org/lila/issues/21960), siempre que podamos dedicar una sesión humana a reproducir y verificar el cambio.
 
 ## Encaje y alcance
