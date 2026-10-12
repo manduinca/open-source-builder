@@ -64,3 +64,27 @@ Dos tipos, ambos en `reports/` y ninguno se sobrescribe:
 
 - Claude Code o Codex
 - `gh` (GitHub CLI) autenticado
+
+## Repositorios de seguimiento habitual
+
+Cartera de **36 repositorios**, definida en `seguimiento_habitual` de
+`config/interests.yaml`: 31 con contribuciones previas y cinco incorporaciones
+solicitadas el 12 de octubre de 2026 (Lichess, omegaUp, Odoo, OCA y Plane).
+Además se conservan otras semillas para descubrir oportunidades. Los repos de
+cursos y comunidad antiguos figuran por separado como históricos.
+
+| Tipo | Repositorios |
+| --- | --- |
+| Geociencias y meteorología | [gempy-project/gempy](https://github.com/gempy-project/gempy), [fatiando/harmonica](https://github.com/fatiando/harmonica), [fatiando/boule](https://github.com/fatiando/boule), [simpeg/simpeg](https://github.com/simpeg/simpeg), [Loop3D/LoopStructural](https://github.com/Loop3D/LoopStructural), [DASDAE/dascore](https://github.com/DASDAE/dascore), [seisbench/seisbench](https://github.com/seisbench/seisbench), [GlacioHack/xdem](https://github.com/GlacioHack/xdem), [Unidata/MetPy](https://github.com/Unidata/MetPy) |
+| Geoespacial y machine learning | [torchgeo/torchgeo](https://github.com/torchgeo/torchgeo) |
+| Cloud-native y testing | [dapr/python-sdk](https://github.com/dapr/python-sdk), [dapr/java-sdk](https://github.com/dapr/java-sdk), [testcontainers/testcontainers-java](https://github.com/testcontainers/testcontainers-java), [testcontainers/testcontainers-go](https://github.com/testcontainers/testcontainers-go), [cloudevents/sdk-python](https://github.com/cloudevents/sdk-python) |
+| Observabilidad, seguridad y operaciones | [open-telemetry/opentelemetry-python-contrib](https://github.com/open-telemetry/opentelemetry-python-contrib), [prometheus/client_java](https://github.com/prometheus/client_java), [czerwonk/ping_exporter](https://github.com/czerwonk/ping_exporter), [falcosecurity/falcosidekick](https://github.com/falcosecurity/falcosidekick), [moghtech/komodo](https://github.com/moghtech/komodo) |
+| Herramientas y backend Java | [spring-projects/spring-boot](https://github.com/spring-projects/spring-boot), [openrewrite/rewrite-testing-frameworks](https://github.com/openrewrite/rewrite-testing-frameworks), [OpenAPITools/openapi-generator](https://github.com/OpenAPITools/openapi-generator), [keycloak/keycloak](https://github.com/keycloak/keycloak), [apache/lucene](https://github.com/apache/lucene) |
+| Desktop, lenguaje e IA | [wailsapp/wails](https://github.com/wailsapp/wails), [Automattic/harper](https://github.com/Automattic/harper), [Lightning-AI/litgpt](https://github.com/Lightning-AI/litgpt) |
+| Documentación de infraestructura | [kubernetes/website](https://github.com/kubernetes/website), [open-telemetry/opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io) |
+| Aplicaciones de comunidad, ERP y gestión | [lichess-org/lila](https://github.com/lichess-org/lila), [omegaup/omegaup](https://github.com/omegaup/omegaup), [odoo/odoo](https://github.com/odoo/odoo), [OCA/server-tools](https://github.com/OCA/server-tools), [makeplane/plane](https://github.com/makeplane/plane) |
+| Educación de programación | [freeCodeCamp/freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) |
+
+El seguimiento incluye repos cuya política limita o prohíbe asistencia con IA:
+observar actividad no autoriza a enviarles contribuciones. Los límites conocidos
+se registran en `restricciones_contribucion` y se revalidan antes de publicar.

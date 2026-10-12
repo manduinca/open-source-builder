@@ -1,0 +1,497 @@
+diff --git a/.changelog/4840.added b/.changelog/4840.added
+new file mode 100644
+index 00000000..ccb99d22
+--- /dev/null
++++ b/.changelog/4840.added
+@@ -0,0 +1 @@
++`opentelemetry-instrumentation-django`: add opt-in view code attributes
+diff --git a/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/__init__.py b/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/__init__.py
+index b3001722..7fbb2532 100644
+--- a/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/__init__.py
++++ b/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/__init__.py
+@@ -239,6 +239,19 @@ will replace the value of headers such as ``session-id`` and ``set-cookie`` with
+ Note:
+     The environment variable names used to capture HTTP headers are still experimental, and thus are subject to change.
+ 
++View code attributes
++********************
++Set ``OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES=true`` to add ``code.function.name``,
++``code.file.path`` and, when available, ``code.line.number`` to the existing
++Django request span. This is disabled by default. It does not create additional
++spans or add code attributes to metrics. With an outer WSGI or ASGI
++instrumentation, the Django span may be an internal span.
++
++The attributes identify the resolved function, or the dispatch method for a
++class-based view. Extraction is best effort and does not affect request handling.
++File paths may reveal the layout of the application's source code; enable this
++option only when that information is appropriate for your telemetry destination.
++
+ SQLCommenter
+ ************
+ You can optionally enable sqlcommenter which enriches the query with contextual
+@@ -316,6 +329,7 @@ from opentelemetry.instrumentation._semconv import (
+     _report_old,
+ )
+ from opentelemetry.instrumentation.django.environment_variables import (
++    OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES,
+     OTEL_PYTHON_DJANGO_INSTRUMENT,
+ )
+ from opentelemetry.instrumentation.django.middleware.otel_middleware import (
+@@ -403,6 +417,9 @@ class DjangoInstrumentor(BaseInstrumentor):
+             schema_url=_get_schema_url(sem_conv_opt_in_mode),
+         )
+         _DjangoMiddleware._sem_conv_opt_in_mode = sem_conv_opt_in_mode
++        _DjangoMiddleware._collect_view_code_attributes = (
++            environ.get(OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES, "false").lower() == "true"
++        )
+         _DjangoMiddleware._tracer = tracer
+         _DjangoMiddleware._meter = meter
+         _DjangoMiddleware._excluded_urls = (
+diff --git a/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/environment_variables.py b/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/environment_variables.py
+index 700a613e..a1411ecc 100644
+--- a/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/environment_variables.py
++++ b/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/environment_variables.py
+@@ -2,3 +2,4 @@
+ # SPDX-License-Identifier: Apache-2.0
+ 
+ OTEL_PYTHON_DJANGO_INSTRUMENT = "OTEL_PYTHON_DJANGO_INSTRUMENT"
++OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES = "OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES"
+diff --git a/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/middleware/otel_middleware.py b/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/middleware/otel_middleware.py
+index bf07c36e..5e65df7b 100644
+--- a/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/middleware/otel_middleware.py
++++ b/instrumentation/opentelemetry-instrumentation-django/src/opentelemetry/instrumentation/django/middleware/otel_middleware.py
+@@ -1,11 +1,14 @@
+ # Copyright The OpenTelemetry Authors
+ # SPDX-License-Identifier: Apache-2.0
+ 
++import functools
++import inspect
+ import types
+ from collections.abc import Callable
+ from logging import getLogger
+ from time import time
+ from timeit import default_timer
++from typing import Any
+ 
+ from django import VERSION as django_version
+ from django.http import HttpRequest, HttpResponse
+@@ -45,6 +48,11 @@ from opentelemetry.instrumentation.wsgi import (
+ from opentelemetry.semconv._incubating.attributes.http_attributes import (
+     HTTP_TARGET,
+ )
++from opentelemetry.semconv.attributes.code_attributes import (
++    CODE_FILE_PATH,
++    CODE_FUNCTION_NAME,
++    CODE_LINE_NUMBER,
++)
+ from opentelemetry.semconv.attributes.http_attributes import HTTP_ROUTE
+ from opentelemetry.trace import (
+     INVALID_SPAN,
+@@ -110,6 +118,57 @@ def _is_asgi_request(request: HttpRequest) -> bool:
+     return ASGIRequest is not None and isinstance(request, ASGIRequest)
+ 
+ 
++def _collect_code_attributes(
++    view_func: Callable[..., Any],
++) -> dict[str, str | int]:
++    """Best-effort extraction of ``code.*`` span attributes from a view.
++
++    Handles plain view functions, class-based views (``View.as_view()``),
++    ``functools.partial`` wrappers and decorated views. Returns an empty
++    dict when nothing can be extracted.
++    """
++    attributes: dict[str, str | int] = {}
++    try:
++        target: Any = view_func
++        while isinstance(target, functools.partial):
++            target = target.func
++        # View.as_view() exposes the class; dispatch is its request entry point.
++        view_class = getattr(target, "view_class", None)
++        if view_class is not None:
++            target = view_class.dispatch
++        # follow decorator chains (functools.wraps sets __wrapped__)
++        target = inspect.unwrap(target)
++        if not (inspect.isroutine(target) or inspect.isclass(target)):
++            target = type(target).__call__
++
++        qual_name = getattr(target, "__qualname__", None)
++        if qual_name:
++            module_name = getattr(target, "__module__", None)
++            if module_name:
++                attributes[CODE_FUNCTION_NAME] = f"{module_name}.{qual_name}"
++            else:
++                attributes[CODE_FUNCTION_NAME] = qual_name
++
++        code = getattr(target, "__code__", None)
++        if code is not None:
++            attributes[CODE_FILE_PATH] = code.co_filename
++            attributes[CODE_LINE_NUMBER] = code.co_firstlineno
++        else:
++            # classes have no __code__; the source file is still cheap to
++            # resolve while the line number would require parsing the source
++            try:
++                attributes[CODE_FILE_PATH] = inspect.getfile(target)
++            except (TypeError, OSError):
++                pass
++    except Exception:  # pylint: disable=broad-exception-caught
++        _logger.debug(
++            "Failed to collect code attributes for view %r",
++            view_func,
++            exc_info=True,
++        )
++    return attributes
++
++
+ class _DjangoMiddleware:
+     """Django Middleware for OpenTelemetry"""
+ 
+@@ -128,6 +187,7 @@ class _DjangoMiddleware:
+     _duration_histogram_new = None
+     _active_request_counter = None
+     _sem_conv_opt_in_mode = _StabilityMode.DEFAULT
++    _collect_view_code_attributes = False
+ 
+     _otel_request_hook: Callable[[Span, HttpRequest], None] = None
+     _otel_response_hook: Callable[[Span, HttpRequest, HttpResponse], None] = None
+@@ -276,6 +336,11 @@ class _DjangoMiddleware:
+         if self._environ_activation_key in request.META.keys() and self._environ_span_key in request.META.keys():
+             span = request.META[self._environ_span_key]
+ 
++            if self._collect_view_code_attributes and span.is_recording():
++                code_attributes = _collect_code_attributes(view_func)
++                if code_attributes:
++                    span.set_attributes(code_attributes)
++
+             match = getattr(request, "resolver_match", None)
+             if match:
+                 route = getattr(match, "route", None)
+diff --git a/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware.py b/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware.py
+index 22a0f407..ed0e4b86 100644
+--- a/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware.py
++++ b/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware.py
+@@ -4,6 +4,7 @@
+ # pylint: disable=E0611
+ # pylint: disable=too-many-lines
+ 
++from os import environ
+ from sys import modules
+ from timeit import default_timer
+ from unittest.mock import Mock, patch
+@@ -35,12 +36,18 @@ from opentelemetry.sdk.metrics.export import (
+ )
+ from opentelemetry.sdk.trace import Span
+ from opentelemetry.sdk.trace.id_generator import RandomIdGenerator
++from opentelemetry.semconv.attributes.code_attributes import (
++    CODE_FILE_PATH,
++    CODE_FUNCTION_NAME,
++    CODE_LINE_NUMBER,
++)
+ from opentelemetry.semconv.attributes.http_attributes import (
+     HTTP_REQUEST_HEADER_TEMPLATE,
+ )
+ from opentelemetry.test.samplertestutil import CapturingSampler
+ from opentelemetry.test.wsgitestutil import WsgiTestBase
+ from opentelemetry.trace import (
++    INVALID_SPAN,
+     SpanKind,
+     StatusCode,
+     format_span_id,
+@@ -56,6 +63,7 @@ from opentelemetry.util.http import (
+ 
+ # pylint: disable=import-error
+ from .views import (
++    TracedClassView,
+     error,
+     excluded,
+     excluded_noarg,
+@@ -63,7 +71,10 @@ from .views import (
+     response_with_custom_header,
+     route_span_name,
+     traced,
++    traced_decorated,
++    traced_partial,
+     traced_template,
++    traced_with_arg,
+ )
+ 
+ DJANGO_2_0 = VERSION >= (2, 0)
+@@ -88,6 +99,9 @@ urlpatterns = [
+     re_path(r"^excluded_noarg/", excluded_noarg),
+     re_path(r"^excluded_noarg2/", excluded_noarg2),
+     re_path(r"^span_name/([0-9]{4})/$", route_span_name),
++    re_path(r"^traced_class/", TracedClassView.as_view()),
++    re_path(r"^traced_partial/", traced_partial),
++    re_path(r"^traced_decorated/", traced_decorated),
+     path("", traced, name="empty"),
+ ]
+ _django_instrumentor = DjangoInstrumentor()
+@@ -244,6 +258,142 @@ class TestMiddleware(WsgiTestBase):
+         self.assertEqual(span.attributes["http.scheme"], "http")
+         self.assertEqual(span.attributes["http.status_code"], 200)
+ 
++    def test_code_attributes_function_view(self):
++        self._enable_code_attributes()
++        Client().get("/traced/")
++
++        spans = self.memory_exporter.get_finished_spans()
++        self.assertEqual(len(spans), 1)
++
++        span = spans[0]
++        self.assertEqual(
++            span.attributes[CODE_FUNCTION_NAME],
++            f"{traced.__module__}.traced",
++        )
++        self.assertEqual(
++            span.attributes[CODE_FILE_PATH],
++            traced.__code__.co_filename,
++        )
++        self.assertEqual(
++            span.attributes[CODE_LINE_NUMBER],
++            traced.__code__.co_firstlineno,
++        )
++
++    def test_code_attributes_class_based_view(self):
++        self._enable_code_attributes()
++        Client().get("/traced_class/")
++
++        spans = self.memory_exporter.get_finished_spans()
++        self.assertEqual(len(spans), 1)
++
++        span = spans[0]
++        self.assertEqual(
++            span.attributes[CODE_FUNCTION_NAME],
++            f"{TracedClassView.dispatch.__module__}.{TracedClassView.dispatch.__qualname__}",
++        )
++        self.assertEqual(
++            span.attributes[CODE_FILE_PATH],
++            TracedClassView.dispatch.__code__.co_filename,
++        )
++        self.assertEqual(
++            span.attributes[CODE_LINE_NUMBER],
++            TracedClassView.dispatch.__code__.co_firstlineno,
++        )
++
++    def test_code_attributes_partial_view(self):
++        self._enable_code_attributes()
++        Client().get("/traced_partial/")
++
++        spans = self.memory_exporter.get_finished_spans()
++        self.assertEqual(len(spans), 1)
++
++        span = spans[0]
++        self.assertEqual(
++            span.attributes[CODE_FUNCTION_NAME],
++            f"{traced_with_arg.__module__}.traced_with_arg",
++        )
++        self.assertEqual(
++            span.attributes[CODE_FILE_PATH],
++            traced_with_arg.__code__.co_filename,
++        )
++        self.assertEqual(
++            span.attributes[CODE_LINE_NUMBER],
++            traced_with_arg.__code__.co_firstlineno,
++        )
++
++    def test_code_attributes_decorated_view(self):
++        self._enable_code_attributes()
++        Client().get("/traced_decorated/")
++
++        spans = self.memory_exporter.get_finished_spans()
++        self.assertEqual(len(spans), 1)
++
++        wrapped = traced_decorated.__wrapped__
++        span = spans[0]
++        self.assertEqual(
++            span.attributes[CODE_FUNCTION_NAME],
++            f"{wrapped.__module__}.traced_decorated",
++        )
++        self.assertEqual(
++            span.attributes[CODE_FILE_PATH],
++            wrapped.__code__.co_filename,
++        )
++        self.assertEqual(
++            span.attributes[CODE_LINE_NUMBER],
++            wrapped.__code__.co_firstlineno,
++        )
++
++    def _enable_code_attributes(self):
++        _django_instrumentor.uninstrument()
++        with patch.dict("os.environ", {"OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES": "true"}):
++            _django_instrumentor.instrument()
++
++    def test_code_attributes_disabled(self):
++        for value in (None, "false"):
++            with self.subTest(value=value), patch.dict("os.environ"):
++                if value is None:
++                    environ.pop("OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES", None)
++                else:
++                    environ["OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES"] = value
++                _django_instrumentor.uninstrument()
++                _django_instrumentor.instrument()
++                with patch(
++                    "opentelemetry.instrumentation.django.middleware.otel_middleware._collect_code_attributes"
++                ) as collect:
++                    Client().get("/traced/")
++                collect.assert_not_called()
++                span = self.memory_exporter.get_finished_spans()[0]
++                for key in (CODE_FUNCTION_NAME, CODE_FILE_PATH, CODE_LINE_NUMBER):
++                    self.assertNotIn(key, span.attributes)
++                self.memory_exporter.clear()
++
++    def test_code_attributes_internal_span(self):
++        self._enable_code_attributes()
++        tracer = self.tracer_provider.get_tracer(__name__)
++        with tracer.start_as_current_span("outer", kind=SpanKind.SERVER):
++            Client().get("/traced/")
++        spans = self.memory_exporter.get_finished_spans()
++        self.assertEqual(len(spans), 2)
++        self.assertEqual(spans[0].kind, SpanKind.INTERNAL)
++        self.assertEqual(spans[0].attributes[CODE_FUNCTION_NAME], f"{traced.__module__}.traced")
++        self.assertNotIn(CODE_FUNCTION_NAME, spans[1].attributes)
++
++    def test_code_attributes_non_recording_span(self):
++        self._enable_code_attributes()
++        request = HttpRequest()
++        request.META.update(
++            HTTP_HOST="testserver",
++            **{
++                _DjangoMiddleware._environ_activation_key: object(),
++                _DjangoMiddleware._environ_span_key: INVALID_SPAN,
++            },
++        )
++        with patch(
++            "opentelemetry.instrumentation.django.middleware.otel_middleware._collect_code_attributes"
++        ) as collect:
++            _DjangoMiddleware(lambda _: None).process_view(request, traced)
++        collect.assert_not_called()
++
+     def test_traced_get_new_semconv(self):
+         Client().get("/traced/")
+ 
+diff --git a/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware_asgi.py b/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware_asgi.py
+index 6cae63d6..321f7ebf 100644
+--- a/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware_asgi.py
++++ b/instrumentation/opentelemetry-instrumentation-django/tests/test_middleware_asgi.py
+@@ -10,7 +10,11 @@ import pytest
+ from django import VERSION, conf
+ from django.http import HttpRequest, HttpResponse
+ from django.test import SimpleTestCase
+-from django.test.utils import setup_test_environment, teardown_test_environment
++from django.test.utils import (
++    override_settings,
++    setup_test_environment,
++    teardown_test_environment,
++)
+ 
+ from opentelemetry import trace as trace_api
+ from opentelemetry.instrumentation._semconv import (
+@@ -35,6 +39,11 @@ from opentelemetry.semconv._incubating.attributes.http_attributes import (
+     HTTP_URL,
+ )
+ from opentelemetry.semconv.attributes.client_attributes import CLIENT_ADDRESS
++from opentelemetry.semconv.attributes.code_attributes import (
++    CODE_FILE_PATH,
++    CODE_FUNCTION_NAME,
++    CODE_LINE_NUMBER,
++)
+ from opentelemetry.semconv.attributes.exception_attributes import (
+     EXCEPTION_MESSAGE,
+     EXCEPTION_TYPE,
+@@ -258,6 +267,50 @@ class TestMiddlewareAsgi(SimpleTestCase, TestBase):
+         self.assertEqual(span.attributes[HTTP_SCHEME], "http")
+         self.assertEqual(span.attributes[HTTP_STATUS_CODE], 200)
+ 
++    async def test_code_attributes_async_view(self):
++        _django_instrumentor.uninstrument()
++        with patch.dict("os.environ", {"OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES": "true"}):
++            _django_instrumentor.instrument()
++        # override_settings mutates the settings object Django internals
++        # hold a reference to; the plain settings.configure() done in
++        # setUpClass is not visible to the URL resolver when another test
++        # module configured settings first in the same process.
++        with override_settings(ROOT_URLCONF=modules[__name__]):
++            await self.async_client.get("/traced/")
++
++        spans = self.memory_exporter.get_finished_spans()
++        self.assertEqual(len(spans), 1)
++
++        span = spans[0]
++        self.assertEqual(
++            span.attributes[CODE_FUNCTION_NAME],
++            f"{async_traced.__module__}.async_traced",
++        )
++        self.assertEqual(
++            span.attributes[CODE_FILE_PATH],
++            async_traced.__code__.co_filename,
++        )
++        self.assertEqual(
++            span.attributes[CODE_LINE_NUMBER],
++            async_traced.__code__.co_firstlineno,
++        )
++
++    async def test_code_attributes_disabled(self):
++        _django_instrumentor.uninstrument()
++        with patch.dict("os.environ", {"OTEL_PYTHON_DJANGO_CODE_ATTRIBUTES": "false"}):
++            _django_instrumentor.instrument()
++        with (
++            override_settings(ROOT_URLCONF=modules[__name__]),
++            patch(
++                "opentelemetry.instrumentation.django.middleware.otel_middleware._collect_code_attributes"
++            ) as collect,
++        ):
++            await self.async_client.get("/traced/")
++        collect.assert_not_called()
++        span = self.memory_exporter.get_finished_spans()[0]
++        for key in (CODE_FUNCTION_NAME, CODE_FILE_PATH, CODE_LINE_NUMBER):
++            self.assertNotIn(key, span.attributes)
++
+     async def test_traced_get_new_semconv(self):
+         await self.async_client.get("/traced/")
+ 
+diff --git a/instrumentation/opentelemetry-instrumentation-django/tests/views.py b/instrumentation/opentelemetry-instrumentation-django/tests/views.py
+index 93928306..3ba00e05 100644
+--- a/instrumentation/opentelemetry-instrumentation-django/tests/views.py
++++ b/instrumentation/opentelemetry-instrumentation-django/tests/views.py
+@@ -1,13 +1,42 @@
+ # Copyright The OpenTelemetry Authors
+ # SPDX-License-Identifier: Apache-2.0
+ 
++from functools import partial, wraps
++
+ from django.http import HttpResponse
++from django.views.generic import View
+ 
+ 
+ def traced(request):  # pylint: disable=unused-argument
+     return HttpResponse()
+ 
+ 
++class TracedClassView(View):
++    # pylint: disable=no-self-use
++    def get(self, request):  # pylint: disable=unused-argument
++        return HttpResponse()
++
++
++def traced_with_arg(request, extra=None):  # pylint: disable=unused-argument
++    return HttpResponse()
++
++
++traced_partial = partial(traced_with_arg, extra="partial")
++
++
++def _pass_through_decorator(func):
++    @wraps(func)
++    def wrapper(request, *args, **kwargs):
++        return func(request, *args, **kwargs)
++
++    return wrapper
++
++
++@_pass_through_decorator
++def traced_decorated(request):  # pylint: disable=unused-argument
++    return HttpResponse()
++
++
+ def traced_template(request, year):  # pylint: disable=unused-argument
+     return HttpResponse()
+ 

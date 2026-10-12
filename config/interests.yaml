@@ -29,6 +29,10 @@ dominios:
       - pyvista/pyvista
       - fatiando/verde
       - fatiando/harmonica
+      - fatiando/boule
+      - DASDAE/dascore
+      - seisbench/seisbench
+      - GlacioHack/xdem
       - obspy/obspy
       - GeostatsGuy/GeostatsPy
       - GeoStat-Framework/GSTools
@@ -95,6 +99,14 @@ dominios:
       - open-telemetry/opentelemetry-python
       - dapr/python-sdk
       - dapr/java-sdk                                # 11 GFI Java; encaja con Spring
+      - testcontainers/testcontainers-go
+      - cloudevents/sdk-python
+      - falcosecurity/falcosidekick
+      - prometheus/client_java
+      - czerwonk/ping_exporter
+      - moghtech/komodo
+      - kubernetes/website
+      - open-telemetry/opentelemetry.io
       - backstage/backstage
 
   librerias_generales:
@@ -105,6 +117,34 @@ dominios:
       - spring-projects/spring-framework
       - spring-projects/spring-boot
       - pyvista/pyvista
+      - OpenAPITools/openapi-generator
+      - keycloak/keycloak
+      - apache/lucene
+      - wailsapp/wails
+      - Automattic/harper
+      - Lightning-AI/litgpt
+
+  aplicaciones_comunidad:
+    descripcion: >
+      Aplicaciones abiertas de interés explícito del usuario: ajedrez,
+      educación y programación competitiva, ERP y gestión de proyectos.
+      Incluye tanto Odoo Community como módulos de la Odoo Community Association.
+    keywords:
+      - chess server
+      - competitive programming
+      - open source ERP
+      - project management
+    repos_semilla:
+      - lichess-org/lila
+      - omegaup/omegaup
+      - odoo/odoo
+      - OCA/server-tools
+      - makeplane/plane
+
+  educacion_programacion:
+    descripcion: Educación de programación; revisar las políticas antes de contribuir
+    repos_semilla:
+      - freeCodeCamp/freeCodeCamp  # Solo seguimiento: el proyecto prohíbe aportes con IA
 
   ecosistema_eddumelendez:
     descripcion: >
@@ -121,6 +161,74 @@ dominios:
       - docker-java/docker-java              # Java 3190★; PAUSADO 2026-09-02: sin PR humano mergeado desde 2025-07, 104 PRs abiertos, solo pushes de dependabot (reports/2026-09-02-scan.md)
       - spring-io/initializr                 # Java 3696★; eddu 1 PR; sin labels de entrada
       - openrewrite/rewrite-testing-frameworks # Java 99★; muy activo; recetas de migración de tests
+
+# Repos con contribuciones previas, más las cinco incorporaciones del 2026-10-12.
+# Este grupo complementa el descubrimiento por dominios: se revisa habitualmente
+# aunque ya no tenga PRs nuestros abiertos. Todos figuran también como semilla.
+seguimiento_habitual:
+  geociencias_meteorologia:
+    - gempy-project/gempy
+    - fatiando/harmonica
+    - fatiando/boule
+    - simpeg/simpeg
+    - Loop3D/LoopStructural
+    - DASDAE/dascore
+    - seisbench/seisbench
+    - GlacioHack/xdem
+    - Unidata/MetPy
+  geoespacial_machine_learning:
+    - torchgeo/torchgeo
+  cloud_native_testing:
+    - dapr/python-sdk
+    - dapr/java-sdk
+    - testcontainers/testcontainers-java
+    - testcontainers/testcontainers-go
+    - cloudevents/sdk-python
+  observabilidad_seguridad_operaciones:
+    - open-telemetry/opentelemetry-python-contrib
+    - prometheus/client_java
+    - czerwonk/ping_exporter
+    - falcosecurity/falcosidekick
+    - moghtech/komodo
+  herramientas_backend_java:
+    - spring-projects/spring-boot
+    - openrewrite/rewrite-testing-frameworks
+    - OpenAPITools/openapi-generator
+    - keycloak/keycloak
+    - apache/lucene
+  aplicaciones_desktop_lenguaje_ia:
+    - wailsapp/wails
+    - Automattic/harper
+    - Lightning-AI/litgpt
+  documentacion_infraestructura:
+    - kubernetes/website
+    - open-telemetry/opentelemetry.io
+  aplicaciones_comunidad:
+    - lichess-org/lila
+    - omegaup/omegaup
+    - odoo/odoo
+    - OCA/server-tools
+    - makeplane/plane
+  educacion_programacion:
+    - freeCodeCamp/freeCodeCamp
+
+# Observar no implica poder enviar código con agentes. Revalidar siempre la
+# política vigente; estos límites se detectaron el 2026-10-12.
+restricciones_contribucion:
+  torchgeo/torchgeo: Solo seguimiento y trabajo local hasta aclarar la política local No LLMs
+  freeCodeCamp/freeCodeCamp: Solo seguimiento; contribuciones con IA prohibidas
+  fatiando/harmonica: Aportes futuros principalmente escritos por humanos; PRs previos pendientes de decisión
+  fatiando/boule: Aportes futuros principalmente escritos por humanos
+  lichess-org/lila: Disclosure obligatorio, revisión y pruebas humanas antes de marcar un PR ready
+  open-telemetry/opentelemetry-python-contrib: Código asistido permitido; comunicación humana según AGENTS.md
+
+# Contribuciones de cursos/comunidad y PRs antiguos; no son la cartera habitual.
+repos_historicos:
+  - EscuelaIt/Curso-de-Django-Rest-Framework
+  - EscuelaIt/curso-django
+  - pythonpe/python.pe
+  - diptangsu/Data-Structures
+  - hackspaceperu/Serverless-Training
 
 lenguajes_preferidos: [Python, Java, C++, Go, Rust]
 
