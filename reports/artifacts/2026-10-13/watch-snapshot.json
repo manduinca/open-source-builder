@@ -1,0 +1,1296 @@
+{
+  "date": "2026-10-13",
+  "previousBaseline": "2026-10-12T21:14:11Z",
+  "scope": "Cartera habitual: excluye empresa privada y PRs de cursos históricos",
+  "habitualRepos": {
+    "geociencias_meteorologia": [
+      "gempy-project/gempy",
+      "fatiando/harmonica",
+      "fatiando/boule",
+      "simpeg/simpeg",
+      "Loop3D/LoopStructural",
+      "DASDAE/dascore",
+      "seisbench/seisbench",
+      "GlacioHack/xdem",
+      "Unidata/MetPy"
+    ],
+    "geoespacial_machine_learning": [
+      "torchgeo/torchgeo"
+    ],
+    "cloud_native_testing": [
+      "dapr/python-sdk",
+      "dapr/java-sdk",
+      "testcontainers/testcontainers-java",
+      "testcontainers/testcontainers-go",
+      "cloudevents/sdk-python"
+    ],
+    "observabilidad_seguridad_operaciones": [
+      "open-telemetry/opentelemetry-python-contrib",
+      "prometheus/client_java",
+      "czerwonk/ping_exporter",
+      "falcosecurity/falcosidekick",
+      "moghtech/komodo"
+    ],
+    "herramientas_backend_java": [
+      "spring-projects/spring-boot",
+      "openrewrite/rewrite-testing-frameworks",
+      "OpenAPITools/openapi-generator",
+      "keycloak/keycloak",
+      "apache/lucene"
+    ],
+    "aplicaciones_desktop_lenguaje_ia": [
+      "wailsapp/wails",
+      "Automattic/harper",
+      "Lightning-AI/litgpt"
+    ],
+    "documentacion_infraestructura": [
+      "kubernetes/website",
+      "open-telemetry/opentelemetry.io"
+    ],
+    "aplicaciones_comunidad": [
+      "lichess-org/lila",
+      "omegaup/omegaup",
+      "odoo/odoo",
+      "OCA/server-tools",
+      "makeplane/plane"
+    ],
+    "educacion_programacion": [
+      "freeCodeCamp/freeCodeCamp"
+    ]
+  },
+  "statistics": {
+    "watchedRepos": 36,
+    "openPrs": 25,
+    "openPrRepos": 19,
+    "contributionsIntegratedUpstream": 17,
+    "githubMergedPrs": 16,
+    "manualIntegrations": 1,
+    "newMergesObserved": 0
+  },
+  "openPrs": [
+    {
+      "repo": "lichess-org/lila",
+      "number": 22064,
+      "title": "Make blog Atom feed links discoverable",
+      "url": "https://github.com/lichess-org/lila/pull/22064",
+      "isDraft": true,
+      "updatedAt": "2026-10-13T10:00:39Z",
+      "headRefOid": "cc0d8bfe8ce609be18c7d426016745f5b5e4f8c4",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "CLEAN",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "moghtech/komodo",
+      "number": 1662,
+      "title": "fix: create swarm secrets without a trailing newline",
+      "url": "https://github.com/moghtech/komodo/pull/1662",
+      "isDraft": false,
+      "updatedAt": "2026-10-01T07:20:26Z",
+      "headRefOid": "bcfcf6e20f201607bfdfc8c446d10cfde7c403fe",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "UNSTABLE",
+      "reviewDecision": null,
+      "statusCheckRollup": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "wailsapp/wails",
+      "number": 6206,
+      "title": "fix(v3/updater): stop the periodic check from re-downloading a staged update",
+      "url": "https://github.com/wailsapp/wails/pull/6206",
+      "isDraft": false,
+      "updatedAt": "2026-10-13T11:09:29Z",
+      "headRefOid": "1e4d5bfd74fd9f2bd9edd444d1bca85c86cdc504",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BEHIND",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/wailsapp/wails/pull/6206#issuecomment-5926174976",
+          "createdAt": "2026-10-01T06:43:52Z",
+          "author": "coderabbitai"
+        },
+        {
+          "url": "https://github.com/wailsapp/wails/pull/6206#issuecomment-5976867326",
+          "createdAt": "2026-10-04T05:17:30Z",
+          "author": "taliesin-ai"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "number": 25074,
+      "title": "[core] Clone inline sub-schemas before collapsing a nullable anyOf/oneOf",
+      "url": "https://github.com/OpenAPITools/openapi-generator/pull/25074",
+      "isDraft": false,
+      "updatedAt": "2026-10-04T07:15:03Z",
+      "headRefOid": "e1dcf08d37744a8b447e60af1b5e614beb5ee017",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "UNSTABLE",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": [
+        {
+          "submittedAt": "2026-10-01T06:48:28Z",
+          "state": "COMMENTED",
+          "author": "cubic-dev-ai"
+        }
+      ]
+    },
+    {
+      "repo": "moghtech/komodo",
+      "number": 1661,
+      "title": "fix: accept 0/N step schedules again after the croner 4 update",
+      "url": "https://github.com/moghtech/komodo/pull/1661",
+      "isDraft": false,
+      "updatedAt": "2026-10-01T06:32:06Z",
+      "headRefOid": "3445769d1b30a2fab1ff9d6ac8e2f56969f190bd",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "UNSTABLE",
+      "reviewDecision": null,
+      "statusCheckRollup": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "number": 25073,
+      "title": "[core] Set isMap on properties that updatePropertyForMap turns into maps",
+      "url": "https://github.com/OpenAPITools/openapi-generator/pull/25073",
+      "isDraft": false,
+      "updatedAt": "2026-10-04T07:15:03Z",
+      "headRefOid": "784209657095d51804a7c4e73c9c13ced16676d6",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "UNSTABLE",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": [
+        {
+          "submittedAt": "2026-10-01T06:31:40Z",
+          "state": "COMMENTED",
+          "author": "cubic-dev-ai"
+        }
+      ]
+    },
+    {
+      "repo": "wailsapp/wails",
+      "number": 6205,
+      "title": "fix(v3/updater): remove the staging dir when the download fails",
+      "url": "https://github.com/wailsapp/wails/pull/6205",
+      "isDraft": false,
+      "updatedAt": "2026-10-13T11:09:29Z",
+      "headRefOid": "86ec5ef77aeb7d636b1b4a0f0a408557d35e8570",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BEHIND",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/wailsapp/wails/pull/6205#issuecomment-5925493190",
+          "createdAt": "2026-10-01T05:42:27Z",
+          "author": "coderabbitai"
+        },
+        {
+          "url": "https://github.com/wailsapp/wails/pull/6205#issuecomment-5976867135",
+          "createdAt": "2026-10-04T05:17:28Z",
+          "author": "taliesin-ai"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "gempy-project/gempy",
+      "number": 1110,
+      "title": "[ENH] Raise a descriptive error for unknown structural element names",
+      "url": "https://github.com/gempy-project/gempy/pull/1110",
+      "isDraft": false,
+      "updatedAt": "2026-09-30T06:04:50Z",
+      "headRefOid": "c84db8514044f708817ed59d609baa26331af4b1",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "Automattic/harper",
+      "number": 4425,
+      "title": "feat(core): flag \"tenant\" where \"tenet\" is meant",
+      "url": "https://github.com/Automattic/harper/pull/4425",
+      "isDraft": false,
+      "updatedAt": "2026-09-24T16:24:16Z",
+      "headRefOid": "62f0396c770cac52dd712fd33b33248beee121f4",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "CLEAN",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": [
+        {
+          "submittedAt": "2026-09-24T16:24:16Z",
+          "state": "APPROVED",
+          "author": "elijah-potter"
+        }
+      ]
+    },
+    {
+      "repo": "Lightning-AI/litgpt",
+      "number": 2330,
+      "title": "fix(chat): make --compile work",
+      "url": "https://github.com/Lightning-AI/litgpt/pull/2330",
+      "isDraft": false,
+      "updatedAt": "2026-09-15T18:36:37Z",
+      "headRefOid": "163a79328edfcd01974f935098eb15fe6f5d3c40",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "FAILURE",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "torchgeo/torchgeo",
+      "number": 4111,
+      "title": "Add WMSDataset",
+      "url": "https://github.com/torchgeo/torchgeo/pull/4111",
+      "isDraft": false,
+      "updatedAt": "2026-09-13T20:16:52Z",
+      "headRefOid": "67db7864ab56d150e4ffc3bd2c1df3ab223d1f7a",
+      "mergeable": "CONFLICTING",
+      "mergeStateStatus": "DIRTY",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "simpeg/simpeg",
+      "number": 1803,
+      "title": "Document how to set Pardiso thread counts",
+      "url": "https://github.com/simpeg/simpeg/pull/1803",
+      "isDraft": false,
+      "updatedAt": "2026-10-02T04:10:12Z",
+      "headRefOid": "1e462b9c4417d8a87cf79e7a807e6d3577973d31",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BEHIND",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/simpeg/simpeg/pull/1803#issuecomment-5631941252",
+          "createdAt": "2026-09-11T08:52:40Z",
+          "author": "codecov"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "testcontainers/testcontainers-java",
+      "number": 12072,
+      "title": "Test Kibana managed network validation without Docker",
+      "url": "https://github.com/testcontainers/testcontainers-java/pull/12072",
+      "isDraft": false,
+      "updatedAt": "2026-09-11T08:04:17Z",
+      "headRefOid": "3803d1c6d63729d5641bb5ecb7096aaa9f05ebc1",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/testcontainers/testcontainers-java/pull/12072#issuecomment-5631347415",
+          "createdAt": "2026-09-11T08:02:28Z",
+          "author": "coderabbitai"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "openrewrite/rewrite-testing-frameworks",
+      "number": 1119,
+      "title": "Fix dangling constructor calls when migrating JUnit TestCase",
+      "url": "https://github.com/openrewrite/rewrite-testing-frameworks/pull/1119",
+      "isDraft": false,
+      "updatedAt": "2026-10-06T16:49:38Z",
+      "headRefOid": "7760545c5803d213e02081f841afcc716c9d58dc",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "UNSTABLE",
+      "reviewDecision": null,
+      "statusCheckRollup": "FAILURE",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "testcontainers/testcontainers-go",
+      "number": 3882,
+      "title": "fix(auth): use the credentials store when no registry matches",
+      "url": "https://github.com/testcontainers/testcontainers-go/pull/3882",
+      "isDraft": false,
+      "updatedAt": "2026-09-11T07:42:08Z",
+      "headRefOid": "3211a489af7fdd779a7e7b6c284affa82e1c1bc0",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BEHIND",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/testcontainers/testcontainers-go/pull/3882#issuecomment-5565945440",
+          "createdAt": "2026-09-07T06:19:27Z",
+          "author": "netlify"
+        },
+        {
+          "url": "https://github.com/testcontainers/testcontainers-go/pull/3882#issuecomment-5565948075",
+          "createdAt": "2026-09-07T06:19:43Z",
+          "author": "coderabbitai"
+        },
+        {
+          "url": "https://github.com/testcontainers/testcontainers-go/pull/3882#issuecomment-5572654383",
+          "createdAt": "2026-09-07T15:14:50Z",
+          "author": "manduinca"
+        }
+      ],
+      "reviews": [
+        {
+          "submittedAt": "2026-09-07T15:14:46Z",
+          "state": "COMMENTED",
+          "author": "manduinca"
+        },
+        {
+          "submittedAt": "2026-09-07T15:14:48Z",
+          "state": "COMMENTED",
+          "author": "manduinca"
+        },
+        {
+          "submittedAt": "2026-09-07T15:14:49Z",
+          "state": "COMMENTED",
+          "author": "manduinca"
+        },
+        {
+          "submittedAt": "2026-09-07T15:21:57Z",
+          "state": "COMMENTED",
+          "author": "coderabbitai"
+        },
+        {
+          "submittedAt": "2026-09-07T15:22:30Z",
+          "state": "COMMENTED",
+          "author": "coderabbitai"
+        }
+      ]
+    },
+    {
+      "repo": "keycloak/keycloak",
+      "number": 52478,
+      "title": "Align URN resource indicator validation with RFC 8141",
+      "url": "https://github.com/keycloak/keycloak/pull/52478",
+      "isDraft": false,
+      "updatedAt": "2026-10-01T05:25:55Z",
+      "headRefOid": "d0fa762fde93537f125fc54694ae35df9725f3c8",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/keycloak/keycloak/pull/52478#issuecomment-5757687468",
+          "createdAt": "2026-09-21T08:37:32Z",
+          "author": "VinodAnandan"
+        },
+        {
+          "url": "https://github.com/keycloak/keycloak/pull/52478#issuecomment-5763003771",
+          "createdAt": "2026-09-21T15:26:07Z",
+          "author": "sschu"
+        },
+        {
+          "url": "https://github.com/keycloak/keycloak/pull/52478#issuecomment-5905413929",
+          "createdAt": "2026-09-30T06:23:50Z",
+          "author": "manduinca"
+        }
+      ],
+      "reviews": [
+        {
+          "submittedAt": "2026-09-07T05:58:04Z",
+          "state": "COMMENTED",
+          "author": "copilot-pull-request-reviewer"
+        },
+        {
+          "submittedAt": "2026-09-30T06:16:50Z",
+          "state": "COMMENTED",
+          "author": "copilot-pull-request-reviewer"
+        }
+      ]
+    },
+    {
+      "repo": "apache/lucene",
+      "number": 16643,
+      "title": "Close the reader pool before deleting files on rollback",
+      "url": "https://github.com/apache/lucene/pull/16643",
+      "isDraft": false,
+      "updatedAt": "2026-10-01T05:25:58Z",
+      "headRefOid": "e73900e95b71031199e67394c03119ce26d01aa8",
+      "mergeable": "UNKNOWN",
+      "mergeStateStatus": "UNKNOWN",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/apache/lucene/pull/16643#issuecomment-5786956788",
+          "createdAt": "2026-09-23T00:37:05Z",
+          "author": "github-actions"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "Loop3D/LoopStructural",
+      "number": 297,
+      "title": "test: cover from_processor with a stratigraphic column",
+      "url": "https://github.com/Loop3D/LoopStructural/pull/297",
+      "isDraft": false,
+      "updatedAt": "2026-09-27T06:34:02Z",
+      "headRefOid": "31774ce0f25a7dced7d37735eb01f36eeafbd500",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "UNSTABLE",
+      "reviewDecision": null,
+      "statusCheckRollup": "FAILURE",
+      "comments": [
+        {
+          "url": "https://github.com/Loop3D/LoopStructural/pull/297#issuecomment-5512476764",
+          "createdAt": "2026-09-02T16:00:35Z",
+          "author": "manduinca"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "fatiando/harmonica",
+      "number": 700,
+      "title": "Add terrain correction in spherical coordinates to the User Guide",
+      "url": "https://github.com/fatiando/harmonica/pull/700",
+      "isDraft": false,
+      "updatedAt": "2026-10-01T18:01:11Z",
+      "headRefOid": "7b1cc91d4d8916eb85fc5148254815f57ccc34c8",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "CLEAN",
+      "reviewDecision": null,
+      "statusCheckRollup": null,
+      "comments": [
+        {
+          "url": "https://github.com/fatiando/harmonica/pull/700#issuecomment-5537815670",
+          "createdAt": "2026-09-04T08:26:56Z",
+          "author": "manduinca"
+        },
+        {
+          "url": "https://github.com/fatiando/harmonica/pull/700#issuecomment-5937375111",
+          "createdAt": "2026-10-01T18:01:11Z",
+          "author": "manduinca"
+        }
+      ],
+      "reviews": [
+        {
+          "submittedAt": "2026-08-18T23:54:53Z",
+          "state": "COMMENTED",
+          "author": "santisoler"
+        },
+        {
+          "submittedAt": "2026-08-19T00:22:45Z",
+          "state": "COMMENTED",
+          "author": "santisoler"
+        }
+      ]
+    },
+    {
+      "repo": "fatiando/harmonica",
+      "number": 698,
+      "title": "Add linearity tests for forward models",
+      "url": "https://github.com/fatiando/harmonica/pull/698",
+      "isDraft": false,
+      "updatedAt": "2026-10-01T18:01:09Z",
+      "headRefOid": "0aa1d052354caa9a0988fb16e1208608b6eebf07",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "CLEAN",
+      "reviewDecision": null,
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/fatiando/harmonica/pull/698#issuecomment-5498604549",
+          "createdAt": "2026-09-01T18:35:26Z",
+          "author": "manduinca"
+        },
+        {
+          "url": "https://github.com/fatiando/harmonica/pull/698#issuecomment-5748757918",
+          "createdAt": "2026-09-20T08:46:51Z",
+          "author": "manduinca"
+        },
+        {
+          "url": "https://github.com/fatiando/harmonica/pull/698#issuecomment-5937374357",
+          "createdAt": "2026-10-01T18:01:09Z",
+          "author": "manduinca"
+        }
+      ],
+      "reviews": [
+        {
+          "submittedAt": "2026-08-18T23:05:14Z",
+          "state": "APPROVED",
+          "author": "santisoler"
+        }
+      ]
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "number": 4099,
+      "title": "DOC: Move equations to Notes in stability index docstrings",
+      "url": "https://github.com/Unidata/MetPy/pull/4099",
+      "isDraft": false,
+      "updatedAt": "2026-07-21T00:45:12Z",
+      "headRefOid": "7fb8f08ff386fac3941593d2523321a605c5f0a6",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "cloudevents/sdk-python",
+      "number": 302,
+      "title": "docs: clarify abstract.CloudEvent docstring (attributes vs data)",
+      "url": "https://github.com/cloudevents/sdk-python/pull/302",
+      "isDraft": false,
+      "updatedAt": "2026-09-20T08:47:47Z",
+      "headRefOid": "1487faea473ff526524b65e21ed5e08abaf46408",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "open-telemetry/opentelemetry-python-contrib",
+      "number": 4840,
+      "title": "opentelemetry-instrumentation-django: add code attributes to spans",
+      "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840",
+      "isDraft": false,
+      "updatedAt": "2026-10-13T21:08:12Z",
+      "headRefOid": "2b5f7fccc8b26e361e0cf6cd58643da295ac2282",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BEHIND",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840#issuecomment-5475641835",
+          "createdAt": "2026-08-31T08:14:31Z",
+          "author": "xrmx"
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840#issuecomment-5694053371",
+          "createdAt": "2026-09-16T07:58:40Z",
+          "author": "xrmx"
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840#issuecomment-5748640367",
+          "createdAt": "2026-09-20T08:21:17Z",
+          "author": "manduinca"
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840#issuecomment-5937375756",
+          "createdAt": "2026-10-01T18:01:13Z",
+          "author": "manduinca"
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840#issuecomment-6067677627",
+          "createdAt": "2026-10-08T19:41:08Z",
+          "author": "opentelemetry-pr-dashboard"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "number": 4096,
+      "title": "ENH: Add station pressure to altimeter and sea-level pressure conversions",
+      "url": "https://github.com/Unidata/MetPy/pull/4096",
+      "isDraft": false,
+      "updatedAt": "2026-07-17T17:10:04Z",
+      "headRefOid": "129c6772e7f4babbfde2c9c681ed46dbb9ba87e4",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "SUCCESS",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "number": 4095,
+      "title": "DOC: Move equations to Notes in kinematics docstrings",
+      "url": "https://github.com/Unidata/MetPy/pull/4095",
+      "isDraft": false,
+      "updatedAt": "2026-10-12T21:09:00Z",
+      "headRefOid": "88d64d90da905e98d1a840d2fc4a68ea4abe0051",
+      "mergeable": "MERGEABLE",
+      "mergeStateStatus": "BLOCKED",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "statusCheckRollup": "FAILURE",
+      "comments": [
+        {
+          "url": "https://github.com/Unidata/MetPy/pull/4095#issuecomment-4988004556",
+          "createdAt": "2026-07-16T03:57:56Z",
+          "author": "CLAassistant"
+        }
+      ],
+      "reviews": []
+    }
+  ],
+  "repoUpdates": [
+    {
+      "repo": "gempy-project/gempy",
+      "pushedAt": "2026-10-13T12:10:33Z",
+      "defaultBranch": "main",
+      "defaultHead": "61ad07342db140ae5e92d5fef2da95835eb6a3ec",
+      "lastDefaultCommits": [
+        {
+          "sha": "61ad07342db140ae5e92d5fef2da95835eb6a3ec",
+          "date": "2026-09-12T08:51:54Z",
+          "title": "Add serialization metadata to GemPy model files (#1108)"
+        },
+        {
+          "sha": "308448fac615ac0e33aa08265e5545e0c8c1c1c4",
+          "date": "2026-09-11T14:19:49Z",
+          "title": "[MAINT] Remove unused serialization metadata logic and update tests f…"
+        },
+        {
+          "sha": "c828ad25927093c3d7c66ba451cfb6b15ffbae56",
+          "date": "2026-09-11T13:20:38Z",
+          "title": "Add save/load tutorial for the tutorials gallery"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v2026.2.0a0",
+        "publishedAt": "2026-10-13T12:10:34Z",
+        "url": "https://github.com/gempy-project/gempy/releases/tag/v2026.2.0a0"
+      }
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "pushedAt": "2026-10-13T16:20:38Z",
+      "defaultBranch": "main",
+      "defaultHead": "7910b5ceb506551606acb6e3c00a5c3f3a4c5a2b",
+      "lastDefaultCommits": [
+        {
+          "sha": "7910b5ceb506551606acb6e3c00a5c3f3a4c5a2b",
+          "date": "2026-10-08T16:20:03Z",
+          "title": "Merge pull request #4143 from MuffinCompiler/fix-wbpt-doc-sign"
+        },
+        {
+          "sha": "18bdc0d4f4c649d117f69e028bfe75f187a4e0ae",
+          "date": "2026-10-01T11:08:43Z",
+          "title": "Fix sign error in WBPT formula documentation"
+        },
+        {
+          "sha": "07df928b0d47fce73696116d6988d0722bfaa57e",
+          "date": "2026-08-24T17:38:34Z",
+          "title": "Merge pull request #4126 from Unidata/dependabot-github_actions-dot-g…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v1.7.1",
+        "publishedAt": "2025-08-29T23:19:01Z",
+        "url": "https://github.com/Unidata/MetPy/releases/tag/v1.7.1"
+      }
+    },
+    {
+      "repo": "simpeg/simpeg",
+      "pushedAt": "2026-10-13T20:35:47Z",
+      "defaultBranch": "main",
+      "defaultHead": "d872a94ff3df9586d20eb412925bcfdd6d15c3e0",
+      "lastDefaultCommits": [
+        {
+          "sha": "d872a94ff3df9586d20eb412925bcfdd6d15c3e0",
+          "date": "2026-10-13T20:35:08Z",
+          "title": "Replace deprecated refine_tree_xyz across tests (#1466)"
+        },
+        {
+          "sha": "7d721d035526ac319bb150142520e9a0677ea870",
+          "date": "2026-10-09T19:26:45Z",
+          "title": "Make multiprocessing potential field kernel build using shared memory…"
+        },
+        {
+          "sha": "fbd294978fb52a3631928e15381452dcb10fe48d",
+          "date": "2026-10-07T01:27:11Z",
+          "title": "Enhance robustness and error handling in multiprocessing simulations …"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v0.25.2",
+        "publishedAt": "2026-03-16T18:05:35Z",
+        "url": "https://github.com/simpeg/simpeg/releases/tag/v0.25.2"
+      }
+    },
+    {
+      "repo": "torchgeo/torchgeo",
+      "pushedAt": "2026-10-13T18:58:28Z",
+      "defaultBranch": "main",
+      "defaultHead": "6d3b8450666afcd587592e9bfdf8422ad4828e2c",
+      "lastDefaultCommits": [
+        {
+          "sha": "6d3b8450666afcd587592e9bfdf8422ad4828e2c",
+          "date": "2026-10-13T12:33:24Z",
+          "title": "CODEOWNERS: add fallback (#4194)"
+        },
+        {
+          "sha": "3fd9f645ec64c4a986a7434dd42272640af7426d",
+          "date": "2026-10-13T11:07:00Z",
+          "title": "Docs: correct # samples in toy datasets (#4192)"
+        },
+        {
+          "sha": "2b34f1ec5f8f82d8fa0c7f4d1bfca3ac381c9b22",
+          "date": "2026-10-12T08:57:06Z",
+          "title": "Fix DEO feature shape in docstring (#4187)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v0.10.1",
+        "publishedAt": "2026-09-29T08:57:58Z",
+        "url": "https://github.com/torchgeo/torchgeo/releases/tag/v0.10.1"
+      }
+    },
+    {
+      "repo": "open-telemetry/opentelemetry-python-contrib",
+      "pushedAt": "2026-10-13T14:16:11Z",
+      "defaultBranch": "main",
+      "defaultHead": "aa5fba1eb4a0a7192949e3472d43a2e2b70c431d",
+      "lastDefaultCommits": [
+        {
+          "sha": "aa5fba1eb4a0a7192949e3472d43a2e2b70c431d",
+          "date": "2026-10-13T14:08:06Z",
+          "title": "fix(aiopg): honor instrumentation suppression (#5175)"
+        },
+        {
+          "sha": "a953ae267b6429717092a150f3464e7d0378fb26",
+          "date": "2026-10-12T18:36:01Z",
+          "title": "Add baggage propagation tests for Flask and WSGI instrumentations (#4…"
+        },
+        {
+          "sha": "77dd2d009dec5bfa04fcecb8e2e3d1bb33ff218b",
+          "date": "2026-10-09T00:32:57Z",
+          "title": "pull_request_template: simplify by removing some not so used sections…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "opentelemetry-opamp-client==0.4b0",
+        "publishedAt": "2026-10-07T16:14:50Z",
+        "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/releases/tag/opentelemetry-opamp-client%3D%3D0.4b0"
+      }
+    },
+    {
+      "repo": "dapr/python-sdk",
+      "pushedAt": "2026-10-13T21:05:07Z",
+      "defaultBranch": "main",
+      "defaultHead": "143495f227bff41509941b6bc0b68e858e39a731",
+      "lastDefaultCommits": [
+        {
+          "sha": "143495f227bff41509941b6bc0b68e858e39a731",
+          "date": "2026-10-13T14:13:37Z",
+          "title": "Workflow: Add health ping to client stream (#1250)"
+        },
+        {
+          "sha": "6d8fb6e71006dd2557e8f2edb301a6d711df176d",
+          "date": "2026-10-13T14:00:06Z",
+          "title": "workflow: run orchestrator work items on their own thread pool (#1264)"
+        },
+        {
+          "sha": "fceda096040adcf9d203fdb567b7dcd251ace16d",
+          "date": "2026-10-13T13:49:00Z",
+          "title": "Skip the state store existence check when setting actor state (#1239)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v1.19.0rc1",
+        "publishedAt": "2026-10-13T13:23:02Z",
+        "url": "https://github.com/dapr/python-sdk/releases/tag/v1.19.0rc1"
+      }
+    },
+    {
+      "repo": "dapr/java-sdk",
+      "pushedAt": "2026-10-13T09:04:08Z",
+      "defaultBranch": "master",
+      "defaultHead": "ca2a9305b66ce279fd0f2f65fd069d68353998be",
+      "lastDefaultCommits": [
+        {
+          "sha": "ca2a9305b66ce279fd0f2f65fd069d68353998be",
+          "date": "2026-10-13T07:20:48Z",
+          "title": "fix: Forward caller headers in service invocation without duplicates …"
+        },
+        {
+          "sha": "1722c2ccaa496d48f8d3031bb8dc7a695ee8b852",
+          "date": "2026-10-11T16:38:09Z",
+          "title": "fix: publishEvent method to support text content types and improve se…"
+        },
+        {
+          "sha": "0de95aa915dcc8243159a60ff5d5fafbe6e43da7",
+          "date": "2026-10-09T23:32:10Z",
+          "title": "chore: Use dapr 1.19.0-rc.2 (#1833)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v1.18.1",
+        "publishedAt": "2026-07-20T09:32:51Z",
+        "url": "https://github.com/dapr/java-sdk/releases/tag/v1.18.1"
+      }
+    },
+    {
+      "repo": "testcontainers/testcontainers-go",
+      "pushedAt": "2026-10-13T03:09:42Z",
+      "defaultBranch": "main",
+      "defaultHead": "9d2885db535f9915dd270d5a6b4973a4aac0e2e8",
+      "lastDefaultCommits": [
+        {
+          "sha": "9d2885db535f9915dd270d5a6b4973a4aac0e2e8",
+          "date": "2026-10-05T14:48:12Z",
+          "title": "chore(deps): bump Go to 1.26 everywhere (#3940)"
+        },
+        {
+          "sha": "2692069653247249e5db0cefc0a33724024a2056",
+          "date": "2026-10-05T12:33:03Z",
+          "title": "chore(deps): bump github.com/moby/moby/client from 0.5.0 to 0.6.0 (#3…"
+        },
+        {
+          "sha": "787747b3a477973a5476f8ec7e7a049e33c1541f",
+          "date": "2026-10-05T10:46:02Z",
+          "title": "chore(deps): bump urllib3 from 2.7.0 to 2.8.0 (#3935)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v0.44.0",
+        "publishedAt": "2026-08-07T10:53:52Z",
+        "url": "https://github.com/testcontainers/testcontainers-go/releases/tag/v0.44.0"
+      }
+    },
+    {
+      "repo": "prometheus/client_java",
+      "pushedAt": "2026-10-13T08:24:23Z",
+      "defaultBranch": "main",
+      "defaultHead": "3815993364e563882f0a6b0741685b8a1a740e45",
+      "lastDefaultCommits": [
+        {
+          "sha": "3815993364e563882f0a6b0741685b8a1a740e45",
+          "date": "2026-10-13T08:14:31Z",
+          "title": "chore(deps): update dependency prometheus/jmx_exporter to v1.7.0 (#2544)"
+        },
+        {
+          "sha": "6d2b5943d3e5cc6b4b8f1e1e5c345a4aff9b1717",
+          "date": "2026-10-13T06:27:47Z",
+          "title": "chore(deps): update otel/opentelemetry-collector-contrib docker tag t…"
+        },
+        {
+          "sha": "4c9bf78055019b5d460a5f1a4e1899cfb6fca275",
+          "date": "2026-10-13T06:27:17Z",
+          "title": "fix(deps): update dependency io.opentelemetry:opentelemetry-bom to v1…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v1.9.0",
+        "publishedAt": "2026-09-16T07:03:41Z",
+        "url": "https://github.com/prometheus/client_java/releases/tag/v1.9.0"
+      }
+    },
+    {
+      "repo": "kubernetes/website",
+      "pushedAt": "2026-10-13T17:00:27Z",
+      "defaultBranch": "main",
+      "defaultHead": "51675a591dc393f2fa44b5a72463068236a9932e",
+      "lastDefaultCommits": [
+        {
+          "sha": "51675a591dc393f2fa44b5a72463068236a9932e",
+          "date": "2026-10-13T17:00:27Z",
+          "title": "Merge pull request #57397 from ayushmaan-16/tinkerbell-headlamp-blog"
+        },
+        {
+          "sha": "9ae90a9079ccb57d9db0e25e193a985c1964bea0",
+          "date": "2026-10-13T15:20:22Z",
+          "title": "Merge pull request #57994 from berlewis/fr-static-pods"
+        },
+        {
+          "sha": "e80e5670afe9b45380a37a87e53c46f7a03d4673",
+          "date": "2026-10-13T15:18:22Z",
+          "title": "Merge pull request #57985 from berlewis/fr-ports-and-protocols"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "snapshot-initial-v1.37",
+        "publishedAt": "2026-08-26T17:10:01Z",
+        "url": "https://github.com/kubernetes/website/releases/tag/snapshot-initial-v1.37"
+      }
+    },
+    {
+      "repo": "open-telemetry/opentelemetry.io",
+      "pushedAt": "2026-10-13T19:46:52Z",
+      "defaultBranch": "main",
+      "defaultHead": "68b7340491696eb69518241d46fd821e38e368a2",
+      "lastDefaultCommits": [
+        {
+          "sha": "68b7340491696eb69518241d46fd821e38e368a2",
+          "date": "2026-10-13T07:31:08Z",
+          "title": "feat:ro /docs/demo/architecture.md (#12068)"
+        },
+        {
+          "sha": "d64263a3020716c72ec9c896e074adbb593048c9",
+          "date": "2026-10-13T07:29:33Z",
+          "title": "Update community members (#12075)"
+        },
+        {
+          "sha": "a1e10f7fb11588cd9a0a982c366a67ecdd5b8628",
+          "date": "2026-10-12T18:30:24Z",
+          "title": "[es] feat/translate demo services email (#11849)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "2026.09",
+        "publishedAt": "2026-10-04T07:24:14Z",
+        "url": "https://github.com/open-telemetry/opentelemetry.io/releases/tag/2026.09"
+      }
+    },
+    {
+      "repo": "spring-projects/spring-boot",
+      "pushedAt": "2026-10-13T19:11:49Z",
+      "defaultBranch": "main",
+      "defaultHead": "b0f6e119b1eb2b5cf1c14d8ef264c6a24fe8f1b4",
+      "lastDefaultCommits": [
+        {
+          "sha": "b0f6e119b1eb2b5cf1c14d8ef264c6a24fe8f1b4",
+          "date": "2026-10-13T19:11:22Z",
+          "title": "Merge branch '4.1.x'"
+        },
+        {
+          "sha": "20fa7b02683d7b34da2afaed2d5eaefd1630d3d3",
+          "date": "2026-10-13T19:10:42Z",
+          "title": "Merge branch '4.0.x' into 4.1.x"
+        },
+        {
+          "sha": "a1a46c6155ed8f5371170aab038833da1fc34532",
+          "date": "2026-10-13T19:09:52Z",
+          "title": "Fix Jetty's handling of stop immediately after shutdownGracefully"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v4.2.0-M2",
+        "publishedAt": "2026-09-24T10:38:37Z",
+        "url": "https://github.com/spring-projects/spring-boot/releases/tag/v4.2.0-M2"
+      }
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "pushedAt": "2026-10-13T18:20:39Z",
+      "defaultBranch": "master",
+      "defaultHead": "b16391856bc513aaf4d8d2ac0ddc4f0c1c2942ee",
+      "lastDefaultCommits": [
+        {
+          "sha": "b16391856bc513aaf4d8d2ac0ddc4f0c1c2942ee",
+          "date": "2026-10-13T18:20:34Z",
+          "title": "Add new workflow to test swift6 petstore samples (#25242)"
+        },
+        {
+          "sha": "5037d869b0a1b3579275e698d42ba58163a69dac",
+          "date": "2026-10-13T09:36:38Z",
+          "title": "[Java][Spring] Fix useBeanValidation=false still generating NotNull a…"
+        },
+        {
+          "sha": "7054d2e2df6c6f579c8ddabf967d47df9fbb698a",
+          "date": "2026-10-13T07:00:36Z",
+          "title": "[core] Fix OAS 3.1 typed map misclassified as free-form object (#2522…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v7.26.0",
+        "publishedAt": "2026-10-06T09:33:32Z",
+        "url": "https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.26.0"
+      }
+    },
+    {
+      "repo": "keycloak/keycloak",
+      "pushedAt": "2026-10-13T18:52:54Z",
+      "defaultBranch": "main",
+      "defaultHead": "ced4e34e2688559cabbb12627f4f51a64cb44e50",
+      "lastDefaultCommits": [
+        {
+          "sha": "ced4e34e2688559cabbb12627f4f51a64cb44e50",
+          "date": "2026-10-13T18:52:53Z",
+          "title": "Prevent NPE after a failed startup"
+        },
+        {
+          "sha": "85222227e114fa1f618800c18c1660ee5cc56548",
+          "date": "2026-10-13T18:16:44Z",
+          "title": "Fixing flaky test: disabling pagination to avoid unexpected responses…"
+        },
+        {
+          "sha": "d2d4c6fd3e6f34dd1a018a24c88446a9f509a914",
+          "date": "2026-10-13T18:05:17Z",
+          "title": "Fixing flaky test"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "26.8.1",
+        "publishedAt": "2026-10-13T08:58:15Z",
+        "url": "https://github.com/keycloak/keycloak/releases/tag/26.8.1"
+      }
+    },
+    {
+      "repo": "apache/lucene",
+      "pushedAt": "2026-10-13T11:03:16Z",
+      "defaultBranch": "main",
+      "defaultHead": "d8d5f31ae7612391adf8a3663ff5ce92e4e32023",
+      "lastDefaultCommits": [
+        {
+          "sha": "d8d5f31ae7612391adf8a3663ff5ce92e4e32023",
+          "date": "2026-10-13T11:03:16Z",
+          "title": "Remove VectorValueSource and MultiValueSource (#16814)"
+        },
+        {
+          "sha": "5017142089af36058245f1b35d632e6ab4eb5f2d",
+          "date": "2026-10-12T19:42:46Z",
+          "title": "Fix performance bug which skipped cache optimization (early return in…"
+        },
+        {
+          "sha": "94557355c650d7aa4ddbfb4a9c477279f3f4cc88",
+          "date": "2026-10-12T14:57:17Z",
+          "title": "Fix up to 150x slowdown of byte vector distances once both signed and…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "releases/lucene/10.5.2",
+        "publishedAt": "2026-10-04T20:09:52Z",
+        "url": "https://github.com/apache/lucene/releases/tag/releases/lucene/10.5.2"
+      }
+    },
+    {
+      "repo": "wailsapp/wails",
+      "pushedAt": "2026-10-13T15:15:31Z",
+      "defaultBranch": "master",
+      "defaultHead": "ecbe4ffedeb2ea8cae1a15ca9e084708a5812b14",
+      "lastDefaultCommits": [
+        {
+          "sha": "ecbe4ffedeb2ea8cae1a15ca9e084708a5812b14",
+          "date": "2026-10-13T15:15:28Z",
+          "title": "chore(v3): bump to v3.0.0-beta.29 and update changelog"
+        },
+        {
+          "sha": "6c8434d7aeba29832baa3effbfc2e33fc2756029",
+          "date": "2026-10-13T12:51:47Z",
+          "title": "feat(v3): macOS global shortcuts land on the labelled key (layout-awa…"
+        },
+        {
+          "sha": "43e2560ec9e7b845d76111a5dba13387a16f5321",
+          "date": "2026-10-13T10:35:08Z",
+          "title": "chore(changelog): auto-add entry for PR #6233 — fix(linux): initializ…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v3.0.0-beta.29",
+        "publishedAt": "2026-10-13T15:15:32Z",
+        "url": "https://github.com/wailsapp/wails/releases/tag/v3.0.0-beta.29"
+      }
+    },
+    {
+      "repo": "Automattic/harper",
+      "pushedAt": "2026-10-13T12:43:47Z",
+      "defaultBranch": "master",
+      "defaultHead": "6bb9b66196c95d279205639d8504db61aaadc6e3",
+      "lastDefaultCommits": [
+        {
+          "sha": "6bb9b66196c95d279205639d8504db61aaadc6e3",
+          "date": "2026-10-13T12:05:53Z",
+          "title": "feat: often times → oftentimes (#4594)"
+        },
+        {
+          "sha": "a67b2604360685ce591a7e92e6c507ac7e16199a",
+          "date": "2026-10-13T11:10:43Z",
+          "title": "chore: dictionary curation (#4568)"
+        },
+        {
+          "sha": "6a0f42d1c17472b07a85be3e4a0e9913ec8a9303",
+          "date": "2026-10-11T11:12:58Z",
+          "title": "feat: by extent → by extension (#4586)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v2.12.0",
+        "publishedAt": "2026-10-01T20:43:58Z",
+        "url": "https://github.com/Automattic/harper/releases/tag/v2.12.0"
+      }
+    },
+    {
+      "repo": "Lightning-AI/litgpt",
+      "pushedAt": "2026-10-13T06:03:13Z",
+      "defaultBranch": "main",
+      "defaultHead": "18c931c15c2398621d35371a12d2b1785e855bb6",
+      "lastDefaultCommits": [
+        {
+          "sha": "18c931c15c2398621d35371a12d2b1785e855bb6",
+          "date": "2026-09-09T01:49:25Z",
+          "title": "fix(thunder): remove duplicate _configure_launcher that dropped the e…"
+        },
+        {
+          "sha": "9560d14a468d4cfd5b2232bf630aba56441235ea",
+          "date": "2026-09-09T01:29:42Z",
+          "title": "Fix malformed <|im_start> token in Phi4Reasoning prompt style (#2267)"
+        },
+        {
+          "sha": "028fb721e8361a4aaad2f522bbf99a66fa20f936",
+          "date": "2026-09-08T23:36:30Z",
+          "title": "Handle tokenizer configs without tokenizer_class (#2278)"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v0.5.13",
+        "publishedAt": "2026-06-29T15:53:25Z",
+        "url": "https://github.com/Lightning-AI/litgpt/releases/tag/v0.5.13"
+      }
+    },
+    {
+      "repo": "lichess-org/lila",
+      "pushedAt": "2026-10-13T14:44:48Z",
+      "defaultBranch": "master",
+      "defaultHead": "2b8dbf48b958cbec6207818abc9c08b1d949b184",
+      "lastDefaultCommits": [
+        {
+          "sha": "2b8dbf48b958cbec6207818abc9c08b1d949b184",
+          "date": "2026-10-13T14:44:34Z",
+          "title": "add relay tour tier filter to calendar API - closes #22053"
+        },
+        {
+          "sha": "4641264ccba6f9f43b1836d81bbe00e0e1218634",
+          "date": "2026-10-13T06:38:26Z",
+          "title": "Merge pull request #21266 from Pushkal-Gupta/fix-atomic-promotion-men…"
+        },
+        {
+          "sha": "1fd6b07352a5e75c6bbed7deed8d2a603919e025",
+          "date": "2026-10-13T06:37:49Z",
+          "title": "delete slopetests"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v1.1.0",
+        "publishedAt": "2017-08-31T13:15:36Z",
+        "url": "https://github.com/lichess-org/lila/releases/tag/v1.1.0"
+      }
+    },
+    {
+      "repo": "omegaup/omegaup",
+      "pushedAt": "2026-10-13T04:34:10Z",
+      "defaultBranch": "main",
+      "defaultHead": "92403877047bf3e9ff9555012fc1246e48d554dc",
+      "lastDefaultCommits": [
+        {
+          "sha": "92403877047bf3e9ff9555012fc1246e48d554dc",
+          "date": "2026-10-13T04:34:09Z",
+          "title": "fix(controllers): validate feedback_list json in apiSetFeedbackList (…"
+        },
+        {
+          "sha": "da371e574d52866f2ec51d4f7125cd17402a7a24",
+          "date": "2026-10-13T04:16:49Z",
+          "title": "refactor(vue3): migrate schoolofthemonth components to defineComponen…"
+        },
+        {
+          "sha": "21d36f8969fc66b24df53ca26137b33eacd83b58",
+          "date": "2026-10-13T03:33:36Z",
+          "title": "fix(users): support GroupRoles in user system roles payload in User.p…"
+        }
+      ],
+      "latestRelease": null
+    },
+    {
+      "repo": "odoo/odoo",
+      "pushedAt": "2026-10-13T21:08:08Z",
+      "defaultBranch": "20.0",
+      "defaultHead": "7bce017a7addd792b6c2d5ab89395c7b1cdf16e7",
+      "lastDefaultCommits": [
+        {
+          "sha": "7bce017a7addd792b6c2d5ab89395c7b1cdf16e7",
+          "date": "2026-10-13T17:23:49Z",
+          "title": "[FIX] l10n_pe: align ubigeo and bank codes with official tables"
+        },
+        {
+          "sha": "b3befa559432809d8490a3c22874b6ee3c0482df",
+          "date": "2026-10-13T17:23:45Z",
+          "title": "[FIX] mail: prevent spam translation tracking messages"
+        },
+        {
+          "sha": "ef16b9e60355a3e024b08371b3fc8ced33b03bd7",
+          "date": "2026-10-13T17:23:40Z",
+          "title": "[IMP] point_of_sale: add support for X-No-SW-Cache header in sw"
+        }
+      ],
+      "latestRelease": null
+    },
+    {
+      "repo": "makeplane/plane",
+      "pushedAt": "2026-10-13T19:54:59Z",
+      "defaultBranch": "preview",
+      "defaultHead": "bab49bb978ccb56af1d78dec6c6d54dfe8d03c1c",
+      "lastDefaultCommits": [
+        {
+          "sha": "bab49bb978ccb56af1d78dec6c6d54dfe8d03c1c",
+          "date": "2026-10-08T12:21:49Z",
+          "title": "[INFRA-1089] chore(deps): switch MinIO image to pgsty/silo (#9962)"
+        },
+        {
+          "sha": "66c95bd3f3405b4ea1e61f981c4e5f0cfe015935",
+          "date": "2026-10-07T19:06:14Z",
+          "title": "chore(api): manage Python dependencies with uv (#9950)"
+        },
+        {
+          "sha": "d475cf489f066c9cc39dcc2b1c9122f5a37cd015",
+          "date": "2026-10-07T19:06:02Z",
+          "title": "[INFRA-1076] fix: clear the 2026-10-07 nightly npm Trivy findings (#9…"
+        }
+      ],
+      "latestRelease": {
+        "tagName": "v1.4.3-rc1",
+        "publishedAt": "2026-10-06T08:29:42Z",
+        "url": "https://github.com/makeplane/plane/releases/tag/v1.4.3-rc1"
+      }
+    },
+    {
+      "repo": "freeCodeCamp/freeCodeCamp",
+      "pushedAt": "2026-10-13T20:54:40Z",
+      "defaultBranch": "main",
+      "defaultHead": "e7e98c34b0d30f56fddd9e654089a80032700eb3",
+      "lastDefaultCommits": [
+        {
+          "sha": "e7e98c34b0d30f56fddd9e654089a80032700eb3",
+          "date": "2026-10-13T20:54:40Z",
+          "title": "fix(curriculum): fix config manager lab wording (#70868)"
+        },
+        {
+          "sha": "051870c0688b902f570412a726e3d69750a197c9",
+          "date": "2026-10-13T19:34:01Z",
+          "title": "fix(curriculum): add section headers to prop drilling lesson (#70844)"
+        },
+        {
+          "sha": "a9d6a39b1c20e6b7622ee550f6d1eae0cb45f7fe",
+          "date": "2026-10-13T19:26:18Z",
+          "title": "fix(curriculum): introduce == before or in movie ticket (#70690)"
+        }
+      ],
+      "latestRelease": null
+    }
+  ],
+  "manualIntegration": {
+    "url": "https://github.com/spring-projects/spring-boot/pull/18489",
+    "githubState": "CLOSED",
+    "confirmation": "https://github.com/spring-projects/spring-boot/pull/18489#issuecomment-559097507",
+    "commit": "https://github.com/spring-projects/spring-boot/commit/8888f75a41ff59784dfea6ea52d886ac45b1cefb"
+  }
+}

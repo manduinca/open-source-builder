@@ -213,7 +213,7 @@ seguimiento_habitual:
     - freeCodeCamp/freeCodeCamp
 
 # Observar no implica poder enviar código con agentes. Revalidar siempre la
-# política vigente; estos límites se detectaron el 2026-10-12.
+# política vigente; límites revisados el 2026-10-12 y el 2026-10-13.
 restricciones_contribucion:
   torchgeo/torchgeo: Solo seguimiento y trabajo local hasta aclarar la política local No LLMs
   freeCodeCamp/freeCodeCamp: Solo seguimiento; contribuciones con IA prohibidas
@@ -221,6 +221,14 @@ restricciones_contribucion:
   fatiando/boule: Aportes futuros principalmente escritos por humanos
   lichess-org/lila: Disclosure obligatorio, revisión y pruebas humanas antes de marcar un PR ready
   open-telemetry/opentelemetry-python-contrib: Código asistido permitido; comunicación humana según AGENTS.md
+  fatiando/verde: Política compartida Fatiando; sin contribuciones mayoritariamente GenAI ni publicación por agentes; asistencia limitada con disclosure
+  testcontainers/testcontainers-go: AI.md exige coautor de IA; excepción local pendiente de aprobación del usuario, nunca habilitar automáticamente
+  napari/napari: Asistencia permitida con comprensión y pruebas humanas; los agentes no envían PRs
+  scikit-image/scikit-image: IA limitada a exploración y cambios triviales o mecánicos; no algoritmos/tests novedosos ni descripciones/comentarios generados
+  libvips/libvips: No acepta contenido total o parcialmente generado con IA
+  ReactiveX/RxJava: IA responsable permitida; disclosure también del razonamiento asistido; contribuciones nuevas a 4.x
+  caddyserver/caddy: Código asistido posible; interacción y publicación humanas con disclosure
+  BurntSushi/ripgrep: Comunicación humana; no contribuciones autónomas por agentes
 
 # Contribuciones de cursos/comunidad y PRs antiguos; no son la cartera habitual.
 repos_historicos:

@@ -1,0 +1,1514 @@
+{
+  "date": "2026-10-13",
+  "sourceOfTruth": "config/interests.yaml",
+  "collection": {
+    "discoveredRepos": 85,
+    "auditedRepos": 74,
+    "uniqueSeedRepos": 64,
+    "newRepos": 10,
+    "sampledUniqueIssues": 596,
+    "fullyVerifiedUniqueCandidates": 33,
+    "limits": "Por repo: hasta 8 good-first-issue, 8 help-wanted y 5 recientes; muestra de últimos 8 merges ordenados UPDATED_AT, no tasa de aceptación. Historial completo solo de candidatos seleccionados. Nuevos repos de alta adopción priorizados desde 8000 estrellas, heurística, no garantía de prestigio/review."
+  },
+  "curators": [
+    {
+      "domain": "geociencias",
+      "engine": "Claude CLI",
+      "role": "curador",
+      "readOnly": true,
+      "model": "claude-haiku-5-5",
+      "effort": "max",
+      "completed": true,
+      "durationMs": 1204425,
+      "turns": 3,
+      "canonicalModelConfirmed": true
+    },
+    {
+      "domain": "remunerados",
+      "engine": "Claude CLI",
+      "role": "curador",
+      "readOnly": true,
+      "model": "claude-haiku-5-5",
+      "effort": "max",
+      "completed": true,
+      "durationMs": 318500,
+      "turns": 1,
+      "canonicalModelConfirmed": true
+    },
+    {
+      "domain": "mineria",
+      "engine": "Claude CLI",
+      "role": "curador",
+      "readOnly": true,
+      "model": "claude-haiku-5-5",
+      "effort": "max",
+      "completed": true,
+      "durationMs": 365056,
+      "turns": 1,
+      "canonicalModelConfirmed": true
+    },
+    {
+      "domain": "procesamiento_imagenes",
+      "engine": "Codex",
+      "role": "curador",
+      "readOnly": true,
+      "model": null,
+      "effort": null,
+      "completed": true,
+      "durationMs": null,
+      "turns": null,
+      "canonicalModelConfirmed": null
+    },
+    {
+      "domain": "cloud_native_observabilidad",
+      "engine": "Codex",
+      "role": "curador",
+      "readOnly": true,
+      "model": null,
+      "effort": null,
+      "completed": true,
+      "durationMs": null,
+      "turns": null,
+      "canonicalModelConfirmed": null
+    },
+    {
+      "domain": "librerias_generales",
+      "engine": "Codex",
+      "role": "curador",
+      "readOnly": true,
+      "model": null,
+      "effort": null,
+      "completed": true,
+      "durationMs": null,
+      "turns": null,
+      "canonicalModelConfirmed": null
+    },
+    {
+      "domain": "aplicaciones_comunidad",
+      "engine": "Codex",
+      "role": "curador",
+      "readOnly": true,
+      "model": null,
+      "effort": null,
+      "completed": true,
+      "durationMs": null,
+      "turns": null,
+      "canonicalModelConfirmed": null
+    },
+    {
+      "domain": "educacion_programacion",
+      "engine": "Claude CLI",
+      "role": "curador",
+      "readOnly": true,
+      "model": "claude-haiku-5-5",
+      "effort": "max",
+      "completed": true,
+      "durationMs": 117229,
+      "turns": 1,
+      "canonicalModelConfirmed": true
+    },
+    {
+      "domain": "ecosistema_eddumelendez",
+      "engine": "Codex",
+      "role": "curador",
+      "readOnly": true,
+      "model": null,
+      "effort": null,
+      "completed": true,
+      "durationMs": null,
+      "turns": null,
+      "canonicalModelConfirmed": null
+    }
+  ],
+  "comparison": {
+    "engine": "Claude CLI",
+    "model": "claude-haiku-5-5",
+    "effort": "max",
+    "completed": false,
+    "error": "usage_limit_reached",
+    "httpStatus": 429,
+    "reset": "19:00 America/Lima"
+  },
+  "verifier": {
+    "engine": "Codex",
+    "role": "verificador independiente",
+    "readOnly": true
+  },
+  "retryNotes": "Primeros tres procesos con Read detenidos sin resultado; datasets reintroducidos por stdin sin herramientas. Cloud/librerías grandes no entregaron resultado útil; terminaron vía curadores Codex. Comparación adicional Haiku falló por límite de sesión. No se factura una cifra estimada: cliente indica costBasis unknown.",
+  "sources": {
+    "haiku": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+    "claudeCli": "https://code.claude.com/docs/en/cli-reference"
+  },
+  "repositories": [
+    {
+      "repo": "gempy-project/gempy",
+      "url": "https://github.com/gempy-project/gempy",
+      "stars": 1354,
+      "pushedAt": "2026-10-13T12:10:33Z",
+      "language": "Python",
+      "license": "EUPL-1.2",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "61ad07342db140ae5e92d5fef2da95835eb6a3ec",
+      "openIssues": 8,
+      "openPrs": 4,
+      "latestRelease": {
+        "tagName": "v2026.2.0a0",
+        "publishedAt": "2026-10-13T12:10:34Z",
+        "url": "https://github.com/gempy-project/gempy/releases/tag/v2026.2.0a0"
+      }
+    },
+    {
+      "repo": "pyvista/pyvista",
+      "url": "https://github.com/pyvista/pyvista",
+      "stars": 3848,
+      "pushedAt": "2026-10-13T08:46:57Z",
+      "language": "Python",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "632f46de917bb353bd0fe2665563bb834a815a7d",
+      "openIssues": 440,
+      "openPrs": 98,
+      "latestRelease": {
+        "tagName": "v0.49.1",
+        "publishedAt": "2026-10-11T17:17:44Z",
+        "url": "https://github.com/pyvista/pyvista/releases/tag/v0.49.1"
+      }
+    },
+    {
+      "repo": "fatiando/verde",
+      "url": "https://github.com/fatiando/verde",
+      "stars": 675,
+      "pushedAt": "2026-09-29T12:49:23Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "d08c03bbe8b72e62ddb5bf950fb3f4f15ce1e2ef",
+      "openIssues": 36,
+      "openPrs": 10,
+      "latestRelease": {
+        "tagName": "v1.9.0",
+        "publishedAt": "2026-03-19T12:48:18Z",
+        "url": "https://github.com/fatiando/verde/releases/tag/v1.9.0"
+      }
+    },
+    {
+      "repo": "fatiando/harmonica",
+      "url": "https://github.com/fatiando/harmonica",
+      "stars": 309,
+      "pushedAt": "2026-10-01T18:05:31Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "82a42230fad486a3822bbb2f3e49a10415bf18da",
+      "openIssues": 42,
+      "openPrs": 9,
+      "latestRelease": {
+        "tagName": "v0.7.0",
+        "publishedAt": "2024-08-12T22:37:40Z",
+        "url": "https://github.com/fatiando/harmonica/releases/tag/v0.7.0"
+      }
+    },
+    {
+      "repo": "fatiando/boule",
+      "url": "https://github.com/fatiando/boule",
+      "stars": 43,
+      "pushedAt": "2026-10-02T19:24:23Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "b610249cf12a06e167a37f5bfdfe9119744c0977",
+      "openIssues": 4,
+      "openPrs": 2,
+      "latestRelease": {
+        "tagName": "v0.6.0",
+        "publishedAt": "2026-03-30T13:52:47Z",
+        "url": "https://github.com/fatiando/boule/releases/tag/v0.6.0"
+      }
+    },
+    {
+      "repo": "DASDAE/dascore",
+      "url": "https://github.com/DASDAE/dascore",
+      "stars": 171,
+      "pushedAt": "2026-10-11T05:34:16Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "c42db9bf4a222efb1d500adc894879a8f7206130",
+      "openIssues": 41,
+      "openPrs": 2,
+      "latestRelease": {
+        "tagName": "v0.1.24",
+        "publishedAt": "2026-10-03T09:24:13Z",
+        "url": "https://github.com/DASDAE/dascore/releases/tag/v0.1.24"
+      }
+    },
+    {
+      "repo": "seisbench/seisbench",
+      "url": "https://github.com/seisbench/seisbench",
+      "stars": 426,
+      "pushedAt": "2026-10-05T11:37:37Z",
+      "language": "Jupyter Notebook",
+      "license": "GPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "e5616ad33c00aba75d5130b44222df46b41e4094",
+      "openIssues": 16,
+      "openPrs": 2,
+      "latestRelease": {
+        "tagName": "v0.12.0",
+        "publishedAt": "2026-06-24T11:24:08Z",
+        "url": "https://github.com/seisbench/seisbench/releases/tag/v0.12.0"
+      }
+    },
+    {
+      "repo": "GlacioHack/xdem",
+      "url": "https://github.com/GlacioHack/xdem",
+      "stars": 219,
+      "pushedAt": "2026-09-18T02:08:29Z",
+      "language": "Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "c7e8e1fb4500e4d9a1093ac7ed06d86b55b387b2",
+      "openIssues": 131,
+      "openPrs": 8,
+      "latestRelease": {
+        "tagName": "v0.2.3",
+        "publishedAt": "2026-03-03T05:19:07Z",
+        "url": "https://github.com/GlacioHack/xdem/releases/tag/v0.2.3"
+      }
+    },
+    {
+      "repo": "obspy/obspy",
+      "url": "https://github.com/obspy/obspy",
+      "stars": 1339,
+      "pushedAt": "2026-09-29T18:47:07Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "50033e1daf95233cd4f30e95a49c37fd50be2ccd",
+      "openIssues": 203,
+      "openPrs": 118,
+      "latestRelease": {
+        "tagName": "1.5.1",
+        "publishedAt": "2026-08-28T07:41:30Z",
+        "url": "https://github.com/obspy/obspy/releases/tag/1.5.1"
+      }
+    },
+    {
+      "repo": "GeostatsGuy/GeostatsPy",
+      "url": "https://github.com/GeostatsGuy/GeostatsPy",
+      "stars": 584,
+      "pushedAt": "2025-09-30T17:52:50Z",
+      "language": "Jupyter Notebook",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "45b2032a1e3f05de6cd0cb7f32ed43203399dbfa",
+      "openIssues": 16,
+      "openPrs": 6,
+      "latestRelease": {
+        "tagName": "v0.0.71",
+        "publishedAt": "2024-09-24T19:40:13Z",
+        "url": "https://github.com/GeostatsGuy/GeostatsPy/releases/tag/v0.0.71"
+      }
+    },
+    {
+      "repo": "GeoStat-Framework/GSTools",
+      "url": "https://github.com/GeoStat-Framework/GSTools",
+      "stars": 655,
+      "pushedAt": "2026-10-13T11:52:48Z",
+      "language": "Python",
+      "license": "LGPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "a31e5fc514126fc82abcfc52b67c3d2b62a348dc",
+      "openIssues": 24,
+      "openPrs": 10,
+      "latestRelease": {
+        "tagName": "v1.7.0",
+        "publishedAt": "2025-04-28T11:38:51Z",
+        "url": "https://github.com/GeoStat-Framework/GSTools/releases/tag/v1.7.0"
+      }
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "url": "https://github.com/Unidata/MetPy",
+      "stars": 1449,
+      "pushedAt": "2026-10-13T16:20:38Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "7910b5ceb506551606acb6e3c00a5c3f3a4c5a2b",
+      "openIssues": 325,
+      "openPrs": 76,
+      "latestRelease": {
+        "tagName": "v1.7.1",
+        "publishedAt": "2025-08-29T23:19:01Z",
+        "url": "https://github.com/Unidata/MetPy/releases/tag/v1.7.1"
+      }
+    },
+    {
+      "repo": "geopandas/geopandas",
+      "url": "https://github.com/geopandas/geopandas",
+      "stars": 5277,
+      "pushedAt": "2026-10-12T21:00:11Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "ee889bb6365319dee15b43ad001539ef10b090f0",
+      "openIssues": 339,
+      "openPrs": 87,
+      "latestRelease": {
+        "tagName": "v1.2.0",
+        "publishedAt": "2026-09-28T17:13:12Z",
+        "url": "https://github.com/geopandas/geopandas/releases/tag/v1.2.0"
+      }
+    },
+    {
+      "repo": "rasterio/rasterio",
+      "url": "https://github.com/rasterio/rasterio",
+      "stars": 2582,
+      "pushedAt": "2026-10-13T17:10:52Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "a3ea72298f3d485d6a4068c34e078f0aa121c4a8",
+      "openIssues": 129,
+      "openPrs": 19,
+      "latestRelease": {
+        "tagName": "1.5.2",
+        "publishedAt": "2026-09-30T13:38:05Z",
+        "url": "https://github.com/rasterio/rasterio/releases/tag/1.5.2"
+      }
+    },
+    {
+      "repo": "simpeg/simpeg",
+      "url": "https://github.com/simpeg/simpeg",
+      "stars": 686,
+      "pushedAt": "2026-10-13T20:35:47Z",
+      "language": "Python",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "d872a94ff3df9586d20eb412925bcfdd6d15c3e0",
+      "openIssues": 156,
+      "openPrs": 33,
+      "latestRelease": {
+        "tagName": "v0.25.2",
+        "publishedAt": "2026-03-16T18:05:35Z",
+        "url": "https://github.com/simpeg/simpeg/releases/tag/v0.25.2"
+      }
+    },
+    {
+      "repo": "GenericMappingTools/pygmt",
+      "url": "https://github.com/GenericMappingTools/pygmt",
+      "stars": 876,
+      "pushedAt": "2026-10-11T15:08:21Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "6b0ab0c674366f110e2e33e01841e6af05bc2c35",
+      "openIssues": 128,
+      "openPrs": 60,
+      "latestRelease": {
+        "tagName": "v0.19.0",
+        "publishedAt": "2026-07-07T15:08:41Z",
+        "url": "https://github.com/GenericMappingTools/pygmt/releases/tag/v0.19.0"
+      }
+    },
+    {
+      "repo": "OSGeo/gdal",
+      "url": "https://github.com/OSGeo/gdal",
+      "stars": 6098,
+      "pushedAt": "2026-10-13T20:02:19Z",
+      "language": "C++",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "13310f750da0a09bbc944067b7d7fa8b8b27b110",
+      "openIssues": 576,
+      "openPrs": 21,
+      "latestRelease": {
+        "tagName": "v3.13.3",
+        "publishedAt": "2026-08-18T09:39:09Z",
+        "url": "https://github.com/OSGeo/gdal/releases/tag/v3.13.3"
+      }
+    },
+    {
+      "repo": "onyx-dot-app/onyx",
+      "url": "https://github.com/onyx-dot-app/onyx",
+      "stars": 32440,
+      "pushedAt": "2026-10-13T21:01:45Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "94700acf87440f7bc1f5d892e457ffd43c1704b2",
+      "openIssues": 175,
+      "openPrs": 382,
+      "latestRelease": {
+        "tagName": "v5.0.0-beta.0",
+        "publishedAt": "2026-10-13T16:14:08Z",
+        "url": "https://github.com/onyx-dot-app/onyx/releases/tag/v5.0.0-beta.0"
+      }
+    },
+    {
+      "repo": "commaai/openpilot",
+      "url": "https://github.com/commaai/openpilot",
+      "stars": 63895,
+      "pushedAt": "2026-10-13T21:00:20Z",
+      "language": "Python",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "a47d1c56f60727cd5ad0056cb2479bad8c473c4d",
+      "openIssues": 84,
+      "openPrs": 42,
+      "latestRelease": {
+        "tagName": "v0.11.1",
+        "publishedAt": "2026-06-05T16:15:25Z",
+        "url": "https://github.com/commaai/openpilot/releases/tag/v0.11.1"
+      }
+    },
+    {
+      "repo": "calcom/cal.diy",
+      "url": "https://github.com/calcom/cal.diy",
+      "stars": 48981,
+      "pushedAt": "2026-09-26T07:48:40Z",
+      "language": "TypeScript",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "54343aa685ae8f33159d2f485ec4a57bad5c574a",
+      "openIssues": 1153,
+      "openPrs": 354,
+      "latestRelease": {
+        "tagName": "v6.2.0",
+        "publishedAt": "2026-03-01T23:49:01Z",
+        "url": "https://github.com/calcom/cal.diy/releases/tag/v6.2.0"
+      }
+    },
+    {
+      "repo": "supabase/supabase",
+      "url": "https://github.com/supabase/supabase",
+      "stars": 111487,
+      "pushedAt": "2026-10-13T21:06:38Z",
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "9ced729c39ad1f26dfbd3e9008dade42754dbc8e",
+      "openIssues": 315,
+      "openPrs": 840,
+      "latestRelease": {
+        "tagName": "v1.26.08",
+        "publishedAt": "2026-08-07T13:57:57Z",
+        "url": "https://github.com/supabase/supabase/releases/tag/v1.26.08"
+      }
+    },
+    {
+      "repo": "Loop3D/LoopStructural",
+      "url": "https://github.com/Loop3D/LoopStructural",
+      "stars": 297,
+      "pushedAt": "2026-10-05T19:21:00Z",
+      "language": "Python",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "6546d8811ef4d4e3c11b956eed85cd24ee5b3f90",
+      "openIssues": 9,
+      "openPrs": 3,
+      "latestRelease": {
+        "tagName": "map2loop-v3.5.1",
+        "publishedAt": "2026-10-05T19:15:03Z",
+        "url": "https://github.com/Loop3D/LoopStructural/releases/tag/map2loop-v3.5.1"
+      }
+    },
+    {
+      "repo": "unageek/jizai",
+      "url": "https://github.com/unageek/jizai",
+      "stars": 194,
+      "pushedAt": "2026-10-06T08:43:38Z",
+      "language": "C++",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "49aa58d7cc48b54a12e6e86c706aca018a8cc222",
+      "openIssues": 0,
+      "openPrs": 0,
+      "latestRelease": {
+        "tagName": "v1.0.0",
+        "publishedAt": "2026-10-06T08:47:11Z",
+        "url": "https://github.com/unageek/jizai/releases/tag/v1.0.0"
+      }
+    },
+    {
+      "repo": "MiraGeoscience/geoh5py",
+      "url": "https://github.com/MiraGeoscience/geoh5py",
+      "stars": 63,
+      "pushedAt": "2026-10-13T19:29:17Z",
+      "language": "Python",
+      "license": "LGPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "develop",
+      "defaultHead": "079824b3058f8197bdf17d9430a12b5ff035a489",
+      "openIssues": 3,
+      "openPrs": 7,
+      "latestRelease": {
+        "tagName": "v0.13.1",
+        "publishedAt": "2026-08-21T18:51:30Z",
+        "url": "https://github.com/MiraGeoscience/geoh5py/releases/tag/v0.13.1"
+      }
+    },
+    {
+      "repo": "scikit-image/scikit-image",
+      "url": "https://github.com/scikit-image/scikit-image",
+      "stars": 6608,
+      "pushedAt": "2026-10-09T15:26:00Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "b700edc8005e4ee9e74fc83259f09e8df3213f15",
+      "openIssues": 646,
+      "openPrs": 309,
+      "latestRelease": {
+        "tagName": "v0.26.0",
+        "publishedAt": "2025-12-20T17:13:44Z",
+        "url": "https://github.com/scikit-image/scikit-image/releases/tag/v0.26.0"
+      }
+    },
+    {
+      "repo": "opencv/opencv",
+      "url": "https://github.com/opencv/opencv",
+      "stars": 91170,
+      "pushedAt": "2026-10-13T11:53:48Z",
+      "language": "C++",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "5.x",
+      "defaultHead": "a633c3cef6bf0f529050a9b7895de3c4678a2ca6",
+      "openIssues": 2534,
+      "openPrs": 271,
+      "latestRelease": {
+        "tagName": "4.14.0",
+        "publishedAt": "2026-07-19T11:45:21Z",
+        "url": "https://github.com/opencv/opencv/releases/tag/4.14.0"
+      }
+    },
+    {
+      "repo": "napari/napari",
+      "url": "https://github.com/napari/napari",
+      "stars": 2778,
+      "pushedAt": "2026-10-13T15:58:30Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "2929f115862ce1eb9215c27e0883abe4dc7ac1fd",
+      "openIssues": 1081,
+      "openPrs": 218,
+      "latestRelease": {
+        "tagName": "v0.10.0a0",
+        "publishedAt": "2026-10-13T13:51:38Z",
+        "url": "https://github.com/napari/napari/releases/tag/v0.10.0a0"
+      }
+    },
+    {
+      "repo": "torchgeo/torchgeo",
+      "url": "https://github.com/torchgeo/torchgeo",
+      "stars": 4201,
+      "pushedAt": "2026-10-13T18:58:28Z",
+      "language": "Python",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "6d3b8450666afcd587592e9bfdf8422ad4828e2c",
+      "openIssues": 121,
+      "openPrs": 93,
+      "latestRelease": {
+        "tagName": "v0.10.1",
+        "publishedAt": "2026-09-29T08:57:58Z",
+        "url": "https://github.com/torchgeo/torchgeo/releases/tag/v0.10.1"
+      }
+    },
+    {
+      "repo": "open-telemetry/opentelemetry-python-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-python-contrib",
+      "stars": 1111,
+      "pushedAt": "2026-10-13T14:16:11Z",
+      "language": "Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "aa5fba1eb4a0a7192949e3472d43a2e2b70c431d",
+      "openIssues": 548,
+      "openPrs": 174,
+      "latestRelease": {
+        "tagName": "opentelemetry-opamp-client==0.4b0",
+        "publishedAt": "2026-10-07T16:14:50Z",
+        "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/releases/tag/opentelemetry-opamp-client%3D%3D0.4b0"
+      }
+    },
+    {
+      "repo": "open-telemetry/opentelemetry-python",
+      "url": "https://github.com/open-telemetry/opentelemetry-python",
+      "stars": 2668,
+      "pushedAt": "2026-10-13T14:09:00Z",
+      "language": "Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "2417c7a516416209470928788fc4c8ba7c6915a5",
+      "openIssues": 329,
+      "openPrs": 76,
+      "latestRelease": {
+        "tagName": "v1.45.1",
+        "publishedAt": "2026-10-06T17:33:17Z",
+        "url": "https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.45.1"
+      }
+    },
+    {
+      "repo": "dapr/python-sdk",
+      "url": "https://github.com/dapr/python-sdk",
+      "stars": 274,
+      "pushedAt": "2026-10-13T21:05:07Z",
+      "language": "Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "143495f227bff41509941b6bc0b68e858e39a731",
+      "openIssues": 16,
+      "openPrs": 40,
+      "latestRelease": {
+        "tagName": "v1.19.0rc1",
+        "publishedAt": "2026-10-13T13:23:02Z",
+        "url": "https://github.com/dapr/python-sdk/releases/tag/v1.19.0rc1"
+      }
+    },
+    {
+      "repo": "dapr/java-sdk",
+      "url": "https://github.com/dapr/java-sdk",
+      "stars": 302,
+      "pushedAt": "2026-10-13T09:04:08Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "ca2a9305b66ce279fd0f2f65fd069d68353998be",
+      "openIssues": 94,
+      "openPrs": 14,
+      "latestRelease": {
+        "tagName": "v1.18.1",
+        "publishedAt": "2026-07-20T09:32:51Z",
+        "url": "https://github.com/dapr/java-sdk/releases/tag/v1.18.1"
+      }
+    },
+    {
+      "repo": "testcontainers/testcontainers-go",
+      "url": "https://github.com/testcontainers/testcontainers-go",
+      "stars": 5008,
+      "pushedAt": "2026-10-13T03:09:42Z",
+      "language": "Go",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "9d2885db535f9915dd270d5a6b4973a4aac0e2e8",
+      "openIssues": 124,
+      "openPrs": 67,
+      "latestRelease": {
+        "tagName": "v0.44.0",
+        "publishedAt": "2026-08-07T10:53:52Z",
+        "url": "https://github.com/testcontainers/testcontainers-go/releases/tag/v0.44.0"
+      }
+    },
+    {
+      "repo": "cloudevents/sdk-python",
+      "url": "https://github.com/cloudevents/sdk-python",
+      "stars": 344,
+      "pushedAt": "2026-10-12T17:10:33Z",
+      "language": "Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "24842fd5082e19126d35324f19c114f6a3328219",
+      "openIssues": 17,
+      "openPrs": 14,
+      "latestRelease": null
+    },
+    {
+      "repo": "falcosecurity/falcosidekick",
+      "url": "https://github.com/falcosecurity/falcosidekick",
+      "stars": 695,
+      "pushedAt": "2026-10-05T15:05:07Z",
+      "language": "Go",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "3e3f5536f798e111205770a40af49a8ca48ba678",
+      "openIssues": 7,
+      "openPrs": 15,
+      "latestRelease": {
+        "tagName": "2.35.0",
+        "publishedAt": "2026-08-31T12:56:48Z",
+        "url": "https://github.com/falcosecurity/falcosidekick/releases/tag/2.35.0"
+      }
+    },
+    {
+      "repo": "prometheus/client_java",
+      "url": "https://github.com/prometheus/client_java",
+      "stars": 2288,
+      "pushedAt": "2026-10-13T08:24:23Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "3815993364e563882f0a6b0741685b8a1a740e45",
+      "openIssues": 19,
+      "openPrs": 6,
+      "latestRelease": {
+        "tagName": "v1.9.0",
+        "publishedAt": "2026-09-16T07:03:41Z",
+        "url": "https://github.com/prometheus/client_java/releases/tag/v1.9.0"
+      }
+    },
+    {
+      "repo": "czerwonk/ping_exporter",
+      "url": "https://github.com/czerwonk/ping_exporter",
+      "stars": 636,
+      "pushedAt": "2026-10-09T12:23:03Z",
+      "language": "Go",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "d048d6e79916912c74b692f24b030e997c99881e",
+      "openIssues": 41,
+      "openPrs": 2,
+      "latestRelease": {
+        "tagName": "v1.3.0",
+        "publishedAt": "2026-09-24T11:22:37Z",
+        "url": "https://github.com/czerwonk/ping_exporter/releases/tag/v1.3.0"
+      }
+    },
+    {
+      "repo": "moghtech/komodo",
+      "url": "https://github.com/moghtech/komodo",
+      "stars": 12699,
+      "pushedAt": "2026-09-21T01:31:48Z",
+      "language": "Rust",
+      "license": "GPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "780ac68b992094a9fccd5fffb760e0c84fd3c3d1",
+      "openIssues": 607,
+      "openPrs": 69,
+      "latestRelease": {
+        "tagName": "v2.3.3",
+        "publishedAt": "2026-09-01T21:59:37Z",
+        "url": "https://github.com/moghtech/komodo/releases/tag/v2.3.3"
+      }
+    },
+    {
+      "repo": "kubernetes/website",
+      "url": "https://github.com/kubernetes/website",
+      "stars": 5407,
+      "pushedAt": "2026-10-13T17:00:27Z",
+      "language": "HTML",
+      "license": "CC-BY-4.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "51675a591dc393f2fa44b5a72463068236a9932e",
+      "openIssues": 524,
+      "openPrs": 518,
+      "latestRelease": {
+        "tagName": "snapshot-initial-v1.37",
+        "publishedAt": "2026-08-26T17:10:01Z",
+        "url": "https://github.com/kubernetes/website/releases/tag/snapshot-initial-v1.37"
+      }
+    },
+    {
+      "repo": "open-telemetry/opentelemetry.io",
+      "url": "https://github.com/open-telemetry/opentelemetry.io",
+      "stars": 981,
+      "pushedAt": "2026-10-13T19:46:52Z",
+      "language": "JavaScript",
+      "license": "CC-BY-4.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "68b7340491696eb69518241d46fd821e38e368a2",
+      "openIssues": 396,
+      "openPrs": 75,
+      "latestRelease": {
+        "tagName": "2026.09",
+        "publishedAt": "2026-10-04T07:24:14Z",
+        "url": "https://github.com/open-telemetry/opentelemetry.io/releases/tag/2026.09"
+      }
+    },
+    {
+      "repo": "backstage/backstage",
+      "url": "https://github.com/backstage/backstage",
+      "stars": 34606,
+      "pushedAt": "2026-10-13T20:50:54Z",
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "b9fa010fb0ca91d2da2cb38f640d9c86cb1c1a26",
+      "openIssues": 288,
+      "openPrs": 183,
+      "latestRelease": {
+        "tagName": "v1.56.0-next.3",
+        "publishedAt": "2026-10-13T16:20:16Z",
+        "url": "https://github.com/backstage/backstage/releases/tag/v1.56.0-next.3"
+      }
+    },
+    {
+      "repo": "python/cpython",
+      "url": "https://github.com/python/cpython",
+      "stars": 77710,
+      "pushedAt": "2026-10-13T21:03:16Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "fe7735f03ecd720e717daf221511f74c23cd90dc",
+      "openIssues": 7095,
+      "openPrs": 2654,
+      "latestRelease": null
+    },
+    {
+      "repo": "django/django",
+      "url": "https://github.com/django/django",
+      "stars": 91423,
+      "pushedAt": "2026-10-13T20:14:07Z",
+      "language": "Python",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "9014ca519c1cc825709a8fce0934f9919861ffb9",
+      "openIssues": 0,
+      "openPrs": 533,
+      "latestRelease": null
+    },
+    {
+      "repo": "spring-projects/spring-framework",
+      "url": "https://github.com/spring-projects/spring-framework",
+      "stars": 60286,
+      "pushedAt": "2026-10-13T15:09:21Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "e0a40922704253b64415ef3381296f921078ae30",
+      "openIssues": 351,
+      "openPrs": 142,
+      "latestRelease": {
+        "tagName": "v7.1.0-M2",
+        "publishedAt": "2026-09-24T10:13:51Z",
+        "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.1.0-M2"
+      }
+    },
+    {
+      "repo": "spring-projects/spring-boot",
+      "url": "https://github.com/spring-projects/spring-boot",
+      "stars": 81618,
+      "pushedAt": "2026-10-13T19:11:49Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "b0f6e119b1eb2b5cf1c14d8ef264c6a24fe8f1b4",
+      "openIssues": 493,
+      "openPrs": 24,
+      "latestRelease": {
+        "tagName": "v4.2.0-M2",
+        "publishedAt": "2026-09-24T10:38:37Z",
+        "url": "https://github.com/spring-projects/spring-boot/releases/tag/v4.2.0-M2"
+      }
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "url": "https://github.com/OpenAPITools/openapi-generator",
+      "stars": 26790,
+      "pushedAt": "2026-10-13T18:20:39Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "b16391856bc513aaf4d8d2ac0ddc4f0c1c2942ee",
+      "openIssues": 5139,
+      "openPrs": 618,
+      "latestRelease": {
+        "tagName": "v7.26.0",
+        "publishedAt": "2026-10-06T09:33:32Z",
+        "url": "https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.26.0"
+      }
+    },
+    {
+      "repo": "keycloak/keycloak",
+      "url": "https://github.com/keycloak/keycloak",
+      "stars": 37332,
+      "pushedAt": "2026-10-13T18:52:54Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "ced4e34e2688559cabbb12627f4f51a64cb44e50",
+      "openIssues": 2699,
+      "openPrs": 541,
+      "latestRelease": {
+        "tagName": "26.8.1",
+        "publishedAt": "2026-10-13T08:58:15Z",
+        "url": "https://github.com/keycloak/keycloak/releases/tag/26.8.1"
+      }
+    },
+    {
+      "repo": "apache/lucene",
+      "url": "https://github.com/apache/lucene",
+      "stars": 3584,
+      "pushedAt": "2026-10-13T11:03:16Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "d8d5f31ae7612391adf8a3663ff5ce92e4e32023",
+      "openIssues": 2304,
+      "openPrs": 382,
+      "latestRelease": {
+        "tagName": "releases/lucene/10.5.2",
+        "publishedAt": "2026-10-04T20:09:52Z",
+        "url": "https://github.com/apache/lucene/releases/tag/releases/lucene/10.5.2"
+      }
+    },
+    {
+      "repo": "wailsapp/wails",
+      "url": "https://github.com/wailsapp/wails",
+      "stars": 36538,
+      "pushedAt": "2026-10-13T15:15:31Z",
+      "language": "Go",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "ecbe4ffedeb2ea8cae1a15ca9e084708a5812b14",
+      "openIssues": 197,
+      "openPrs": 182,
+      "latestRelease": {
+        "tagName": "v3.0.0-beta.29",
+        "publishedAt": "2026-10-13T15:15:32Z",
+        "url": "https://github.com/wailsapp/wails/releases/tag/v3.0.0-beta.29"
+      }
+    },
+    {
+      "repo": "Automattic/harper",
+      "url": "https://github.com/Automattic/harper",
+      "stars": 16373,
+      "pushedAt": "2026-10-13T12:43:47Z",
+      "language": "Rust",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "6bb9b66196c95d279205639d8504db61aaadc6e3",
+      "openIssues": 821,
+      "openPrs": 173,
+      "latestRelease": {
+        "tagName": "v2.12.0",
+        "publishedAt": "2026-10-01T20:43:58Z",
+        "url": "https://github.com/Automattic/harper/releases/tag/v2.12.0"
+      }
+    },
+    {
+      "repo": "Lightning-AI/litgpt",
+      "url": "https://github.com/Lightning-AI/litgpt",
+      "stars": 13704,
+      "pushedAt": "2026-10-13T06:03:13Z",
+      "language": "Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "18c931c15c2398621d35371a12d2b1785e855bb6",
+      "openIssues": 246,
+      "openPrs": 67,
+      "latestRelease": {
+        "tagName": "v0.5.13",
+        "publishedAt": "2026-06-29T15:53:25Z",
+        "url": "https://github.com/Lightning-AI/litgpt/releases/tag/v0.5.13"
+      }
+    },
+    {
+      "repo": "lichess-org/lila",
+      "url": "https://github.com/lichess-org/lila",
+      "stars": 18826,
+      "pushedAt": "2026-10-13T14:44:48Z",
+      "language": "Scala",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "2b8dbf48b958cbec6207818abc9c08b1d949b184",
+      "openIssues": 1224,
+      "openPrs": 46,
+      "latestRelease": {
+        "tagName": "v1.1.0",
+        "publishedAt": "2017-08-31T13:15:36Z",
+        "url": "https://github.com/lichess-org/lila/releases/tag/v1.1.0"
+      }
+    },
+    {
+      "repo": "omegaup/omegaup",
+      "url": "https://github.com/omegaup/omegaup",
+      "stars": 376,
+      "pushedAt": "2026-10-13T04:34:10Z",
+      "language": "PHP",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "92403877047bf3e9ff9555012fc1246e48d554dc",
+      "openIssues": 745,
+      "openPrs": 331,
+      "latestRelease": null
+    },
+    {
+      "repo": "odoo/odoo",
+      "url": "https://github.com/odoo/odoo",
+      "stars": 55013,
+      "pushedAt": "2026-10-13T21:08:08Z",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "20.0",
+      "defaultHead": "7bce017a7addd792b6c2d5ab89395c7b1cdf16e7",
+      "openIssues": 3845,
+      "openPrs": 7014,
+      "latestRelease": null
+    },
+    {
+      "repo": "OCA/server-tools",
+      "url": "https://github.com/OCA/server-tools",
+      "stars": 960,
+      "pushedAt": "2026-10-11T10:47:03Z",
+      "language": "Python",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "19.0",
+      "defaultHead": "ff085d56f10e5d1dc68ef85482eb3fc34a5b62d2",
+      "openIssues": 61,
+      "openPrs": 246,
+      "latestRelease": null
+    },
+    {
+      "repo": "makeplane/plane",
+      "url": "https://github.com/makeplane/plane",
+      "stars": 60783,
+      "pushedAt": "2026-10-13T19:54:59Z",
+      "language": "TypeScript",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "preview",
+      "defaultHead": "bab49bb978ccb56af1d78dec6c6d54dfe8d03c1c",
+      "openIssues": 785,
+      "openPrs": 341,
+      "latestRelease": {
+        "tagName": "v1.4.3-rc1",
+        "publishedAt": "2026-10-06T08:29:42Z",
+        "url": "https://github.com/makeplane/plane/releases/tag/v1.4.3-rc1"
+      }
+    },
+    {
+      "repo": "freeCodeCamp/freeCodeCamp",
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+      "stars": 456999,
+      "pushedAt": "2026-10-13T20:54:40Z",
+      "language": "TypeScript",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "e7e98c34b0d30f56fddd9e654089a80032700eb3",
+      "openIssues": 97,
+      "openPrs": 90,
+      "latestRelease": null
+    },
+    {
+      "repo": "testcontainers/testcontainers-java",
+      "url": "https://github.com/testcontainers/testcontainers-java",
+      "stars": 8749,
+      "pushedAt": "2026-10-05T12:25:39Z",
+      "language": "Java",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "9bb3c2dc175672ad33a2eafd7133212c7173ac43",
+      "openIssues": 415,
+      "openPrs": 218,
+      "latestRelease": {
+        "tagName": "2.0.5",
+        "publishedAt": "2026-04-20T17:41:01Z",
+        "url": "https://github.com/testcontainers/testcontainers-java/releases/tag/2.0.5"
+      }
+    },
+    {
+      "repo": "spring-io/start.spring.io",
+      "url": "https://github.com/spring-io/start.spring.io",
+      "stars": 2680,
+      "pushedAt": "2026-10-13T06:50:40Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "9f6135ff94d1dffb822d86df4069e58484afb0c0",
+      "openIssues": 18,
+      "openPrs": 1,
+      "latestRelease": null
+    },
+    {
+      "repo": "spring-projects/spring-ai",
+      "url": "https://github.com/spring-projects/spring-ai",
+      "stars": 9536,
+      "pushedAt": "2026-10-13T18:47:41Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "689b50e642cbf7b5ec579383cf7ced8876e69732",
+      "openIssues": 964,
+      "openPrs": 532,
+      "latestRelease": {
+        "tagName": "v2.1.0-M1",
+        "publishedAt": "2026-09-25T07:28:53Z",
+        "url": "https://github.com/spring-projects/spring-ai/releases/tag/v2.1.0-M1"
+      }
+    },
+    {
+      "repo": "1Password/shell-plugins",
+      "url": "https://github.com/1Password/shell-plugins",
+      "stars": 735,
+      "pushedAt": "2026-10-13T13:29:07Z",
+      "language": "Go",
+      "license": "MIT",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "61ac039814d462c9dca37ccf3ad8d4554af532a5",
+      "openIssues": 89,
+      "openPrs": 65,
+      "latestRelease": null
+    },
+    {
+      "repo": "docker-java/docker-java",
+      "url": "https://github.com/docker-java/docker-java",
+      "stars": 3197,
+      "pushedAt": "2026-09-21T13:23:04Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "002b6eb7aa2b892be729c7c2a5e95f782924db38",
+      "openIssues": 42,
+      "openPrs": 64,
+      "latestRelease": {
+        "tagName": "3.7.1",
+        "publishedAt": "2026-03-18T18:46:38Z",
+        "url": "https://github.com/docker-java/docker-java/releases/tag/3.7.1"
+      }
+    },
+    {
+      "repo": "spring-io/initializr",
+      "url": "https://github.com/spring-io/initializr",
+      "stars": 3708,
+      "pushedAt": "2026-10-09T09:47:08Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "77a25785e1b86391e18ac83efb8ab7ce86b18301",
+      "openIssues": 34,
+      "openPrs": 1,
+      "latestRelease": {
+        "tagName": "v0.24.0",
+        "publishedAt": "2026-03-20T08:17:19Z",
+        "url": "https://github.com/spring-io/initializr/releases/tag/v0.24.0"
+      }
+    },
+    {
+      "repo": "openrewrite/rewrite-testing-frameworks",
+      "url": "https://github.com/openrewrite/rewrite-testing-frameworks",
+      "stars": 100,
+      "pushedAt": "2026-10-12T16:35:02Z",
+      "language": "Java",
+      "license": "NOASSERTION",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "1ae3400eddbb34d0802842403657ee3cd54ac4f5",
+      "openIssues": 33,
+      "openPrs": 18,
+      "latestRelease": {
+        "tagName": "v3.49.0",
+        "publishedAt": "2026-10-09T20:39:35Z",
+        "url": "https://github.com/openrewrite/rewrite-testing-frameworks/releases/tag/v3.49.0"
+      }
+    },
+    {
+      "repo": "prometheus/node_exporter",
+      "url": "https://github.com/prometheus/node_exporter",
+      "stars": 13837,
+      "pushedAt": "2026-10-13T10:46:18Z",
+      "language": "Go",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "638ec72c3ae829810b0617b6ba21626752a50237",
+      "openIssues": 219,
+      "openPrs": 105,
+      "latestRelease": {
+        "tagName": "v1.12.1",
+        "publishedAt": "2026-07-14T12:34:45Z",
+        "url": "https://github.com/prometheus/node_exporter/releases/tag/v1.12.1"
+      }
+    },
+    {
+      "repo": "caddyserver/caddy",
+      "url": "https://github.com/caddyserver/caddy",
+      "stars": 77918,
+      "pushedAt": "2026-10-13T16:13:05Z",
+      "language": "Go",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "4ec5a5c39a93f57531d28b2028a90ac725c8ab2f",
+      "openIssues": 196,
+      "openPrs": 84,
+      "latestRelease": {
+        "tagName": "v2.11.7",
+        "publishedAt": "2026-10-03T05:58:33Z",
+        "url": "https://github.com/caddyserver/caddy/releases/tag/v2.11.7"
+      }
+    },
+    {
+      "repo": "kubernetes/kubernetes",
+      "url": "https://github.com/kubernetes/kubernetes",
+      "stars": 128332,
+      "pushedAt": "2026-10-13T20:02:53Z",
+      "language": "Go",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "2db820a6d4c566bd6e457b61e53436488ad06cf8",
+      "openIssues": 1917,
+      "openPrs": 1373,
+      "latestRelease": {
+        "publishedAt": "2026-10-07T17:54:03Z",
+        "tagName": "v1.38.0-alpha.2",
+        "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.2"
+      }
+    },
+    {
+      "repo": "google/guava",
+      "url": "https://github.com/google/guava",
+      "stars": 51921,
+      "pushedAt": "2026-10-13T20:53:31Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "2b86a8216627a807ce8520abc6ae55437dbb85fb",
+      "openIssues": 615,
+      "openPrs": 134,
+      "latestRelease": {
+        "publishedAt": "2026-09-29T14:53:52Z",
+        "tagName": "v33.7.2",
+        "url": "https://github.com/google/guava/releases/tag/v33.7.2"
+      }
+    },
+    {
+      "repo": "ReactiveX/RxJava",
+      "url": "https://github.com/ReactiveX/RxJava",
+      "stars": 48256,
+      "pushedAt": "2026-10-13T09:06:06Z",
+      "language": "Java",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "4.x",
+      "defaultHead": "1ef5930da6416bf9266891b4a9612f3e9df7a650",
+      "openIssues": 11,
+      "openPrs": 0,
+      "latestRelease": {
+        "publishedAt": "2026-08-05T09:19:33Z",
+        "tagName": "v4.0.0-alpha-21",
+        "url": "https://github.com/ReactiveX/RxJava/releases/tag/v4.0.0-alpha-21"
+      }
+    },
+    {
+      "repo": "astral-sh/uv",
+      "url": "https://github.com/astral-sh/uv",
+      "stars": 90720,
+      "pushedAt": "2026-10-13T20:46:30Z",
+      "language": "Rust",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "b757f15552203f42d8081b2378955e725cd732ce",
+      "openIssues": 2385,
+      "openPrs": 596,
+      "latestRelease": {
+        "publishedAt": "2026-10-09T19:49:55Z",
+        "tagName": "0.13.0",
+        "url": "https://github.com/astral-sh/uv/releases/tag/0.13.0"
+      }
+    },
+    {
+      "repo": "BurntSushi/ripgrep",
+      "url": "https://github.com/BurntSushi/ripgrep",
+      "stars": 69112,
+      "pushedAt": "2026-08-04T13:59:44Z",
+      "language": "Rust",
+      "license": "Unlicense",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+      "openIssues": 126,
+      "openPrs": 78,
+      "latestRelease": {
+        "tagName": "15.2.0",
+        "publishedAt": "2026-07-15T16:26:10Z",
+        "url": "https://github.com/BurntSushi/ripgrep/releases/tag/15.2.0"
+      }
+    },
+    {
+      "repo": "tesseract-ocr/tesseract",
+      "url": "https://github.com/tesseract-ocr/tesseract",
+      "stars": 76974,
+      "pushedAt": "2026-10-10T06:01:54Z",
+      "language": "C++",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "main",
+      "defaultHead": "b2544450ca01407259ed53c870b7e5e4c67f7789",
+      "openIssues": 435,
+      "openPrs": 62,
+      "latestRelease": {
+        "tagName": "5.5.3",
+        "publishedAt": "2026-07-24T18:33:22Z",
+        "url": "https://github.com/tesseract-ocr/tesseract/releases/tag/5.5.3"
+      }
+    },
+    {
+      "repo": "libvips/libvips",
+      "url": "https://github.com/libvips/libvips",
+      "stars": 11731,
+      "pushedAt": "2026-10-13T12:48:21Z",
+      "language": "C",
+      "license": "LGPL-2.1",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "06564b0a4c3f473d0e0cb9f9977ab647888aa43d",
+      "openIssues": 61,
+      "openPrs": 20,
+      "latestRelease": {
+        "tagName": "v8.18.7",
+        "publishedAt": "2026-09-26T11:31:21Z",
+        "url": "https://github.com/libvips/libvips/releases/tag/v8.18.7"
+      }
+    },
+    {
+      "repo": "imgproxy/imgproxy",
+      "url": "https://github.com/imgproxy/imgproxy",
+      "stars": 11120,
+      "pushedAt": "2026-10-13T19:26:22Z",
+      "language": "Go",
+      "license": "Apache-2.0",
+      "archived": false,
+      "disabled": false,
+      "defaultBranch": "master",
+      "defaultHead": "afd17ddbc8d8b24cdfd276b68a1064d28aaed261",
+      "openIssues": 59,
+      "openPrs": 10,
+      "latestRelease": {
+        "tagName": "v4.0.17",
+        "publishedAt": "2026-09-30T16:10:58Z",
+        "url": "https://github.com/imgproxy/imgproxy/releases/tag/v4.0.17"
+      }
+    }
+  ]
+}
