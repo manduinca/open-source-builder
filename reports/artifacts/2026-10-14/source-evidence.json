@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-14",
+  "runtimeReproductionsExecuted": false,
+  "items": [
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "url": "https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator/src/main/java/org/openapitools/codegen/examples/ExampleGenerator.java",
+      "observation": "Las rutas Map de datos -> generate(Map mediaTypes) permanecen, así como return string '{}' para object y return null para modelos sin properties.",
+      "relatedPr": "https://github.com/OpenAPITools/openapi-generator/pull/23688",
+      "relatedPrObservation": "El diff de ExampleGenerator cambia HashMap a LinkedHashMap para orden; no corrige las rutas de los dos reportes.",
+      "head": "e17e024b2bcb9565bbe59586e8ad1cdd2780909f",
+      "commitUrl": "https://github.com/OpenAPITools/openapi-generator/commit/e17e024b2bcb9565bbe59586e8ad1cdd2780909f"
+    },
+    {
+      "repo": "ReactiveX/RxJava",
+      "url": "https://github.com/ReactiveX/RxJava/blob/4.x/src/main/java/io/reactivex/rxjava4/core/Streamable.java",
+      "observation": "Streamable es interfaz sin extends; defaultIfEmpty no aparece. Contrato asíncrono next/current/finish, no adaptar ciegamente API Flowable.",
+      "openPrSearch": {
+        "query": "repo:ReactiveX/RxJava is:pr is:open Streamable",
+        "totalCount": 0
+      },
+      "head": "1ef5930da6416bf9266891b4a9612f3e9df7a650",
+      "commitUrl": "https://github.com/ReactiveX/RxJava/commit/1ef5930da6416bf9266891b4a9612f3e9df7a650"
+    },
+    {
+      "repo": "tesseract-ocr/tesseract",
+      "url": "https://github.com/tesseract-ocr/tesseract/blob/main/CMakeLists.txt",
+      "observation": "BUILD_TESTS requiere ruta unittest/third_party/googletest/CMakeLists.txt y añade subdirectorio vendorizado.",
+      "relatedPrs": [
+        {
+          "url": "https://github.com/tesseract-ocr/tesseract/pull/4646",
+          "observation": "Omisión de tests sin modelos, no selección GTest del sistema."
+        },
+        {
+          "url": "https://github.com/tesseract-ocr/tesseract/pull/4372",
+          "observation": "Moderniza datadir, no cambia build/test-dependency."
+        }
+      ],
+      "head": "b2544450ca01407259ed53c870b7e5e4c67f7789",
+      "commitUrl": "https://github.com/tesseract-ocr/tesseract/commit/b2544450ca01407259ed53c870b7e5e4c67f7789"
+    },
+    {
+      "repo": "simpeg/simpeg",
+      "head": "d872a94ff3df9586d20eb412925bcfdd6d15c3e0",
+      "commitUrl": "https://github.com/simpeg/simpeg/commit/d872a94ff3df9586d20eb412925bcfdd6d15c3e0",
+      "url": "https://github.com/simpeg/simpeg/blob/d872a94ff3df9586d20eb412925bcfdd6d15c3e0/simpeg/electromagnetics/static/spectral_induced_polarization/simulation.py",
+      "observation": "_P se inicializa si storeJ; getJ accede _P.shape y rx.projGLoc; inspección actual, sin ejecución de MRE."
+    }
+  ]
+}

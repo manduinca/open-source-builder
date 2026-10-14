@@ -1,0 +1,21 @@
+{
+  "approvedOn": "2026-10-14",
+  "approvedBy": "Usuario en este chat",
+  "repo": "testcontainers/testcontainers-go",
+  "clone": "/tmp/oss-followup-20261014.yWQOXd/testcontainers-go",
+  "origin": "git@github.com:manduinca/testcontainers-go.git",
+  "upstream": "git@github.com:testcontainers/testcontainers-go.git",
+  "localSettings": {
+    "ledger.attribution": false,
+    "ledger.allowAiTrailers": true
+  },
+  "globalAllowAiTrailers": "unset; sin cambios",
+  "ownRepoLocalAllowAiTrailers": "unset; sin cambios",
+  "hooksPath": "/Users/manduinca/Projects/manduinca/agent-ledger/hooks",
+  "guardHooksPresent": [
+    "commit-msg",
+    "pre-push"
+  ],
+  "policy": "https://github.com/testcontainers/testcontainers-go/blob/9d2885db535f9915dd270d5a6b4973a4aac0e2e8/AI.md",
+  "scope": "Solo este clon; no reescritura de commits previos, no push ni PR externo nuevo. El ajuste local es temporal y no viaja con el repo."
+}

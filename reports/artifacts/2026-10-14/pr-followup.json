@@ -1,0 +1,1058 @@
+{
+  "checkedAt": "2026-10-14T05:41:04.964Z",
+  "since": "2026-10-13T22:22:31Z",
+  "watchedRepos": 36,
+  "activeSearchLimit": 100,
+  "searchMayBeIncomplete": false,
+  "activePublicWatchedPrs": 25,
+  "prs": [
+    {
+      "repo": "apache/lucene",
+      "number": 16643,
+      "url": "https://github.com/apache/lucene/pull/16643",
+      "pr": {
+        "number": 16643,
+        "title": "Close the reader pool before deleting files on rollback",
+        "url": "https://github.com/apache/lucene/pull/16643",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-01T05:25:58Z",
+        "headRefOid": "e73900e95b71031199e67394c03119ce26d01aa8",
+        "baseRefName": "main",
+        "headRefName": "fix/rollback-reader-pool",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "CLEAN",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/lucene"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "Automattic/harper",
+      "number": 4425,
+      "url": "https://github.com/Automattic/harper/pull/4425",
+      "pr": {
+        "number": 4425,
+        "title": "feat(core): flag \"tenant\" where \"tenet\" is meant",
+        "url": "https://github.com/Automattic/harper/pull/4425",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-24T16:24:16Z",
+        "headRefOid": "62f0396c770cac52dd712fd33b33248beee121f4",
+        "baseRefName": "master",
+        "headRefName": "feat/tenant-tenet",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "CLEAN",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/harper"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "cloudevents/sdk-python",
+      "number": 302,
+      "url": "https://github.com/cloudevents/sdk-python/pull/302",
+      "pr": {
+        "number": 302,
+        "title": "docs: clarify abstract.CloudEvent docstring (attributes vs data)",
+        "url": "https://github.com/cloudevents/sdk-python/pull/302",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-20T08:47:47Z",
+        "headRefOid": "1487faea473ff526524b65e21ed5e08abaf46408",
+        "baseRefName": "main",
+        "headRefName": "docs/247-abstract-cloudevent-docstring",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/sdk-python"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "fatiando/harmonica",
+      "number": 698,
+      "url": "https://github.com/fatiando/harmonica/pull/698",
+      "pr": {
+        "number": 698,
+        "title": "Add linearity tests for forward models",
+        "url": "https://github.com/fatiando/harmonica/pull/698",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-01T18:01:09Z",
+        "headRefOid": "0aa1d052354caa9a0988fb16e1208608b6eebf07",
+        "baseRefName": "main",
+        "headRefName": "add-linearity-tests",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "CLEAN",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/harmonica"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "fatiando/harmonica",
+      "number": 700,
+      "url": "https://github.com/fatiando/harmonica/pull/700",
+      "pr": {
+        "number": 700,
+        "title": "Add terrain correction in spherical coordinates to the User Guide",
+        "url": "https://github.com/fatiando/harmonica/pull/700",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-01T18:01:11Z",
+        "headRefOid": "7b1cc91d4d8916eb85fc5148254815f57ccc34c8",
+        "baseRefName": "main",
+        "headRefName": "docs/spherical-terrain-correction",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "CLEAN",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/harmonica"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": null
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "gempy-project/gempy",
+      "number": 1110,
+      "url": "https://github.com/gempy-project/gempy/pull/1110",
+      "pr": {
+        "number": 1110,
+        "title": "[ENH] Raise a descriptive error for unknown structural element names",
+        "url": "https://github.com/gempy-project/gempy/pull/1110",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-30T06:04:50Z",
+        "headRefOid": "c84db8514044f708817ed59d609baa26331af4b1",
+        "baseRefName": "main",
+        "headRefName": "fix-904-unknown-element-names",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/gempy"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "keycloak/keycloak",
+      "number": 52478,
+      "url": "https://github.com/keycloak/keycloak/pull/52478",
+      "pr": {
+        "number": 52478,
+        "title": "Align URN resource indicator validation with RFC 8141",
+        "url": "https://github.com/keycloak/keycloak/pull/52478",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-01T05:25:55Z",
+        "headRefOid": "d0fa762fde93537f125fc54694ae35df9725f3c8",
+        "baseRefName": "main",
+        "headRefName": "fix/urn-resource-indicator-rfc8141",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/keycloak"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "lichess-org/lila",
+      "number": 22064,
+      "url": "https://github.com/lichess-org/lila/pull/22064",
+      "pr": {
+        "number": 22064,
+        "title": "Make blog Atom feed links discoverable",
+        "url": "https://github.com/lichess-org/lila/pull/22064",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": true,
+        "updatedAt": "2026-10-13T10:00:39Z",
+        "headRefOid": "cc0d8bfe8ce609be18c7d426016745f5b5e4f8c4",
+        "baseRefName": "master",
+        "headRefName": "codex/ublog-atom-discovery",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "CLEAN",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/lila"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "Lightning-AI/litgpt",
+      "number": 2330,
+      "url": "https://github.com/Lightning-AI/litgpt/pull/2330",
+      "pr": {
+        "number": 2330,
+        "title": "fix(chat): make --compile work",
+        "url": "https://github.com/Lightning-AI/litgpt/pull/2330",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-15T18:36:37Z",
+        "headRefOid": "163a79328edfcd01974f935098eb15fe6f5d3c40",
+        "baseRefName": "main",
+        "headRefName": "fix/chat-compile",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/litgpt"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "FAILURE"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "Loop3D/LoopStructural",
+      "number": 297,
+      "url": "https://github.com/Loop3D/LoopStructural/pull/297",
+      "pr": {
+        "number": 297,
+        "title": "test: cover from_processor with a stratigraphic column",
+        "url": "https://github.com/Loop3D/LoopStructural/pull/297",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-27T06:34:02Z",
+        "headRefOid": "31774ce0f25a7dced7d37735eb01f36eeafbd500",
+        "baseRefName": "master",
+        "headRefName": "fix/set-stratigraphic-column-warn",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "UNSTABLE",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/LoopStructural"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "FAILURE"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "moghtech/komodo",
+      "number": 1661,
+      "url": "https://github.com/moghtech/komodo/pull/1661",
+      "pr": {
+        "number": 1661,
+        "title": "fix: accept 0/N step schedules again after the croner 4 update",
+        "url": "https://github.com/moghtech/komodo/pull/1661",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-01T06:32:06Z",
+        "headRefOid": "3445769d1b30a2fab1ff9d6ac8e2f56969f190bd",
+        "baseRefName": "main",
+        "headRefName": "fix/english-schedule-step-ranges",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "UNSTABLE",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/komodo"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": null
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "moghtech/komodo",
+      "number": 1662,
+      "url": "https://github.com/moghtech/komodo/pull/1662",
+      "pr": {
+        "number": 1662,
+        "title": "fix: create swarm secrets without a trailing newline",
+        "url": "https://github.com/moghtech/komodo/pull/1662",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-01T07:20:26Z",
+        "headRefOid": "bcfcf6e20f201607bfdfc8c446d10cfde7c403fe",
+        "baseRefName": "main",
+        "headRefName": "fix/swarm-secret-trailing-newline",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "UNSTABLE",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/komodo"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": null
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "open-telemetry/opentelemetry-python-contrib",
+      "number": 4840,
+      "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840",
+      "pr": {
+        "number": 4840,
+        "title": "opentelemetry-instrumentation-django: add code attributes to spans",
+        "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4840",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-13T21:19:18Z",
+        "headRefOid": "2b5f7fccc8b26e361e0cf6cd58643da295ac2282",
+        "baseRefName": "main",
+        "headRefName": "feature/django-code-attributes",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BEHIND",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/opentelemetry-python-contrib"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "number": 25073,
+      "url": "https://github.com/OpenAPITools/openapi-generator/pull/25073",
+      "pr": {
+        "number": 25073,
+        "title": "[core] Set isMap on properties that updatePropertyForMap turns into maps",
+        "url": "https://github.com/OpenAPITools/openapi-generator/pull/25073",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-04T07:15:03Z",
+        "headRefOid": "784209657095d51804a7c4e73c9c13ced16676d6",
+        "baseRefName": "master",
+        "headRefName": "fix/python-31-untyped-map-property",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "UNSTABLE",
+        "reviewDecision": "",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/openapi-generator"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true,
+      "mergeabilityRechecked": true
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "number": 25074,
+      "url": "https://github.com/OpenAPITools/openapi-generator/pull/25074",
+      "pr": {
+        "number": 25074,
+        "title": "[core] Clone inline sub-schemas before collapsing a nullable anyOf/oneOf",
+        "url": "https://github.com/OpenAPITools/openapi-generator/pull/25074",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-04T07:15:03Z",
+        "headRefOid": "e1dcf08d37744a8b447e60af1b5e614beb5ee017",
+        "baseRefName": "master",
+        "headRefName": "fix/normalizer-shared-inline-subschema",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "UNSTABLE",
+        "reviewDecision": "",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/openapi-generator"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true,
+      "mergeabilityRechecked": true
+    },
+    {
+      "repo": "openrewrite/rewrite-testing-frameworks",
+      "number": 1119,
+      "url": "https://github.com/openrewrite/rewrite-testing-frameworks/pull/1119",
+      "pr": {
+        "number": 1119,
+        "title": "Fix dangling constructor calls when migrating JUnit TestCase",
+        "url": "https://github.com/openrewrite/rewrite-testing-frameworks/pull/1119",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-06T16:49:38Z",
+        "headRefOid": "7760545c5803d213e02081f841afcc716c9d58dc",
+        "baseRefName": "main",
+        "headRefName": "fix/junit-testcase-constructor-calls",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "UNSTABLE",
+        "reviewDecision": null,
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/rewrite-testing-frameworks"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "FAILURE"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "simpeg/simpeg",
+      "number": 1803,
+      "url": "https://github.com/simpeg/simpeg/pull/1803",
+      "pr": {
+        "number": 1803,
+        "title": "Document how to set Pardiso thread counts",
+        "url": "https://github.com/simpeg/simpeg/pull/1803",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-02T04:10:12Z",
+        "headRefOid": "1e462b9c4417d8a87cf79e7a807e6d3577973d31",
+        "baseRefName": "main",
+        "headRefName": "docs/pardiso-threads",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BEHIND",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/simpeg"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "testcontainers/testcontainers-go",
+      "number": 3882,
+      "url": "https://github.com/testcontainers/testcontainers-go/pull/3882",
+      "pr": {
+        "number": 3882,
+        "title": "fix(auth): use the credentials store when no registry matches",
+        "url": "https://github.com/testcontainers/testcontainers-go/pull/3882",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-11T07:42:08Z",
+        "headRefOid": "3211a489af7fdd779a7e7b6c284affa82e1c1bc0",
+        "baseRefName": "main",
+        "headRefName": "fix/credentials-store-auth",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BEHIND",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/testcontainers-go"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "testcontainers/testcontainers-java",
+      "number": 12072,
+      "url": "https://github.com/testcontainers/testcontainers-java/pull/12072",
+      "pr": {
+        "number": 12072,
+        "title": "Test Kibana managed network validation without Docker",
+        "url": "https://github.com/testcontainers/testcontainers-java/pull/12072",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-11T08:04:17Z",
+        "headRefOid": "3803d1c6d63729d5641bb5ecb7096aaa9f05ebc1",
+        "baseRefName": "main",
+        "headRefName": "test/kibana-network-validation",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/testcontainers-java"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "torchgeo/torchgeo",
+      "number": 4111,
+      "url": "https://github.com/torchgeo/torchgeo/pull/4111",
+      "pr": {
+        "number": 4111,
+        "title": "Add WMSDataset",
+        "url": "https://github.com/torchgeo/torchgeo/pull/4111",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-09-13T20:16:52Z",
+        "headRefOid": "67db7864ab56d150e4ffc3bd2c1df3ab223d1f7a",
+        "baseRefName": "main",
+        "headRefName": "wms-dataset",
+        "mergeable": "CONFLICTING",
+        "mergeStateStatus": "DIRTY",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/torchgeo"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "number": 4095,
+      "url": "https://github.com/Unidata/MetPy/pull/4095",
+      "pr": {
+        "number": 4095,
+        "title": "DOC: Move equations to Notes in kinematics docstrings",
+        "url": "https://github.com/Unidata/MetPy/pull/4095",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-12T21:09:00Z",
+        "headRefOid": "88d64d90da905e98d1a840d2fc4a68ea4abe0051",
+        "baseRefName": "main",
+        "headRefName": "docs/kinematics-equations-to-notes",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/MetPy"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "FAILURE"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "number": 4096,
+      "url": "https://github.com/Unidata/MetPy/pull/4096",
+      "pr": {
+        "number": 4096,
+        "title": "ENH: Add station pressure to altimeter and sea-level pressure conversions",
+        "url": "https://github.com/Unidata/MetPy/pull/4096",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-07-17T17:10:04Z",
+        "headRefOid": "129c6772e7f4babbfde2c9c681ed46dbb9ba87e4",
+        "baseRefName": "main",
+        "headRefName": "feature/altimeter-from-station-pressure",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/MetPy"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "Unidata/MetPy",
+      "number": 4099,
+      "url": "https://github.com/Unidata/MetPy/pull/4099",
+      "pr": {
+        "number": 4099,
+        "title": "DOC: Move equations to Notes in stability index docstrings",
+        "url": "https://github.com/Unidata/MetPy/pull/4099",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-07-21T00:45:12Z",
+        "headRefOid": "7fb8f08ff386fac3941593d2523321a605c5f0a6",
+        "baseRefName": "main",
+        "headRefName": "doc/move-equations-thermo-stability",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/MetPy"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true
+    },
+    {
+      "repo": "wailsapp/wails",
+      "number": 6205,
+      "url": "https://github.com/wailsapp/wails/pull/6205",
+      "pr": {
+        "number": 6205,
+        "title": "fix(v3/updater): remove the staging dir when the download fails",
+        "url": "https://github.com/wailsapp/wails/pull/6205",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-13T11:09:29Z",
+        "headRefOid": "86ec5ef77aeb7d636b1b4a0f0a408557d35e8570",
+        "baseRefName": "master",
+        "headRefName": "fix/updater-download-tempdir-cleanup",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BEHIND",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/wails"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true,
+      "mergeabilityRechecked": true
+    },
+    {
+      "repo": "wailsapp/wails",
+      "number": 6206,
+      "url": "https://github.com/wailsapp/wails/pull/6206",
+      "pr": {
+        "number": 6206,
+        "title": "fix(v3/updater): stop the periodic check from re-downloading a staged update",
+        "url": "https://github.com/wailsapp/wails/pull/6206",
+        "state": "OPEN",
+        "mergedAt": null,
+        "closedAt": null,
+        "isDraft": false,
+        "updatedAt": "2026-10-13T11:09:29Z",
+        "headRefOid": "1e4d5bfd74fd9f2bd9edd444d1bca85c86cdc504",
+        "baseRefName": "master",
+        "headRefName": "fix/updater-skip-staged-redownload",
+        "mergeable": "MERGEABLE",
+        "mergeStateStatus": "BEHIND",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "author": {
+          "login": "manduinca"
+        },
+        "headRepository": {
+          "nameWithOwner": "manduinca/wails"
+        },
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "statusCheckRollup": {
+                  "state": "SUCCESS"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "newComments": [],
+      "newReviews": [],
+      "newInlineComments": [],
+      "historyComplete": true,
+      "mergeabilityRechecked": true
+    }
+  ]
+}

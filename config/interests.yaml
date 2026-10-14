@@ -222,7 +222,7 @@ restricciones_contribucion:
   lichess-org/lila: Disclosure obligatorio, revisión y pruebas humanas antes de marcar un PR ready
   open-telemetry/opentelemetry-python-contrib: Código asistido permitido; comunicación humana según AGENTS.md
   fatiando/verde: Política compartida Fatiando; sin contribuciones mayoritariamente GenAI ni publicación por agentes; asistencia limitada con disclosure
-  testcontainers/testcontainers-go: AI.md exige coautor de IA; excepción local pendiente de aprobación del usuario, nunca habilitar automáticamente
+  testcontainers/testcontainers-go: AI.md exige coautor de IA; excepción autorizada por el usuario el 2026-10-14 y habilitada solo en el clon temporal documentado; sin cambios globales ni desactivar guardias
   napari/napari: Asistencia permitida con comprensión y pruebas humanas; los agentes no envían PRs
   scikit-image/scikit-image: IA limitada a exploración y cambios triviales o mecánicos; no algoritmos/tests novedosos ni descripciones/comentarios generados
   libvips/libvips: No acepta contenido total o parcialmente generado con IA

@@ -1,0 +1,321 @@
+{
+  "checkedAt": "2026-10-14T05:43:56.097Z",
+  "scope": "Revalidación de candidatos previos, no descubrimiento nuevo",
+  "repositories": [
+    {
+      "repo": "1Password/shell-plugins",
+      "url": "https://github.com/1Password/shell-plugins",
+      "stars": 735,
+      "pushedAt": "2026-10-13T13:29:07Z",
+      "defaultBranch": "main",
+      "language": "Go",
+      "archived": false,
+      "license": "MIT",
+      "community": {
+        "healthPercentage": 62,
+        "contributing": "https://github.com/1Password/shell-plugins/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "backstage/backstage",
+      "url": "https://github.com/backstage/backstage",
+      "stars": 34607,
+      "pushedAt": "2026-10-14T00:54:42Z",
+      "defaultBranch": "master",
+      "language": "TypeScript",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 100,
+        "contributing": "https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/backstage/backstage/blob/master/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "gempy-project/gempy",
+      "url": "https://github.com/gempy-project/gempy",
+      "stars": 1354,
+      "pushedAt": "2026-10-13T12:10:33Z",
+      "defaultBranch": "main",
+      "language": "Python",
+      "archived": false,
+      "license": "EUPL-1.2",
+      "community": {
+        "healthPercentage": 75,
+        "contributing": "https://github.com/gempy-project/gempy/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/gempy-project/gempy/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "GenericMappingTools/pygmt",
+      "url": "https://github.com/GenericMappingTools/pygmt",
+      "stars": 876,
+      "pushedAt": "2026-10-11T15:08:21Z",
+      "defaultBranch": "main",
+      "language": "Python",
+      "archived": false,
+      "license": "BSD-3-Clause",
+      "community": {
+        "healthPercentage": 87,
+        "contributing": "https://github.com/GenericMappingTools/pygmt/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/GenericMappingTools/.github/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "keycloak/keycloak",
+      "url": "https://github.com/keycloak/keycloak",
+      "stars": 37335,
+      "pushedAt": "2026-10-14T03:20:36Z",
+      "defaultBranch": "main",
+      "language": "Java",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 100,
+        "contributing": "https://github.com/keycloak/keycloak/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/keycloak/.github/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "lichess-org/lila",
+      "url": "https://github.com/lichess-org/lila",
+      "stars": 18828,
+      "pushedAt": "2026-10-14T04:18:42Z",
+      "defaultBranch": "master",
+      "language": "Scala",
+      "archived": false,
+      "license": "AGPL-3.0",
+      "community": {
+        "healthPercentage": 87,
+        "contributing": "https://github.com/lichess-org/lila/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/lichess-org/.github/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "Loop3D/LoopStructural",
+      "url": "https://github.com/Loop3D/LoopStructural",
+      "stars": 297,
+      "pushedAt": "2026-10-05T19:21:00Z",
+      "defaultBranch": "master",
+      "language": "Python",
+      "archived": false,
+      "license": "MIT",
+      "community": {
+        "healthPercentage": 50,
+        "contributing": null,
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "napari/napari",
+      "url": "https://github.com/napari/napari",
+      "stars": 2778,
+      "pushedAt": "2026-10-13T15:58:30Z",
+      "defaultBranch": "main",
+      "language": "Python",
+      "archived": false,
+      "license": "BSD-3-Clause",
+      "community": {
+        "healthPercentage": 62,
+        "contributing": "https://github.com/napari/napari/blob/main/.github/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "obspy/obspy",
+      "url": "https://github.com/obspy/obspy",
+      "stars": 1339,
+      "pushedAt": "2026-10-14T05:14:33Z",
+      "defaultBranch": "master",
+      "language": "Python",
+      "archived": false,
+      "license": "NOASSERTION",
+      "community": {
+        "healthPercentage": 75,
+        "contributing": "https://github.com/obspy/obspy/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/obspy/obspy/blob/master/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "OCA/server-tools",
+      "url": "https://github.com/OCA/server-tools",
+      "stars": 960,
+      "pushedAt": "2026-10-11T10:47:03Z",
+      "defaultBranch": "19.0",
+      "language": "Python",
+      "archived": false,
+      "license": "AGPL-3.0",
+      "community": {
+        "healthPercentage": 87,
+        "contributing": "https://github.com/OCA/.github/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/OCA/.github/blob/master/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "onyx-dot-app/onyx",
+      "url": "https://github.com/onyx-dot-app/onyx",
+      "stars": 32445,
+      "pushedAt": "2026-10-14T05:41:52Z",
+      "defaultBranch": "main",
+      "language": "Python",
+      "archived": false,
+      "license": "NOASSERTION",
+      "community": {
+        "healthPercentage": 75,
+        "contributing": "https://github.com/onyx-dot-app/onyx/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "OpenAPITools/openapi-generator",
+      "url": "https://github.com/OpenAPITools/openapi-generator",
+      "stars": 26792,
+      "pushedAt": "2026-10-14T03:40:27Z",
+      "defaultBranch": "master",
+      "language": "Java",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 87,
+        "contributing": "https://github.com/OpenAPITools/openapi-generator/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/OpenAPITools/openapi-generator/blob/master/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "openrewrite/rewrite-testing-frameworks",
+      "url": "https://github.com/openrewrite/rewrite-testing-frameworks",
+      "stars": 100,
+      "pushedAt": "2026-10-12T16:35:02Z",
+      "defaultBranch": "main",
+      "language": "Java",
+      "archived": false,
+      "license": "NOASSERTION",
+      "community": {
+        "healthPercentage": 62,
+        "contributing": "https://github.com/openrewrite/.github/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "prometheus/node_exporter",
+      "url": "https://github.com/prometheus/node_exporter",
+      "stars": 13838,
+      "pushedAt": "2026-10-13T10:46:18Z",
+      "defaultBranch": "master",
+      "language": "Go",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 75,
+        "contributing": "https://github.com/prometheus/node_exporter/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/prometheus/node_exporter/blob/master/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "ReactiveX/RxJava",
+      "url": "https://github.com/ReactiveX/RxJava",
+      "stars": 48255,
+      "pushedAt": "2026-10-13T09:06:06Z",
+      "defaultBranch": "4.x",
+      "language": "Java",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 75,
+        "contributing": "https://github.com/ReactiveX/RxJava/blob/4.x/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "seisbench/seisbench",
+      "url": "https://github.com/seisbench/seisbench",
+      "stars": 426,
+      "pushedAt": "2026-10-05T11:37:37Z",
+      "defaultBranch": "main",
+      "language": "Jupyter Notebook",
+      "archived": false,
+      "license": "GPL-3.0",
+      "community": {
+        "healthPercentage": 62,
+        "contributing": "https://github.com/seisbench/seisbench/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/seisbench/seisbench/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "simpeg/simpeg",
+      "url": "https://github.com/simpeg/simpeg",
+      "stars": 686,
+      "pushedAt": "2026-10-13T23:06:23Z",
+      "defaultBranch": "main",
+      "language": "Python",
+      "archived": false,
+      "license": "MIT",
+      "community": {
+        "healthPercentage": 75,
+        "contributing": "https://github.com/simpeg/simpeg/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/simpeg/simpeg/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "spring-io/start.spring.io",
+      "url": "https://github.com/spring-io/start.spring.io",
+      "stars": 2680,
+      "pushedAt": "2026-10-13T06:50:40Z",
+      "defaultBranch": "main",
+      "language": "Java",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 87,
+        "contributing": "https://github.com/spring-io/start.spring.io/blob/main/CONTRIBUTING.adoc",
+        "codeOfConduct": "https://github.com/spring-io/.github/blob/main/CODE_OF_CONDUCT.md"
+      }
+    },
+    {
+      "repo": "tesseract-ocr/tesseract",
+      "url": "https://github.com/tesseract-ocr/tesseract",
+      "stars": 76978,
+      "pushedAt": "2026-10-10T06:01:54Z",
+      "defaultBranch": "main",
+      "language": "C++",
+      "archived": false,
+      "license": "Apache-2.0",
+      "community": {
+        "healthPercentage": 62,
+        "contributing": "https://github.com/tesseract-ocr/tesseract/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "testcontainers/testcontainers-go",
+      "url": "https://github.com/testcontainers/testcontainers-go",
+      "stars": 5009,
+      "pushedAt": "2026-10-14T03:03:40Z",
+      "defaultBranch": "main",
+      "language": "Go",
+      "archived": false,
+      "license": "MIT",
+      "community": {
+        "healthPercentage": 62,
+        "contributing": "https://github.com/testcontainers/testcontainers-go/blob/main/CONTRIBUTING.md",
+        "codeOfConduct": null
+      }
+    },
+    {
+      "repo": "wailsapp/wails",
+      "url": "https://github.com/wailsapp/wails",
+      "stars": 36545,
+      "pushedAt": "2026-10-14T00:25:55Z",
+      "defaultBranch": "master",
+      "language": "Go",
+      "archived": false,
+      "license": "MIT",
+      "community": {
+        "healthPercentage": 100,
+        "contributing": "https://github.com/wailsapp/wails/blob/master/CONTRIBUTING.md",
+        "codeOfConduct": "https://github.com/wailsapp/wails/blob/master/CODE_OF_CONDUCT.md"
+      }
+    }
+  ]
+}

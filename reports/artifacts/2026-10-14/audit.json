@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-14",
+  "scope": "Revalidación dirigida del escaneo previo, sin nuevo descubrimiento por keywords",
+  "sourceOfTruth": "config/interests.yaml",
+  "statistics": {
+    "watchedRepos": 36,
+    "openPrs": 25,
+    "openPrRepos": 19,
+    "integratedUpstream": 17,
+    "actualGithubMerged": 16,
+    "manualIntegration": 1,
+    "revalidatedRepos": 21,
+    "uniqueCandidates": 31,
+    "mechanicalPass": 30,
+    "diagnostics": 9,
+    "conditioned": 21,
+    "occupied": 1
+  },
+  "curators": [
+    {
+      "domain": "geociencias",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "remunerados",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "mineria",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "procesamiento_imagenes",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "cloud_native_observabilidad",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "librerias_generales",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "aplicaciones_comunidad",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "educacion_programacion",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    },
+    {
+      "domain": "ecosistema_eddumelendez",
+      "engine": "Codex",
+      "readOnly": true,
+      "completed": true
+    }
+  ],
+  "verifier": {
+    "engine": "Codex",
+    "readOnly": true,
+    "completed": true
+  },
+  "runtimeReproductionsExecuted": false,
+  "newExternalPublications": false,
+  "limits": "Ninguna búsqueda exhaustiva nueva; metadatos y candidatos solo en los repos seleccionados; sin garantías de disponibilidad, permiso IA, bounty o review. Scratches temporales no sustituyen commits."
+}
